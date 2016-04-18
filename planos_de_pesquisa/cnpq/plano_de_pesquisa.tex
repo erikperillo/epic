@@ -1,4 +1,4 @@
-\documentclass[11pt]{report}
+\documentclass[11pt]{article}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
@@ -18,10 +18,8 @@
 	\centering
 	{\scshape\Large Projeto de pesquisa\par}
 	\vspace{1.5cm}
-	{\huge\bfseries Análise de imagens com processos atencionais e 
-		aprendizado de máquina para sistemas robóticos\par}
-	%{\huge\bfseries Técnicas de reconhecimento de entidades em imagens
-	%	para navegação em sistemas robóticos\par}
+	{\huge\bfseries Processos atencionais e aprendizado de máquina 
+		para sistemas robóticos\par}
 	\vspace{2cm}
 	{\Large\itshape Aluno: Erik de Godoy Perillo\par}
 	{\Large\itshape Orientadora: Esther Luna Colombini\par}
@@ -35,92 +33,108 @@
 
 \section{Introdução}
 
-\subsection{Um desafio para robôs autônomos}
+\subsection{Ambientação}
 \paragraph{}
-A categoria de robótica denominada \tit{Trekking} possui diversos desafios 
-interessantes a serem superados. 
-Nela, deve-se fazer com que um robô autônomo complete um percurso pré-definido 
-em um campo de futebol no menor tempo possível. 
-São três bases às quais deve-se chegar em uma ordem definida. 
-Nos arredores da terceira base, há obstáculos os quais o robô deve ser capaz 
-de desviar por si só. 
-As bases são um quadrado branco; o formato dos obstáculos, entretanto, não é
-conhecido até o momento da execução da prova.
+\tbf{Aqui vem a ambientação do problema, isto é, a esfera S de aplicação
+a qual inspirou nosso projeto e sua relevância na sociedade.}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{imgs/trekking_campo.png}
-	\caption{Ilustração do ambiente ao qual o robô está inserido}
-\end{figure}
+\tit{Nosso caso}: 
+\begin{itemize}
+	\item Falar sobre sistemas robóticos em geral.
+	\item Falar sobre a tendência de sistemas robóticos autônomos ser uma 
+		área quente.
+	\item Discorrer sobre a navegação em sistemas robóticos.
+\end{itemize}
 
-\subsection{Um robô para o desafio}
+\subsection{Revisão bibliográfica breve}
 \paragraph{}
-O \emph{Projeto Piranha} é um robô desenvolvido pela equipe \tit{Phoenix} de
-robótica da Unicamp -- uma equipe de estudantes de graduação da computação e
-diversas engenharias -- para executar as tarefas propostas pelo desafio 
-\tit{Trekking}. 
-A sua estrutura mecânica é um automodelo elétrico projetado para andar a altas
-velocidades em terrenos acidentados. Faz-se uso de diversos sensores inerciais,
-como magnetômetro, acelerômetro e giroscópio, além de uma câmera USB.
-O processamento principal é executado em uma \tit{GPU} embarcada 
-\tit{NVIDIA Jetson TX1}.
+\tbf{Aqui se fala sobre as técnicas atuais que servem à esfera S ambientada.}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{imgs/piranha.png}
-	\caption{O Projeto Piranha e seus componentes}
-\end{figure}
+\tit{Nosso caso}:
+\begin{itemize}
+	\item Comentar sobre técnicas que possibilitam a navegação robótica 
+		atualmente.
+\end{itemize}
 
-A estratégia adotada atualmente divide o problema de se ir de uma base a outra
-em duas etapas. 
-Na primeira, o robô está relativamente distante da base a se 
-chegar (por volta de dez metros). Nessa etapa, faz-se uso de sensores inerciais
-e um controle PID para que o robô faça uma trajetória retilínia até os 
-arredores da base. 
-Na segunda etapa, já a uma distância menor de dez metros, deve-se corrigir o 
-erro na direção acumulado pela etapa anterior para que o robô chegue de fato
-em cima da base. Para isso, usa-se a câmera embarcada, com técnicas de
-visão computacional a serem desenvolvidas neste trabalho.
-
-\subsection{Sistemas robóticos com GPUs embarcadas}
+\subsection{Motivação}
 \paragraph{}
-Falar o diferencial de GPUs para certos tipos de operações,
-como o uso de GPUs em robôs embarcados é recente e o que isso pode trazer de
-benefícios (não-limitação).
+\tbf{Aqui se introduz o(s) problema(s) P existente(s) na esfera S sobre o qual 
+queremos trabalhar. 
+Comentamos que melhorar P é relevante para S por um motivo M.
+Descrevemos como as técnicas atuais têm X, Y e Z como defeitos e
+melhorá-los de forma F trará benefícios B a P porque R.}
 
-\subsection{Visão computacional para a solução do problema}
-\paragraph{}
-A natureza dos desafios torna o uso de visão computacional uma alternativa
-considerada a ser usada para solucionar alguns dos principais problemas
-da categoria. 
-Na etapa com obstáculos, o uso de câmera é novamente uma alternativa para 
-que se detecte onde estão os objetos dos quais deve-se desviar.
-Com o fato que o sistema é robótico e então deve-se ter uma resposta em uma 
-janela de tempo satisfatória, o que se busca são técnicas confiáveis e 
-eficientes que permitam ao robô ter, a partir da imagem da câmera, informações
-suficientes para que se possa navegar por um ambiente com locais a 
-se chegar e obstáculos esparsos.
+\tit{Nosso caso}:
+\begin{itemize}
+	\item O volume de dados manipulado pelos sistemas robóticos autônomos é
+		em geral demasiadamente grande e muita da informação nele contida
+		não é relevante para o problema em questão. Ao mesmo tempo, robôs
+		autônomos em geral são muitas vezes limitados pelo seu hardware 
+		embarcado que tende a ter poder de processamento relativamente baixo.
+	\item Obter técnicas que permitam uma navegação mais sofisticada
+		é importante porque isso daria mais poder aos sistemas 
+		autônomos que temos hoje para cumprir uma gama maior de tarefas.
+	\item Usar técnica X é ruim porque não é eficiente. Usar técnica Y é
+		ruim porque não é muito geral.
+	\item Há uma nova tendência de GPUs embarcadas que de serem agora usadas, 
+		o que possibilita processamento pesado para certas operações e 
+		consequentemente proporciona uma maior liberdade na escolha de técnicas
+		mais poderosas.
+	\item Busca-se então por técnicas mais sofisticadas, tendo-se o apoio das
+		GPUs embarcadas como um fato, com a preocupação da eficiência para
+		sistemas em tempo real.
+\end{itemize}
 
-\subsection{Processos atencionais}
+\subsection{Introdução à nossa abordagem}
 \paragraph{}
+\tbf{Aqui há uma descrição breve das técnicas que pretendemos usar.}
+\begin{itemize}
+	\item Falar sobre processos atencionais.
+	\item Falar sobre técnicas de reconhecimento de padrões em Machine Learning.
+\end{itemize}
 
-\subsection{Aprendizado de máquina aplicado a reconhecimento de padrões}
+\tit{Nosso caso}:
+Processos atencionais, aprendizado de máquina para identificação de objetos...
+
+\subsection{Proposta}
 \paragraph{}
+\tbf{Deve-se comparar nossa abordagem com as outras discutidas e salientar suas
+diferenças para mostrar originalidade.
+Deve-se então explicar por que essas diferenças podem trazer os benefícios 
+B esperados.}
+
+\tit{Nosso caso}:
+Mesclar processos atencionais com ML agora seria  
+seria eficiente computacionalmente e geral/robusto. 
+Isso nos leva a buscar uma alternativa que faça uso dessas técnicas.
 
 \section{Objetivos}
 \paragraph{}
-Ao abstrair os problemas específicos da categoria, o que se busca são técnicas 
-de análise de imagem que permitam, com robustez e eficiência, identificar 
-e classificar diferentes entidades.
--Falar sobre como se planeja fazer isso mesclando PA e ML.
+\tbf{Aqui colocamos o objetivo principal da pesquisa. Devemos buscar algo que
+seja de utilidade para a sociedade de alguma forma, seja geral e original.}
+
+\tit{Nosso caso}:
+Obter técnicas que permitam a navegação de sistemas robóticos autônomos 
+em geral.
+
+Fazer uma avaliação da eficiência de nossa técnica.
+
+Citar um framework para GPUs embarcadas que desejamos ter ao final para 
+treinamento, classificação etc.
 
 \section{Métodos}
 \paragraph{}
-Bla bla bla.\cite{biba}
+\tbf{Aqui falamos sobre os meios usados para se chegar aos objetivos.}
+
+\tit{Nosso caso}:
+Falar sobre a plataforma de testes. 
+Citar o projeto Piranha aqui. 
+Falar do uso da câmera. Falar de GPUs aqui. 
+Falar sobre os tipos de testes para avaliar a robustez, eficiência das técnicas.
 
 \section{Cronograma}
 \paragraph{}
-Bla bla bla.
+\tbf{Aqui descrevemos as atividades planejadas no decorrer do tempo.}
 
 \bibliographystyle{plain}
 \bibliography{plano_de_pesquisa}
