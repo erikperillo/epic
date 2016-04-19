@@ -2238,12 +2238,20 @@
     <bcf:datasource type="file" datatype="bibtex">plano_de_pesquisa.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">jetson</bcf:citekey>
-    <bcf:citekey order="2">trekking_regras</bcf:citekey>
-    <bcf:citekey order="3">robocore</bcf:citekey>
-    <bcf:citekey order="4">phoenix</bcf:citekey>
-    <bcf:citekey order="5">nxp</bcf:citekey>
-    <bcf:citekey order="6">tx1</bcf:citekey>
+    <bcf:citekey order="1">warehouse</bcf:citekey>
+    <bcf:citekey order="2">vision</bcf:citekey>
+    <bcf:citekey order="3">car</bcf:citekey>
+    <bcf:citekey order="4">jetson</bcf:citekey>
+    <bcf:citekey order="5">bio</bcf:citekey>
+    <bcf:citekey order="6">esther</bcf:citekey>
+    <bcf:citekey order="7">svm</bcf:citekey>
+    <bcf:citekey order="8">nn</bcf:citekey>
+    <bcf:citekey order="9">gpu</bcf:citekey>
+    <bcf:citekey order="10">trekking_regras</bcf:citekey>
+    <bcf:citekey order="11">robocore</bcf:citekey>
+    <bcf:citekey order="12">phoenix</bcf:citekey>
+    <bcf:citekey order="13">nxp</bcf:citekey>
+    <bcf:citekey order="14">tx1</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nty" type="entry" sortscheme="nty">
   <bcf:sorting>

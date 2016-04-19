@@ -19,6 +19,48 @@
 
 \refsection{0}
   \sortlist{nty}{nty}
+    \entry{gpu}{misc}{}
+      \name{author}{5}{}{%
+        {{hash=86b179291f994a5daac8a93d2bd6b09f}{Ciresan}{C\bibinitperiod}{Dan\bibnamedelima C.}{D\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+        {{hash=be71dea014b345d130231579ad7a5115}{Meier}{M\bibinitperiod}{Ueli}{U\bibinitperiod}{}{}{}{}}%
+        {{hash=296aa51baf6b5dce74c13806342b5bbe}{Masci}{M\bibinitperiod}{Jonathan}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=0276de8dfc509704f49d2de088715873}{Gambardella}{G\bibinitperiod}{Luca\bibnamedelima M.}{L\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=288bdbcfe1b91ad7484d7a24f74f99ed}{Schmidhuber}{S\bibinitperiod}{Jürgen}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{21728db1e92160a9483402d1e2732822}
+      \strng{fullhash}{9958a0583e128e70dcdd86495453b6b8}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Flexible, High Performance Convolutional Neural Networks for Image Classification}
+      \field{year}{2011}
+    \endentry
+    \entry{esther}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c6f1397a2e25097202cea994f5e43263}{Colombini}{C\bibinitperiod}{E.\bibnamedelimi L.}{E\bibinitperiod\bibinitdelim L\bibinitperiod}{}{}{}{}}%
+        {{hash=dc7958d8a8a3b5ff419605f789a5e46c}{Silva\bibnamedelima Simões}{S\bibinitperiod\bibinitdelim S\bibinitperiod}{A.}{A\bibinitperiod}{da}{d\bibinitperiod}{}{}}%
+        {{hash=10742deee7197371c72adc5bb47311cc}{Ribeiro}{R\bibinitperiod}{C.\bibnamedelimi H.\bibnamedelimi Costa}{C\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{e385dcbe29a74fb51bfd26e83a28bed9}
+      \strng{fullhash}{e385dcbe29a74fb51bfd26e83a28bed9}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1932-8184}
+      \field{journaltitle}{IEEE Systems Journal}
+      \field{number}{99}
+      \field{title}{An Attentional Model for Autonomous Mobile Robots}
+      \field{volume}{PP}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 12}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1109/JSYST.2015.2499304
+      \endverb
+      \keyw{Biological system modeling;Computational modeling;Feature extraction;Robot sensing systems;Visualization;Attention;bottom-up attention;multisensor;range scanner;robotics;saliency models;sonar;top-down attention}
+    \endentry
     \entry{jetson}{online}{}
       \field{sortinit}{E}
       \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
@@ -58,6 +100,125 @@
       \verb https://developer.nvidia.com/embedded/buy/jetson-tx1-devkit
       \endverb
     \endentry
+    \entry{nn}{incollection}{}
+      \name{author}{3}{}{%
+        {{hash=c5e3a676e2ac1164b3afcd539c131fc9}{Krizhevsky}{K\bibinitperiod}{Alex}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=8d569d1d5b8b5a7836017a98b430f959}{Sutskever}{S\bibinitperiod}{Ilya}{I\bibinitperiod}{}{}{}{}}%
+        {{hash=881b7655f3886f90a9400902a521acdb}{Hinton}{H\bibinitperiod}{Geoffrey\bibnamedelima E.}{G\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=b4ac0d7da3c70152eb8651dd27648d63}{Pereira}{P\bibinitperiod}{F.}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=b70004bbac2b5517c4c32fc5cfe070be}{Burges}{B\bibinitperiod}{C.\bibnamedelimi J.\bibnamedelimi C.}{C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+        {{hash=27b0ff756cf36911b4cd7d704bfca7a4}{Bottou}{B\bibinitperiod}{L.}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=2cffb24bf1e4e0056d694659663c471c}{Weinberger}{W\bibinitperiod}{K.\bibnamedelimi Q.}{K\bibinitperiod\bibinitdelim Q\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Curran Associates, Inc.}%
+      }
+      \strng{namehash}{a2ca3db133a11a15a681899a15f5d6aa}
+      \strng{fullhash}{a2ca3db133a11a15a681899a15f5d6aa}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 25}
+      \field{title}{ImageNet Classification with Deep Convolutional Neural Networks}
+      \field{year}{2012}
+      \field{pages}{1097\bibrangedash 1105}
+      \range{pages}{9}
+      \verb{url}
+      \verb http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf
+      \endverb
+    \endentry
+    \entry{car}{inproceedings}{}
+      \name{author}{16}{}{%
+        {{hash=095260bdef086efb100dfbc501c0800a}{Levinson}{L\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=e81b003ebc15d054758ef127e2eb91a8}{Askeland}{A\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=673a200fa80aff13decb615f8945826a}{Becker}{B\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=d234d6c57ba9e67160ad1e8962d659c4}{Dolson}{D\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=0c54bc2e50569bf0c5e815325e7ab061}{Held}{H\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=4a1db8279ff4d35959671c85655bd6bc}{Kammel}{K\bibinitperiod}{S.}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=b2a33b8ef89efad0e37ffbf4f7003f62}{Kolter}{K\bibinitperiod}{J.\bibnamedelimi Z.}{J\bibinitperiod\bibinitdelim Z\bibinitperiod}{}{}{}{}}%
+        {{hash=dbff837d89032babb3295fb8184eb2e5}{Langer}{L\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=13b96758a4dc7e1fcac326f2064ad06d}{Pink}{P\bibinitperiod}{O.}{O\bibinitperiod}{}{}{}{}}%
+        {{hash=4d8e90d79da966c7d65a41054ff138c3}{Pratt}{P\bibinitperiod}{V.}{V\bibinitperiod}{}{}{}{}}%
+        {{hash=9fa4086f7034a780f3f9d9ffdd9d1b76}{Sokolsky}{S\bibinitperiod}{M.}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=02545ddd012657523f4644ed3d95eb60}{Stanek}{S\bibinitperiod}{G.}{G\bibinitperiod}{}{}{}{}}%
+        {{hash=c7cd4fbf601930ae82fc1facb52151e6}{Stavens}{S\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=249eae7ec369c1845b117d071b9c8cae}{Teichman}{T\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=44ef6ae2333f41514d4b432e88c9f24f}{Werling}{W\bibinitperiod}{M.}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=29ee2ab72460d2bb8cf06365e2f3a243}{Thrun}{T\bibinitperiod}{S.}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ee245fae0239fccb8765d226f0995b5d}
+      \strng{fullhash}{561e9b337c52a10deca2e7d1d720e14e}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Intelligent Vehicles Symposium (IV), 2011 IEEE}
+      \field{issn}{1931-0587}
+      \field{month}{06}
+      \field{title}{Towards fully autonomous driving: Systems and algorithms}
+      \field{year}{2011}
+      \field{pages}{163\bibrangedash 168}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/IVS.2011.5940562
+      \endverb
+      \keyw{computer vision;mobile robots;remotely operated vehicles;DARPA urban challenge;LIDAR;autonomous driving;closed-course competition;environment perception;obstacle classification;obstacle tracking;online localization;planning system;realtime system;recognition algorithm;robust autonomous operation;robust vehicle platform;software infrastructure;unpredictable traffic;Calibration;Laser beams;Planning;Software;Trajectory;Vehicle dynamics;Vehicles}
+    \endentry
+    \entry{svm}{article}{}
+      \name{author}{2}{}{%
+        {{hash=241c350f817cee8ccdd21d062f86af59}{Manevitz}{M\bibinitperiod}{Larry\bibnamedelima M.}{L\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=b68b7d1b2e4659ce3b5e0cfde74d0986}{Yousef}{Y\bibinitperiod}{Malik}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR.org}%
+      }
+      \strng{namehash}{08fbf76403608a64b87875696bb3f8d7}
+      \strng{fullhash}{08fbf76403608a64b87875696bb3f8d7}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1532-4435}
+      \field{journaltitle}{J. Mach. Learn. Res.}
+      \field{month}{03}
+      \field{title}{One-class Svms for Document Classification}
+      \field{volume}{2}
+      \field{year}{2002}
+      \field{pages}{139\bibrangedash 154}
+      \range{pages}{16}
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?id=944790.944808
+      \endverb
+    \endentry
+    \entry{vision}{article}{}
+      \name{author}{3}{}{%
+        {{hash=258b1b24976e36f12087c726fa42d007}{Papanikolopoulos}{P\bibinitperiod}{N.\bibnamedelimi P.}{N\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{hash=7ca83ee0836aaa1d9e0c091be00fd114}{Khosla}{K\bibinitperiod}{P.\bibnamedelimi K.}{P\bibinitperiod\bibinitdelim K\bibinitperiod}{}{}{}{}}%
+        {{hash=b110fd814608eb16537c34080e758c4d}{Kanade}{K\bibinitperiod}{T.}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{936143dc101c90b0c21caef31088e0af}
+      \strng{fullhash}{936143dc101c90b0c21caef31088e0af}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1042-296X}
+      \field{journaltitle}{IEEE Transactions on Robotics and Automation}
+      \field{month}{02}
+      \field{number}{1}
+      \field{title}{Visual tracking of a moving target by a camera mounted on a robot: a combination of control and vision}
+      \field{volume}{9}
+      \field{year}{1993}
+      \field{pages}{14\bibrangedash 35}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1109/70.210792
+      \endverb
+      \keyw{Kalman filters;computer vision;optimal control;position control;robots;state estimation;2D space;3D objects;Cartesian robotic controller;Kalman filter;computer vision;discrete LQG control;discrete displacements;eye-in-hand configuration;feedback vision sensor;moving target;real-time visual tracking;robot;state estimation;sum of squared difference optical flow;Cameras;Computer vision;Displacement control;Optical feedback;Orbital robotics;Pi control;Proportional control;Robot vision systems;Space exploration;Target tracking}
+    \endentry
     \entry{trekking_regras}{online}{}
       \field{sortinit}{R}
       \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
@@ -95,6 +256,60 @@
       \field{year}{2016}
       \verb{url}
       \verb http://goo.gl/kIwBFn
+      \endverb
+    \endentry
+    \entry{bio}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8b96f009f493519609f6fe94d693180f}{Siagian}{S\bibinitperiod}{C.}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=18d6ba7619857d202446a51484c72656}{Itti}{I\bibinitperiod}{L.}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{c3fad2c5c3eb927344435cecb5473492}
+      \strng{fullhash}{c3fad2c5c3eb927344435cecb5473492}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0162-8828}
+      \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{month}{02}
+      \field{number}{2}
+      \field{title}{Rapid Biologically-Inspired Scene Classification Using Features Shared with Visual Attention}
+      \field{volume}{29}
+      \field{year}{2007}
+      \field{pages}{300\bibrangedash 312}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/TPAMI.2007.40
+      \endverb
+      \keyw{computational complexity;image recognition;mobile robots;robot vision;biologically-inspired scene classification;college campus;computational complexity;context-based scene recognition;mobile robotics;outdoor scenes;Computer vision;Educational institutions;Image segmentation;Layout;Mobile robots;Object recognition;Robot sensing systems;Robot vision systems;Robustness;Sonar navigation;Gist of a scene;computational neuroscience;image classification;image statistics;robot localization.;robot vision;saliency;scene recognition;Algorithms;Artificial Intelligence;Attention;Biomimetics;Computer Systems;Image Enhancement;Image Interpretation,Computer-Assisted;Imaging,Three-Dimensional;Information Storage and Retrieval;Pattern Recognition,Automated;Robotics;Visual Perception}
+    \endentry
+    \entry{warehouse}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=34014a66541f3992c31d6d9936e1842b}{Wurman}{W\bibinitperiod}{Peter\bibnamedelima R.}{P\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{hash=ed6aac3f87d9f74d066c55f4124be7f4}{D'Andrea}{D\bibinitperiod}{Raffaello}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=70f427260886abd86583b350e08deee2}{Mountz}{M\bibinitperiod}{Mick}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Vancouver, British Columbia, Canada}%
+      }
+      \list{publisher}{1}{%
+        {AAAI Press}%
+      }
+      \strng{namehash}{6d6884d18e5bbda01d2fa36b270b342e}
+      \strng{fullhash}{6d6884d18e5bbda01d2fa36b270b342e}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 19th National Conference on Innovative Applications of Artificial Intelligence - Volume 2}
+      \field{isbn}{9781577353232}
+      \field{series}{IAAI'07}
+      \field{title}{Coordinating Hundreds of Cooperative, Autonomous Vehicles in Warehouses}
+      \field{year}{2007}
+      \field{pages}{1752\bibrangedash 1759}
+      \range{pages}{8}
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?id=1620113.1620125
       \endverb
     \endentry
   \endsortlist

@@ -1,15 +1,17 @@
 [0] Config.pm:327> INFO - This is Biber 2.2
-[1] Config.pm:330> INFO - Logfile is 'plano_de_pesquisa.blg'
-[66] biber:286> INFO - === Tue Apr 19, 2016, 11:07:28
-[66] Biber.pm:334> INFO - Reading 'plano_de_pesquisa.bcf'
-[248] Biber.pm:677> INFO - Found 6 citekeys in bib section 0
-[278] Biber.pm:3054> INFO - Processing section 0
-[301] Biber.pm:3193> INFO - Looking for bibtex format file 'plano_de_pesquisa.bib' for section 0
-[302] bibtex.pm:1072> INFO - Decoding LaTeX character macros into UTF-8
-[303] bibtex.pm:935> INFO - Found BibTeX data source 'plano_de_pesquisa.bib'
-[415] UCollate.pm:66> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[415] UCollate.pm:66> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[416] Biber.pm:2931> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'pt-BR'
-[416] Biber.pm:2935> INFO - No sort tailoring available for locale 'pt-BR'
-[432] bbl.pm:505> INFO - Writing 'plano_de_pesquisa.bbl' with encoding 'UTF-8'
-[433] bbl.pm:596> INFO - Output to plano_de_pesquisa.bbl
+[0] Config.pm:330> INFO - Logfile is 'plano_de_pesquisa.blg'
+[50] biber:286> INFO - === Tue Apr 19, 2016, 17:20:06
+[50] Biber.pm:334> INFO - Reading 'plano_de_pesquisa.bcf'
+[187] Biber.pm:677> INFO - Found 14 citekeys in bib section 0
+[213] Biber.pm:3054> INFO - Processing section 0
+[233] Biber.pm:3193> INFO - Looking for bibtex format file 'plano_de_pesquisa.bib' for section 0
+[236] bibtex.pm:1072> INFO - Decoding LaTeX character macros into UTF-8
+[237] bibtex.pm:935> INFO - Found BibTeX data source 'plano_de_pesquisa.bib'
+[305] Utils.pm:147> WARN - The field 'month' in entry 'esther' cannot be null, deleting it
+[488] UCollate.pm:66> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[488] UCollate.pm:66> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[488] Biber.pm:2931> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'pt-BR'
+[489] Biber.pm:2935> INFO - No sort tailoring available for locale 'pt-BR'
+[533] bbl.pm:505> INFO - Writing 'plano_de_pesquisa.bbl' with encoding 'UTF-8'
+[536] bbl.pm:596> INFO - Output to plano_de_pesquisa.bbl
+[536] Biber.pm:107> INFO - WARNINGS: 1

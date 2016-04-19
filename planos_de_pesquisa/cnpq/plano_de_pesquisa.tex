@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
@@ -26,8 +26,11 @@
 	{\huge\bfseries Processos atencionais e aprendizado de máquina 
 		para sistemas robóticos\par}
 	\vspace{2cm}
-	{\Large\itshape Aluno: Erik de Godoy Perillo\par}
-	{\Large\itshape Orientadora: Esther Luna Colombini\par}
+	\begin{abstract}
+		Resumo
+	\end{abstract}
+	{\itshape Aluno: Erik de Godoy Perillo\par}
+	{\itshape Orientadora: Esther Luna Colombini\par}
 	\vfill
 	Universidade Estadual de Campinas 
 	\vfill
@@ -37,29 +40,38 @@
 \newpage
 
 \section{Introdução}
-
-\subsection{Ambientação}
 \paragraph{}
-\tbf{Aqui vem a ambientação do problema, isto é, a esfera S de aplicação
-a qual inspirou nosso projeto e sua relevância na sociedade.}
+Máquinas capazes de realizar tarefas complexas, perigosas ou maçantes são
+objeto de interesse e desejo do ser humano há tempos. 
+Robôs industriais já dominam os mais variados setores de produção. 
+Não apenas parados em linhas de montagem, sistemas atuais podem locomover-se
+em regiões uniformes e previsíveis, como galpões de estoques, trabalhando
+vinte e quatro horas por dia~\cite{warehouse}.
+Um desafio ainda em aberto, entretanto, é a concepção de robôs que lidam com 
+o imprevisível, reagindo de forma apropriada às mais diversas situações 
+e ambientes do mundo real. 
 
-\tit{Nosso caso}: 
-\begin{itemize}
-	\item Falar sobre sistemas robóticos em geral.
-	\item Falar sobre a tendência de sistemas robóticos autônomos ser uma 
-		área quente.
-	\item Discorrer sobre a navegação em sistemas robóticos.
-\end{itemize}
+Máquinas com a habilidade de interagir com o ambiente, objetos e pessoas 
+com uma variedade de maneiras semelhante à nossa têm o potencial de ser 
+incrivelmente benéficas para a sociedade. 
+%Esse tipo de robô tem sido tendência ...
+Diversos desafios fascinantes estão associados ao processo de concepção de 
+máquinas gerais desse tipo. 
+Um deles, certamente, é a compreensão. 
+Entender o que lhe cerca é fundamental para uma interação complexa com o resto
+do mundo. 
 
-\subsection{Revisão bibliográfica breve}
-\paragraph{}
-\tbf{Aqui se fala sobre as técnicas atuais que servem à esfera S ambientada.}
-
-\tit{Nosso caso}:
-\begin{itemize}
-	\item Comentar sobre técnicas que possibilitam a navegação robótica 
-		atualmente.
-\end{itemize}
+Ter ciência de sua relação espacial com outros objetos e 
+suas possíveis interações com cada um deles é essencial para a navegação 
+de robôs por casas, ruas e até mesmo locais que seriam impossíveis 
+para um ser humano estar. 
+Essa é uma das tarefas principais que máquinas como carros autônomos, 
+robôs caseiros e de resgate devem cumprir bem.
+Diversas técnicas têm sido propostas para possibilitar a tarefa da navegação
+por sistemas autônomos. 
+Sensores como câmeras~\cite{vision} e LIDAR~\cite{car} têm sido utilizados
+com sucesso para identificação e classificação de entidades em um ambiente com
+o qual o robô interage. 
 
 \subsection{Motivação}
 \paragraph{}
@@ -94,28 +106,36 @@ O que se busca, então, são abordagens que possibilitem a robôs autônomos
 uma navegação em ambientes diversos para que estes possam realizar tarefas
 mais gerais e complexas que podem ser de utilidade para a sociedade.
 
-\subsection{Introdução à nossa abordagem}
+\subsection{Processos atencionais e aprendizado de máquina}
 \paragraph{}
-\tbf{Aqui há uma descrição breve das técnicas que pretendemos usar.}
-\begin{itemize}
-	\item Falar sobre processos atencionais.
-	\item Falar sobre técnicas de reconhecimento de padrões em Machine Learning.
-\end{itemize}
+O fato de sensores darem uma quantidade muito grande de informação que nem 
+sempre é necessária motiva uma abordagem inspirada no ser humano.
+Não damos foco a todas as conversas que escutamos ou em tudo que vemos, mas sim 
+apenas na parte que nos convém. 
+Técnicas que fazem uso de processos atencionais têm sido usadas para a 
+segmentação de áreas de relevância na percepção e entendimento do 
+ambiente com sucesso. ~\cite{bio}~\cite{esther}
+Com essas abordagens, pode-se filtrar muito do que seriam dados irrelevantes ou
+redundantes, aumentando consideravelmente a eficiência computacional dessas
+técnicas.
 
-\tit{Nosso caso}:
-Processos atencionais, aprendizado de máquina para identificação de objetos...
+Não só o foco é necessário: em ambientes dos mais variados é necessário, além
+de identificar, classificar entidades a fim de interagir com elas de forma
+apropriada. 
+O aprendizado de máquina tem sido uma área de grande sucesso nessa tarefa.
+Diversas técnicas podem ser utilizadas, como \tit{SVMs}~\cite{svm} 
+e redes neurais~\cite{nn} a fim de se classificar entidades em geral com 
+alta taxa de acertos. 
+Grande parte dessas técnicas, além disso, podem ter um ganho de desempenho
+significativo com o uso de GPUs~\cite{gpu}.
 
-\subsection{Proposta}
-\paragraph{}
-\tbf{Deve-se comparar nossa abordagem com as outras discutidas e salientar suas
-diferenças para mostrar originalidade.
-Deve-se então explicar por que essas diferenças podem trazer os benefícios 
-B esperados.}
-
-\tit{Nosso caso}:
-Mesclar processos atencionais com ML agora seria  
-seria eficiente computacionalmente e geral/robusto. 
-Isso nos leva a buscar uma alternativa que faça uso dessas técnicas.
+O que se busca, então, é uma mescla dessas duas técnicas: o uso dos processos
+atencionais em um estágio inicial de processamento pode atuar como um filtro
+na informação, passando adiante somente o que é relevante para o estágio de
+classificação com uso de técnicas robustas de aprendizado de máquina. 
+O que se espera é que tal abordagem possibilite uma percepção eficiente, geral
+e complexa do ambiente para sistemas autônomos, o que os possibilitaria 
+realizar tarefas mais sofisticadas.
 
 \section{Objetivos}
 \paragraph{}
@@ -132,11 +152,10 @@ Os objetivos deste trabalho são:
 \end{itemize}
 
 \section{Materiais e Métodos}
-\subsection{Projeto Piranha}
+\subsection{Caso de uso}
 \paragraph{}
-O projeto \tit{Piranha} é um robô autônomo desenvolvido para a categoria 
-\tit{Trekking}~\cite{trekking_regras} da série de competições de robótica 
-realizada pela \tit{Robocore}~\cite{robocore}. 
+O desafio \tit{Trekking}~\cite{trekking_regras} é uma categoria da série de 
+competições de robótica realizada pela \tit{Robocore}~\cite{robocore}. 
 Nessa categoria, o robô deve completar um percurso em 
 um campo de futebol passando por diversas bases em uma ordem pré-definida.
 Em uma certa região do campo, há obstáculos dos quais o robô deve desviar.
@@ -144,7 +163,7 @@ O percurso deve ser feito no menor tempo possível.
 
 \begin{figure}[H]
   		\centering
-    	\includegraphics[width=0.7\textwidth]{imgs/trekking_campo.png}
+    	\includegraphics[width=0.6\textwidth]{imgs/trekking_campo.png}
 		\caption[9pt]{O ambiente de locomoção do robô na categoria Trekking}
 \end{figure}
 
@@ -153,8 +172,7 @@ A \emph{Equipe Phoenix de Robótica da Unicamp}~\cite{phoenix}
 Engenharia e Computação da Universidade Estadual de Campinas. 
 Na equipe, desenvolvem-se variados projetos de robótica,
 com foco principal em robôs para competir nas categorias das competições da
-\tit{Robocore}. 
-
+\tit{Robocore}.  
 A equipe desenvolve atualmente um robô para participar na categoria 
 \tit{Trekking}, nomeado \tit{Projeto Piranha}. 
 O robô consiste em um carro elétrico com tração nas quatro rodas e 
@@ -165,17 +183,81 @@ diversos sensores inerciais como magnetômetro, giroscópio e acelerômetro.
 Há também um kit de desenvolvimento com GPU embarcada \tit{NVIDIA Jetson TX1}. 
 A \tit{Jetson TX1} possui um processador \tit{ARM Quad-Core Cortex-A57},
 4GB de memória \tit{RAM} e uma GPU \tit{NVIDIA Maxwell} com 256 núcleos de
-processamento~\cite{tx1}. Usa-se duas câmeras \tit{Logitech C270} como sensores
+processamento~\cite{tx1}. 
+Seu sistema operacional é o Ubuntu versao com \tit{kernel Linux}.
+Duas câmeras \tit{Logitech C270} são os sensores
 principais usados pela \tit{Jetson TX1} para a ambientação do robô no campo.
 
 \begin{figure}[H]
   		\centering
-    	\includegraphics[width=0.7\textwidth]{imgs/piranha.jpg}
+    	\includegraphics[width=0.6\textwidth]{imgs/piranha.jpg}
 		\caption[9pt]{O robô do projeto Piranha}
 \end{figure}
 
+A pesquisa usará o robô \tit{Piranha} como caso de uso para
+avaliação da abordagem a ser desenvolvida, com o uso da \tit{Jetson TX1} 
+como plataforma para implementação das técnicas.
+O robô usa a câmera como principal sensor.
+Assim, a pesquisa foca em imagens como o sinal a ser processado e analisado. 
+
+A ideia é aplicar as técnicas a se obter para o reconhecimento
+de entidades na imagem, como terreno o qual o robô pode andar, obstáculos do
+qual deve desviar e bases às quais deve-se chegar.
+Soluções em processos atencionais serão desenvolvidas separadamente do
+estágio de classificação de objetos com aprendizado de máquina. 
+Após isso, a união dos dois será feita.
+
+\subsection{Avaliação da abordagem proposta}
+\paragraph{}
+Será feita uma comparação com três técnicas diferentes: 
+\begin{enumerate}
+	\item Uma abordagem específica é utilizada.  
+		Um simples \tit{threshold} de cor pode ser capaz de identificar objetos
+		imagem e classificá-los dado que diferentes classes de objetos têm
+		diferentes cores.
+	\item Aprendizado de máquina puro para reconhecimento de objetos.
+		Nessa abordagem, será dado foco igual a toda a informação. 
+		Assim, todo o conjunto deverá ser analisado pelos algoritmos.
+	\item Processos atencionais são utilizados em um estágio anterior ao de 
+		classificação com aprendizado de máquina, com a intenção de selecionar
+		subconjuntos de toda informação dada pelo sensor que tenham maior 
+		relevância para serem analizados no estágio de classificação.
+\end{enumerate}
+
+Com essa comparação, espera-se avaliar cada técnica pelos seguintes critérios:
+\begin{itemize}
+	\item Desempenho: o custo computacional da técnica.
+	\item Eficiência: quão corretamente a técnica identifica e classifica
+		as entidades de interesse.
+	\item Generalidade: possibilidade da técnica ser utilizadas em outros 
+		cenários.
+\end{itemize}
+
+\subsection{Construção de plataforma para navegação usando GPUs}
+\paragraph{}
+Com as técnicas obtidas pelo projeto, espera-se construir uma plataforma
+de uso geral para robôs autônomos que usem GPUs embarcadas.
+\tit{frameworks} de aprendizado de máquina serão estudados para se decidir
+quais usar. 
+Toda biblioteca será escolhida de forma que se possa utilizar o processamento
+da GPU.
+Por meio da linguagem de programação \tit{C++} juntamente com \tit{Python},  
+um ambiente de treinamento e rotinas de classificação para uso em imagens
+será desenvolvido.
+
 \section{Cronograma}
 \paragraph{}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\hline
+	Tarefa & Jul & Ago & Set & Out & Nov & Dez & Jan & Fev & Mar & Abr & Mai & 
+	Jun \\
+	\hline
+	Estudo de técnicas anteriores & & & & & & & & & & & & \\
+	\hline
+\end{tabular}
+\end{table}
 
 \printbibliography
 
