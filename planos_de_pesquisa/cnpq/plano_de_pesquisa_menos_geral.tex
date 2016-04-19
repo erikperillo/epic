@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\newcommand{\fromeng}[1]{\footnote{do inglês: \textit{#1}}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\ttt}[1]{\texttt{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\Large Projeto de pesquisa\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Processos atencionais e aprendizado de máquina 
+		para sistemas robóticos\par}
+	\vspace{2cm}
+	{\Large\itshape Aluno: Erik de Godoy Perillo\par}
+	{\Large\itshape Orientadora: Esther Luna Colombini\par}
+	\vfill
+	Universidade Estadual de Campinas 
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\newpage
+
+\section{Introdução}
+
+\subsection{Ambientação}
+\paragraph{}
+\tbf{Aqui vem a ambientação do problema, isto é, a esfera S de aplicação
+a qual inspirou nosso projeto e sua relevância na sociedade.}
+
+\tit{Nosso caso}: 
+\begin{itemize}
+	\item Falar sobre sistemas robóticos em geral.
+	\item Falar sobre a tendência de sistemas robóticos autônomos ser uma 
+		área quente.
+	\item Discorrer sobre a navegação em sistemas robóticos.
+\end{itemize}
+
+\subsection{Revisão bibliográfica breve}
+\paragraph{}
+\tbf{Aqui se fala sobre as técnicas atuais que servem à esfera S ambientada.}
+
+\tit{Nosso caso}:
+\begin{itemize}
+	\item Comentar sobre técnicas que possibilitam a navegação robótica 
+		atualmente.
+\end{itemize}
+
+\subsection{Motivação}
+\paragraph{}
+\tbf{Aqui se introduz o(s) problema(s) P existente(s) na esfera S sobre o qual 
+queremos trabalhar. 
+Comentamos que melhorar P é relevante para S por um motivo M.
+Descrevemos como as técnicas atuais têm X, Y e Z como defeitos e
+melhorá-los de forma F trará benefícios B a P porque R.}
+
+\tit{Nosso caso}:
+\begin{itemize}
+	\item O volume de dados manipulado pelos sistemas robóticos autônomos é
+		em geral demasiadamente grande e muita da informação nele contida
+		não é relevante para o problema em questão. Ao mesmo tempo, robôs
+		autônomos em geral são muitas vezes limitados pelo seu hardware 
+		embarcado que tende a ter poder de processamento relativamente baixo.
+	\item Obter técnicas que permitam uma navegação mais sofisticada
+		é importante porque isso daria mais poder aos sistemas 
+		autônomos que temos hoje para cumprir uma gama maior de tarefas.
+	\item Usar técnica X é ruim porque não é eficiente. Usar técnica Y é
+		ruim porque não é muito geral.
+	\item Há uma nova tendência de GPUs embarcadas que de serem agora usadas, 
+		o que possibilita processamento pesado para certas operações e 
+		consequentemente proporciona uma maior liberdade na escolha de técnicas
+		mais poderosas.
+	\item Busca-se então por técnicas mais sofisticadas, tendo-se o apoio das
+		GPUs embarcadas como um fato, com a preocupação da eficiência para
+		sistemas em tempo real.
+\end{itemize}
+
+\subsection{Introdução à nossa abordagem}
+\paragraph{}
+\tbf{Aqui há uma descrição breve das técnicas que pretendemos usar.}
+\begin{itemize}
+	\item Falar sobre processos atencionais.
+	\item Falar sobre técnicas de reconhecimento de padrões em Machine Learning.
+\end{itemize}
+
+\tit{Nosso caso}:
+Processos atencionais, aprendizado de máquina para identificação de objetos...
+
+\subsection{Proposta}
+\paragraph{}
+\tbf{Deve-se comparar nossa abordagem com as outras discutidas e salientar suas
+diferenças para mostrar originalidade.
+Deve-se então explicar por que essas diferenças podem trazer os benefícios 
+B esperados.}
+
+\tit{Nosso caso}:
+Mesclar processos atencionais com ML agora seria  
+seria eficiente computacionalmente e geral/robusto. 
+Isso nos leva a buscar uma alternativa que faça uso dessas técnicas.
+
+\section{Objetivos}
+\paragraph{}
+\tbf{Aqui colocamos o objetivo principal da pesquisa. Devemos buscar algo que
+seja de utilidade para a sociedade de alguma forma, seja geral e original.}
+
+\tit{Nosso caso}:
+Obter técnicas que permitam a navegação de sistemas robóticos autônomos 
+em geral.
+
+Fazer uma avaliação da eficiência de nossa técnica.
+
+Citar um framework para GPUs embarcadas que desejamos ter ao final para 
+treinamento, classificação etc.
+
+\section{Métodos}
+\paragraph{}
+\tbf{Aqui falamos sobre os meios usados para se chegar aos objetivos.}
+
+\tit{Nosso caso}:
+Falar sobre a plataforma de testes. 
+Citar o projeto Piranha aqui. 
+Falar do uso da câmera. Falar de GPUs aqui. 
+Falar sobre os tipos de testes para avaliar a robustez, eficiência das técnicas.
+
+\section{Cronograma}
+\paragraph{}
+\tbf{Aqui descrevemos as atividades planejadas no decorrer do tempo.}
+
+\bibliographystyle{plain}
+\bibliography{plano_de_pesquisa}
+
+\end{document}

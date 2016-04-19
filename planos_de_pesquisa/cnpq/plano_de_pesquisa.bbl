@@ -1,8 +1,103 @@
-\begin{thebibliography}{1}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{biba}
-Michel Goossens, Frank Mittelbach, and Alexander Samarin.
-\newblock {\em The LaTeX Companion}.
-\newblock Addison-Wesley, Reading, Massachusetts, 1993.
 
-\end{thebibliography}
+\refsection{0}
+  \sortlist{nty}{nty}
+    \entry{jetson}{online}{}
+      \field{sortinit}{E}
+      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \field{labeltitlesource}{title}
+      \field{title}{Embedded Systems}
+      \field{urlday}{19}
+      \field{urlmonth}{04}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://www.nvidia.com/object/embedded-systems.html
+      \endverb
+    \endentry
+    \entry{phoenix}{online}{}
+      \field{sortinit}{E}
+      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \field{labeltitlesource}{title}
+      \field{title}{Equipe Phoenix de Robótica da Unicamp}
+      \field{urlday}{19}
+      \field{urlmonth}{04}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://phoenixunicamp.com.br
+      \endverb
+    \endentry
+    \entry{tx1}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labeltitlesource}{title}
+      \field{title}{Jetson TX1 Development Kit}
+      \field{urlday}{19}
+      \field{urlmonth}{04}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://developer.nvidia.com/embedded/buy/jetson-tx1-devkit
+      \endverb
+    \endentry
+    \entry{trekking_regras}{online}{}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labeltitlesource}{title}
+      \field{title}{Regras robô Trekking}
+      \field{urlday}{19}
+      \field{urlmonth}{04}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://www.robocore.net/upload/attachments/robocore__regras_robo_trekking_610.pdf
+      \endverb
+    \endentry
+    \entry{robocore}{online}{}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labeltitlesource}{title}
+      \field{title}{Robocore}
+      \field{urlday}{19}
+      \field{urlmonth}{04}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://www.robocore.net/modules.php?name=GR_Eventos
+      \endverb
+    \endentry
+    \entry{nxp}{online}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labeltitlesource}{title}
+      \field{title}{Sensor Toolbox Development Platform}
+      \field{urlday}{19}
+      \field{urlmonth}{04}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://goo.gl/kIwBFn
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

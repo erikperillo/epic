@@ -2,12 +2,11 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage[backend=biber]{biblatex}
 \usepackage{amsfonts}
 \usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[backend=biber]{biblatex}
 \usepackage{csquotes}
-\usepackage{docmute}
 \usepackage[T1]{fontenc}
 
 \addbibresource{plano_de_pesquisa.bib}
@@ -135,47 +134,22 @@ Os objetivos deste trabalho são:
 \subsection{Projeto Piranha}
 \paragraph{}
 O projeto \tit{Piranha} é um robô autônomo desenvolvido para a categoria 
-\tit{Trekking}~\cite{trekking_regras} da série de competições de robótica 
-realizada pela \tit{Robocore}~\cite{robocore}. 
-Nessa categoria, o robô deve completar um percurso em 
-um campo de futebol passando por diversas bases em uma ordem pré-definida.
-Em uma certa região do campo, há obstáculos dos quais o robô deve desviar.
+\tit{Trekking}~\cite{trekking_regras} da série de competições 
+de robótica realizada pela \tit{Robocore}~\cite{robocore}. 
+Nessa categoria, o objetivo do robô é completar um percurso em um campo de 
+futebol, passando por diversas bases em uma ordem pré-determinada. 
+Há obstáculos em uma certa região do campo, dos quais o robô deve desviar.
 O percurso deve ser feito no menor tempo possível.
 
-\begin{figure}[H]
-  		\centering
-    	\includegraphics[width=0.7\textwidth]{imgs/trekking_campo.png}
-		\caption[9pt]{O ambiente de locomoção do robô na categoria Trekking}
-\end{figure}
-
-A \emph{Equipe Phoenix de Robótica da Unicamp}~\cite{phoenix} 
-é formada por estudantes de graduação de diversos cursos de 
-Engenharia e Computação da Universidade Estadual de Campinas. 
-Na equipe, desenvolvem-se variados projetos de robótica,
-com foco principal em robôs para competir nas categorias das competições da
-\tit{Robocore}. 
-
-A equipe desenvolve atualmente um robô para participar na categoria 
-\tit{Trekking}, nomeado \tit{Projeto Piranha}. 
-O robô consiste em um carro elétrico com tração nas quatro rodas e 
-locomoção por motores \tit{brushless}.
-O motor é controlado por meio de um conjunto da \tit{NXP} composto da placa
-\ttt{FRDM-K64F} e da placa \ttt{FRDM-STBC-AGM01}~\cite{nxp}, que contém 
-diversos sensores inerciais como magnetômetro, giroscópio e acelerômetro.
-Há também um kit de desenvolvimento com GPU embarcada \tit{NVIDIA Jetson TX1}. 
-A \tit{Jetson TX1} possui um processador \tit{ARM Quad-Core Cortex-A57},
-4GB de memória \tit{RAM} e uma GPU \tit{NVIDIA Maxwell} com 256 núcleos de
-processamento~\cite{tx1}. Usa-se duas câmeras \tit{Logitech C270} como sensores
-principais usados pela \tit{Jetson TX1} para a ambientação do robô no campo.
-
-\begin{figure}[H]
-  		\centering
-    	\includegraphics[width=0.7\textwidth]{imgs/piranha.jpg}
-		\caption[9pt]{O robô do projeto Piranha}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.7\textwidth]{imgs/trekking_campo.png}
+%	\caption[9pt]{O campo do percurso da categoria Trekking}
+%\end{figure}
 
 \section{Cronograma}
 \paragraph{}
+\tbf{Aqui descrevemos as atividades planejadas no decorrer do tempo.}
 
 \printbibliography
 
