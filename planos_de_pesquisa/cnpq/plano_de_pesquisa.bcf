@@ -2242,11 +2242,11 @@
     <bcf:citekey order="2">vision</bcf:citekey>
     <bcf:citekey order="3">car</bcf:citekey>
     <bcf:citekey order="4">jetson</bcf:citekey>
-    <bcf:citekey order="5">bio</bcf:citekey>
-    <bcf:citekey order="6">esther</bcf:citekey>
-    <bcf:citekey order="7">svm</bcf:citekey>
-    <bcf:citekey order="8">nn</bcf:citekey>
-    <bcf:citekey order="9">gpu</bcf:citekey>
+    <bcf:citekey order="5">gpu</bcf:citekey>
+    <bcf:citekey order="6">bio</bcf:citekey>
+    <bcf:citekey order="7">esther</bcf:citekey>
+    <bcf:citekey order="8">svm</bcf:citekey>
+    <bcf:citekey order="9">nn</bcf:citekey>
     <bcf:citekey order="10">trekking_regras</bcf:citekey>
     <bcf:citekey order="11">robocore</bcf:citekey>
     <bcf:citekey order="12">phoenix</bcf:citekey>
