@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[8pt]{article}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
@@ -7,7 +7,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber]{biblatex}
 \usepackage{csquotes}
-\usepackage{docmute}
+%\usepackage{docmute}
+\usepackage{multicol}
+\usepackage{geometry}
 \usepackage{array}
 \usepackage[T1]{fontenc}
 
@@ -53,6 +55,9 @@
 \end{titlepage}
 
 \newpage
+
+\newgeometry{margin=1in}
+\begin{multicols}{2}
 
 \section{Introdução}
 \paragraph{}
@@ -171,7 +176,7 @@ O percurso deve ser feito no menor tempo possível.
 
 \begin{figure}[H]
   		\centering
-    	\includegraphics[width=0.6\textwidth]{imgs/trekking_campo.png}
+    	\includegraphics[width=0.4\textwidth]{imgs/trekking_campo.png}
 		\caption[9pt]{O ambiente de locomoção do robô na categoria Trekking}
 \end{figure}
 
@@ -198,7 +203,7 @@ principais usados pela \tit{Jetson TX1} para a ambientação do robô no campo.
 
 \begin{figure}[H]
   		\centering
-    	\includegraphics[width=0.6\textwidth]{imgs/piranha.jpg}
+    	\includegraphics[width=0.4\textwidth]{imgs/piranha.jpg}
 		\caption[9pt]{O robô do projeto Piranha}
 \end{figure}
 
@@ -253,9 +258,12 @@ Por meio da linguagem de programação \tit{C++} juntamente com \tit{Python},
 um ambiente de treinamento e rotinas de classificação para uso em imagens
 será desenvolvido.
 
+\end{multicols}
+
 \section{Cronograma}
 \paragraph{}
 \begin{table}[H]
+\centering
 \setlength{\tabcolsep}{.16667em}
 \begin{tabular}{|C{5cm}|c|c|c|c|c|c|c|c|c|c|c|c|}
 	\hline
