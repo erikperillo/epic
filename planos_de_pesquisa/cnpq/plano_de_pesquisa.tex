@@ -35,16 +35,16 @@
 	\begin{abstract}
 		Entender o ambiente ao seu redor é uma tarefa fundamental para 
 		o desafio de se obter máquinas autônomas que interagem com o 
-		ambiente de forma semelhante à nossa.
+		mundo de forma semelhante à nossa.
 		A alta dimensionalidade dos dados captados por sensores usados para 
-		este fim é em geral problemática pois muitas vezes há
+		este fim é em geral problemática, pois muitas vezes há
 		redundância e irrelevância de informação. 
 		Neste projeto, propomos o uso de processos atencionais em cascata 
 		com aprendizado de máquina a fim de se obter um sistema de 
-		identificação de classificação de objetos em um dado ambiente
+		identificação de classificação de entidades
 		que seja eficiente, preciso e geral. 
 		Por fim, planeja-se implementar uma estrutura que permita o uso das
-		técnicas por projetos robóticos em geral em GPUs embarcadas.
+		técnicas por projetos robóticos em geral com o uso de GPUs embarcadas.
 	\end{abstract}
 	\vfill
 	Universidade Estadual de Campinas 
@@ -94,9 +94,9 @@ em geral -- como câmera e LIDAR  --
 Em um momento qualquer, é improvável que 
 toda a informação provida de um sensor seja necessária. 
 Lidar com todo o conjunto de dados para depois determinar qual parte é 
-relevante pode ser uma tarefa muito custosa computacionalmente. 
+relevante pode ser uma tarefa muito computacionalmente custosa. 
 Isso é especialmente crítico para sistemas robóticos que precisam de respostas
-rápidas para interar com o ambiente em que estão inseridos. 
+rápidas para interagir com o ambiente em que estão inseridos. 
 
 Além disso, o \tit{hardware} utilizado em robôs autônomos tem sido por muitos 
 anos limitado pelas restrições de em geral ter de ser embarcado e compacto.
@@ -105,9 +105,9 @@ Além do aumento da eficiência e diminuição do tamanho de CPUs impulsionado
 pelo mercado \tit{mobile}, esforços têm sido feitos para a concepção de 
 computadores com processadores gráficos (GPUs) embarcados. 
 A \tit{NVIDIA} lançou recentemente os modelos 
-\tit{Jetson TK1} e \tit{Jetson TX1}~\cite{jetson}, que são computadores 
-completos com GPUs poderosas e energeticamente eficientes neles inclusas, 
-desenvolvidos especialmente para serem embarcados em projetos móveis.
+\tit{Jetson TK1} e \tit{Jetson TX1}~\cite{jetson}, que são sistemas 
+computacionais completos com GPUs poderosas e energeticamente eficientes neles 
+inclusas, desenvolvidos especialmente para serem embarcados em projetos móveis.
 O uso de GPUs em robótica abre a possibilidade do uso de técnicas mais 
 sofisticadas e computacionalmente caras que até então não podiam ser exploradas.
 Sua natureza paralela permite um grande benefício de operações que podem ser
@@ -128,7 +128,7 @@ Com essas abordagens, pode-se filtrar muito do que seriam dados irrelevantes ou
 redundantes, aumentando consideravelmente a eficiência computacional dessas
 técnicas.
 
-Não só o foco é necessário: em ambientes dos mais variados é necessário, além
+Não só o foco é necessário: em ambientes dos mais variados é preciso, além
 de identificar, classificar entidades a fim de interagir com elas de forma
 apropriada. 
 O aprendizado de máquina tem sido uma área de grande sucesso nessa tarefa.
@@ -149,7 +149,7 @@ a área da percepção em robótica.
 \paragraph{}
 Os objetivos deste trabalho são:
 \begin{itemize}
-	\item Obter técnicas que permitam a percepção em ambientes
+	\item Obter técnicas que permitam o entendimento de ambientes
 		diversos para a navegação de sistemas robóticos autônomos por meio 
 		do uso de processos atencionais e aprendizado de máquina.
 	\item Realizar uma avaliação de efetividade e eficiência de nossa abordagem
