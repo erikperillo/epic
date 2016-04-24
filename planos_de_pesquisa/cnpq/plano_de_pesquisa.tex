@@ -30,21 +30,18 @@
 		para sistemas robóticos\par}
 	\vspace{1cm}
 	{\itshape Aluno: Erik de Godoy Perillo\par}
-	{\itshape Orientadora: Esther Luna Colombini\par}
+	{\itshape Orientadora: Profa. Dra. Esther Luna Colombini\par}
 	\vspace{0.5cm}
 	\begin{abstract}
 		Entender o ambiente ao seu redor é uma tarefa fundamental para 
 		o desafio de se obter máquinas autônomas que interagem com o 
 		mundo de forma semelhante à nossa.
-		A alta dimensionalidade dos dados captados por sensores usados para 
-		este fim é em geral problemática, pois muitas vezes há
-		redundância e irrelevância de informação. 
-		Neste projeto, propomos o uso de processos atencionais em cascata 
-		com aprendizado de máquina a fim de se obter um sistema de 
-		identificação de classificação de entidades
-		que seja eficiente, preciso e geral. 
-		Por fim, planeja-se implementar uma estrutura que permita o uso das
-		técnicas por projetos robóticos em geral com o uso de GPUs embarcadas.
+		No entanto, a alta dimensionalidade dos dados captados por sensores usados para 
+		este fim é em geral problemática, muitas vezes havendo
+		redundância e irrelevância de informação. Nos seres humanos este filtro sensorial é realizado pela Antenção.
+		Neste contexto, este projeto propõe a aplicação de técnicas de aprendizado de máquina sobre informações sensoriais previamente processadas por processos atencionais em uma tarefa de navegação autônoma.  
+		Adicionalmente, planeja-se implementar uma estrutura que permita o uso das
+		técnicas propostas para projetos robóticos em geral que utilizem GPUs embarcadas.
 	\end{abstract}
 	\vfill
 	Universidade Estadual de Campinas 
@@ -68,20 +65,19 @@ e ambientes do mundo real.
 
 Sistemas que interagem com o ambiente, objetos e pessoas 
 com uma variedade de maneiras semelhante à nossa têm o potencial de ser 
-incrivelmente benéficas para a sociedade. 
+benéficos para a sociedade. 
 %Esse tipo de robô tem sido tendência ...
-Diversos desafios fascinantes estão associados ao processo de concepção de 
+Entretanto, diversos são os desafios associados ao processo de concepção de 
 máquinas gerais desse tipo. 
-Um deles, certamente, é a compreensão. 
+Um deles, certamente, é a compreensão do ambiente. 
 Entender o que lhe cerca é fundamental para uma interação complexa com o resto
 do mundo. 
 
-Ter ciência de sua relação espacial com outros objetos e 
-suas possíveis interações com cada um deles é essencial para a navegação 
-de robôs por casas, ruas e até mesmo locais que seriam impossíveis 
-para um ser humano estar. 
+Ter ciência de sua relação com outros objetos e 
+as possíveis interações com cada um deles é essencial para a navegação 
+de robôs por casas, ruas e até mesmo locais onde a presença de humanos seri impossível ou indesejável.
 Essa é uma das tarefas principais que máquinas como carros autônomos, 
-robôs caseiros e de resgate devem cumprir bem.
+robôs de serviço \cite{ifr} e de resgate devem cumprir bem. Para tal, os robôs são dotados de sensores como
 Técnicas que utilizam sensores como câmeras~\cite{vision} e LIDAR~\cite{car} 
 têm sido usadas com sucesso para identificação e classificação de entidades 
 em um ambiente com o qual o robô interage. 
@@ -89,30 +85,28 @@ em um ambiente com o qual o robô interage.
 \subsection{Motivação}
 \paragraph{}
 Um problema de sensores usados para tarefas mais complexas de navegação
-em geral -- como câmera e LIDAR  --
-é que seus volumes de dados podem ser demasiadamente grandes. 
-Em um momento qualquer, é improvável que 
-toda a informação provida de um sensor seja necessária. 
+em geral -- como câmera, LIDAR e outros sensores --
+é que o volume de dados a ser processado podem ser demasiadamente grande. 
+Para um robô que interage continuamente com o ambiente, é improvável que em todos os instantes  
+toda informação proveniente de seus sensores seja processada ou mesmo necessária. 
 Lidar com todo o conjunto de dados para depois determinar qual parte é 
-relevante pode ser uma tarefa muito computacionalmente custosa. 
+relevante pode ser uma tarefa  computacionalmente custosa. 
 Isso é especialmente crítico para sistemas robóticos que precisam de respostas
 rápidas para interagir com o ambiente em que estão inseridos. 
 
-Além disso, o \tit{hardware} utilizado em robôs autônomos tem sido por muitos 
-anos limitado pelas restrições de em geral ter de ser embarcado e compacto.
-Avanços recentes têm mudado isso, entretanto. 
-Além do aumento da eficiência e diminuição do tamanho de CPUs impulsionado
+Além disso, o \tit{hardware} utilizado em robôs autônomos tem sido, por muitos 
+anos, limitado às restrições geradas pela necessidade de embarcá-lo em sistemas compactos. Entretanto,
+avanços recentes têm mudado isso. Além do aumento da eficiência e diminuição do tamanho de CPUs impulsionado
 pelo mercado \tit{mobile}, esforços têm sido feitos para a concepção de 
-computadores com processadores gráficos (GPUs) embarcados. 
+computadores com processadores gráficos (GPUs) embarcados, que permitem o tratamento eficiente de dados naturalmente característicos dos sensores empregados.  
 A \tit{NVIDIA} lançou recentemente os modelos 
 \tit{Jetson TK1} e \tit{Jetson TX1}~\cite{jetson}, que são sistemas 
-computacionais completos com GPUs poderosas e energeticamente eficientes neles 
-inclusas, desenvolvidos especialmente para serem embarcados em projetos móveis.
+computacionais completos com GPUs poderosas e energeticamente eficientes, desenvolvidos especialmente para serem embarcados em projetos móveis.
 O uso de GPUs em robótica abre a possibilidade do uso de técnicas mais 
 sofisticadas e computacionalmente caras que até então não podiam ser exploradas.
 Sua natureza paralela permite um grande benefício de operações que podem ser
 divididas em subproblemas e realizados ao mesmo tempo. 
-Esse é o caso de diversas tarefas como processamento de sinais e técnicas 
+Esse é o caso de diversas tarefas realizadas no processamento de sinais e por técnicas 
 de aprendizado de máquina~\cite{gpu}, por exemplo. 
 
 \subsection{Processos atencionais e aprendizado de máquina}
@@ -120,15 +114,14 @@ de aprendizado de máquina~\cite{gpu}, por exemplo.
 O fato de sensores darem uma quantidade muito grande de informação que nem 
 sempre é necessária motiva uma abordagem inspirada no ser humano.
 Não damos foco a todas as conversas que escutamos ou em tudo que vemos, mas sim 
-apenas na parte que nos convém. 
-Técnicas que fazem uso de processos atencionais têm sido usadas para a 
+apenas na parte que nos convém ou cuja natureza é extremamente atrativa. Nos seres humanos este filtro sensorial é realizado pela Antenção \cite{Dux_Marois_2009}. Técnicas que fazem uso de processos atencionais têm sido usadas para a 
 segmentação de áreas de relevância na percepção e entendimento do 
 ambiente com sucesso~\cite{bio}~\cite{esther}.
-Com essas abordagens, pode-se filtrar muito do que seriam dados irrelevantes ou
-redundantes, aumentando consideravelmente a eficiência computacional dessas
-técnicas.
+Com essas abordagens, pode-se filtrar dados irrelevantes ou
+redundantes, dando prioridade e foco a elementos relavantes do ambiente, aumentando consideravelmente a eficiência computacional dessas
+técnicas. 
 
-Não só o foco é necessário: em ambientes dos mais variados é preciso, além
+Porém, não só o foco é necessário. Em ambientes dos mais variados é preciso, além
 de identificar, classificar entidades a fim de interagir com elas de forma
 apropriada. 
 O aprendizado de máquina tem sido uma área de grande sucesso nessa tarefa.
@@ -136,53 +129,72 @@ Diversas técnicas podem ser utilizadas, como \tit{SVMs}~\cite{svm}
 e redes neurais~\cite{nn} a fim de se classificar entidades em geral com 
 alta taxa de acertos. 
 
-O que se busca, então, é uma mescla dessas duas técnicas: o uso dos processos
+Neste sentido, este projeto busca uma associação dessas técnicas: o uso dos processos
 atencionais em um estágio inicial de processamento pode atuar como um filtro
-na informação, passando adiante somente o que é relevante para o estágio de
-classificação com uso de técnicas robustas de aprendizado de máquina. 
-O que se espera é que tal abordagem possibilite uma percepção eficiente, geral
-e complexa do ambiente para sistemas autônomos, o que os possibilitaria 
-realizar tarefas mais sofisticadas e traria benefícios objetivos para
+na informação, passando adiante o que é relevante para o estágio de
+classificação, a ser suportado por técnicas de aprendizado de máquina. 
+Espera-se que tal abordagem possibilite uma percepção eficiente para sistemas autônomos o que permitiria
+a realização de tarefas mais sofisticadas, trazendo benefícios objetivos para
 a área da percepção em robótica.
 
 \section{Objetivos}
 \paragraph{}
-Os objetivos deste trabalho são:
+O objetivo geral deste trabalho envolve a aplicação de técnicas de aprendizado de máquina sobre informações sensoriais previamente processadas pelo modelo atencional proposto por em \cite{esther} em uma tarefa de navegação autônoma.  
+
+Mais especificamente, objetivamos:
 \begin{itemize}
 	\item Obter técnicas que permitam o entendimento de ambientes
 		diversos para a navegação de sistemas robóticos autônomos por meio 
-		do uso de processos atencionais e aprendizado de máquina.
-	\item Realizar uma avaliação de efetividade e eficiência de nossa abordagem
-		e compará-la com outras técnicas utilizadas atualmente.
-	\item Construção de uma plataforma para uso em GPUs embarcadas com 
-		ferramentas que permitam o uso de nossa técnica desenvolvida para
+		do uso de processos atencionais e aprendizado de máquina;
+	\item Avaliar a efetividade e eficiência da abordagem proposta
+		comparado a outras técnicas utilizadas atualmente;
+	\item Construir uma plataforma para uso em GPUs embarcadas com 
+		ferramentas que permitam o uso das técnicas desenvolvidas para
 		aplicações variadas de robótica.
 \end{itemize}
 
 \section{Materiais e Métodos}
-\subsection{Caso de uso}
+
+Para atendimento dos objetivos propostos, serão realizadas as seguintes etapas:
+
+\begin{itemize}
+	\item FASE  1:  Revisão  bibliográfica. Nesta etapa, será realizada a revisão bibliográfica:  a) do  modelo  atencional \cite{esther}, buscando quais adequações serão necessárias para o projeto em questão, e b) das técnicas de Aprendizado de Máquina mais apropriadas para a tarefa;
+	\item FASE  2:  Preparação do ambiente computacional. Nesta fase, o ambiente para construção do sistema será preparado (configuração do ambiente, instalação de bibliotecas e softwares, instalação de pacotes gráficos, configurações, etc); 
+	\item FASE  3:  Modelagem e implementação de processos atencionais.  Nessa  etapa  será proposta a base do sistema  atencional e testes preliminares serão realizados;
+	\item FASE  4:  Modelagem e implementação da técnica de aprendizado de máquina.  Nessa  fase  a  técnica escolhida na FASE 1 será implementada e testes preliminares serão realizados; 
+	\item FASE  5:  Integração dos sistemas. Nessa fase será realizada a integração do sistema atencional à técnica de aprendizado de máquina;
+	\item FASE  6:  Testes comparativos. Nessa fase serão realizados testes  e  ensaios  com  o  agente  robótico executando o sistema integrado;
+	\item FASE  7:  Construção de plataforma para GPU. Nesta etapa o sistema proposto será adequado para ser executado na GPU;
+	\item FASE  8:  Relatório final. Redação do relatório final.
+\end{itemize}
+
+\subsection{Ambiente}
 \paragraph{}
 O desafio \tit{Trekking}~\cite{trekking_regras} é uma categoria da série de 
 competições de robótica realizada pela \tit{Robocore}~\cite{robocore}. 
-Nessa categoria, o robô deve completar um percurso em 
+Nesta categoria, o robô deve completar um percurso em 
 um campo de futebol passando por diversas bases em uma ordem pré-definida.
-Em uma certa região do campo, há obstáculos dos quais o robô deve desviar.
+Em uma certa região do campo, há obstáculos dos quais o robô deve desviar (Figura \ref{fig:ambiente}). 
 O percurso deve ser feito no menor tempo possível.
 
-\begin{figure}[H]
-  		\centering
-    	\includegraphics[width=0.6\textwidth]{imgs/trekking_campo.png}
-		\caption[9pt]{O ambiente de locomoção do robô na categoria Trekking}
+\begin{figure}[hbnt]
+\begin{center}
+		\begin{tabular} {cc}
+		\includegraphics[width=0.49\textwidth]{imgs/trekking_campo.png} &
+		\includegraphics[width=0.4\textwidth]{imgs/piranha.jpg} \\
+		(a) & (b) \\
+		\end{tabular}
+\end{center}
+\caption{a) O ambiente de locomoção do robô na categoria Trekking b) Robô utilizado na competição.}
+\label{fig:ambiente}
 \end{figure}
+
 
 A \emph{Equipe Phoenix de Robótica da Unicamp}~\cite{phoenix} 
 é formada por estudantes de graduação de diversos cursos de 
 Engenharia e Computação da Universidade Estadual de Campinas. 
-Na equipe, desenvolvem-se variados projetos de robótica,
-com foco principal em robôs para competir nas categorias das competições da
-\tit{Robocore}.  
 A equipe desenvolve atualmente um robô para participar na categoria 
-\tit{Trekking}, nomeado \tit{Projeto Piranha}. 
+\tit{Trekking}, apresentado na Figura \ref{fig:ambiente} b).
 O robô consiste em um carro elétrico com tração nas quatro rodas e 
 locomoção por motores \tit{brushless}.
 O motor é controlado por meio de um conjunto da \tit{NXP} composto da placa
@@ -196,28 +208,18 @@ Seu sistema operacional é o Ubuntu com \tit{kernel Linux}.
 Duas câmeras \tit{Logitech C270} são os sensores
 principais usados pela \tit{Jetson TX1} para a ambientação do robô no campo.
 
-\begin{figure}[H]
-  		\centering
-    	\includegraphics[width=0.6\textwidth]{imgs/piranha.jpg}
-		\caption[9pt]{O robô do projeto Piranha}
-\end{figure}
 
-A pesquisa usará o robô \tit{Piranha} como caso de uso para
+A pesquisa usará este robô como caso de uso para
 avaliação da abordagem a ser desenvolvida, com o uso da \tit{Jetson TX1} 
 como plataforma para implementação das técnicas.
-O robô usa a câmera como principal sensor.
-Assim, a pesquisa foca em imagens como o sinal a ser processado e analisado. 
+O robô usa a câmera como principal sensor, podendo contar com o apoio de sensores auxiliares.
 
-A ideia é aplicar as técnicas a se obter para o reconhecimento
-de entidades na imagem, como terreno o qual o robô pode andar, obstáculos do
-qual deve desviar e bases às quais deve-se chegar.
-Soluções em processos atencionais serão desenvolvidas separadamente do
-estágio de classificação de objetos com aprendizado de máquina. 
-Após isso, a união dos dois será feita.
+Na tarefa de navegação proposta o robô deverá reconhecer o terreno no qual pode mover-se, os obstáculos do
+qual deve desviar e bases nas quais deve chegar.
 
 \subsection{Avaliação da abordagem proposta}
 \paragraph{}
-Será feita uma comparação com três técnicas diferentes: 
+Para efeitos de avaliação, serão comparadas os cenários onde: 
 \begin{enumerate}
 	\item Uma abordagem específica é utilizada.  
 		Um simples \tit{threshold} de cor pode ser capaz de identificar objetos
@@ -225,7 +227,7 @@ Será feita uma comparação com três técnicas diferentes:
 		diferentes cores.
 	\item Aprendizado de máquina puro para reconhecimento de objetos.
 		Nessa abordagem, será dado foco igual a toda a informação. 
-		Assim, todo o conjunto deverá ser analisado pelos algoritmos.
+		Assim, todo o conjunto deverá ser analisado pelos algoritmos de classificação.
 	\item Processos atencionais são utilizados em um estágio anterior ao de 
 		classificação com aprendizado de máquina, com a intenção de selecionar
 		subconjuntos de toda informação dada pelo sensor que tenham maior 
@@ -248,10 +250,7 @@ de uso geral para robôs autônomos que usem GPUs embarcadas.
 \tit{frameworks} de aprendizado de máquina serão estudados para se decidir
 quais usar. 
 Toda biblioteca será escolhida de forma que se possa utilizar o processamento
-da GPU.
-Por meio da linguagem de programação \tit{C++} juntamente com \tit{Python},  
-um ambiente de treinamento e rotinas de classificação para uso em imagens
-será desenvolvido.
+da GPU. O sistema será construído em \tit{C++} e \tit{Python}.
 
 %\end{multicols}
 
@@ -260,28 +259,26 @@ será desenvolvido.
 \begin{table}[H]
 \centering
 \setlength{\tabcolsep}{.16667em}
-\begin{tabular}{|C{5cm}|c|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|C{3cm}|c|c|c|c|c|c|c|c|c|c|c|c|}
 	\hline
 	Tarefa/mês & Jul & Ago & Set & Out & Nov & Dez & Jan & Fev & Mar & Abr & Mai & 
 	Jun \\
 	\hline
-	Revisão Bibliográfica & x & & & & & & & & & & & \\
+	FASE 1 & x & x & & & & & & & & & &\\
 	\hline
-	Modelagem de processos atencionais & & x & x & & & & & & & & & \\
+	FASE 2 & x & x & x & & & & & & & & & \\
 	\hline
-	Modelagem aprendizado de máquina & & & x & x & & & & & & & & \\
+	FASE 3 & & x & x & x & x & & & & & & &  \\
 	\hline
-	Coleta de imagens para treinamento & & & & & x & & & & & & & \\
+	FASE 4 & & x & x & x & x & x & & & & & &  \\
 	\hline
-	Integração dos sistemas & & & & & & x & & & & & & \\
+	FASE 5 & & & & & x & x & x & x & x & & & \\
 	\hline
-	Implementação de técnicas & & & & & & & x & x & & & & \\
+	FASE 6 & & & & & & & x & x & x & & & \\
 	\hline
-	Testes comparativos & & & & & & &  & & x & & & \\
+	FASE 7 & & & & & & & & & & x & x & \\
 	\hline
-	Construção de plataforma para GPU & & & & & & & & & & x & x & \\
-	\hline
-	Relatório final & & & & & & & & & & & & x \\
+	FASE 8 & & & & & & & & & & & x & x \\
 	\hline
 \end{tabular}
 \end{table}
