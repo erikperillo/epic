@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber]{biblatex}
+\usepackage{csquotes}
+%\usepackage{docmute}
+\usepackage{array}
+\ifdefined\multicol
+	\usepackage{multicol}
+	\usepackage{geometry}
+\fi
+\usepackage[T1]{fontenc}
+\addbibresource{rel_parcial_erik_perillo_2sem2016.bib}
+
+\newcommand{\fromeng}[1]{\footnote{do inglês: \textit{#1}}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\ttt}[1]{\texttt{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\Large Relatório Parcial\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Processos atencionais e aprendizado de máquina
+		para sistemas robóticos\par}
+	\vspace{1cm}
+	{\itshape Aluno: Erik de Godoy Perillo\par}
+	{\itshape Orientadora: Profa. Dra. Esther Luna Colombini\par}
+	\vspace{0.5cm}
+	\vfill
+    Instituto de Computação\\
+	Universidade Estadual de Campinas
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\newpage
+
+\section{Introdução}
+\subsection{Atenção em sistemas robóticos}
+Breves comentários:
+como a atenção proporciona um papel fundamental na navegação de robôs.
+
+\subsection{Objetivos do trabalho}
+Queremos um framework eficiente para atenção em sistemas robóticos.
+O trabalho focará mais em atenção visual.
+Os objetivos do primeiro semestre eram: X, Y, Z. Cronograma.
+
+
+\section{Resumo das atividades}
+\subsection{Revisão Bibliográfica}
+Revemos as bases para atenção.
+Top-down. Bottom-up.
+Vimos modelos clássicos: Vocus, esther, robozinho.
+
+\subsection{Formulação de um modelo inicial}
+Escolhemos o vocus para nos basear, focando no bottom-up.
+Descrição básica das ideias do modelo.
+
+\subsubsection{Implementação: att}
+Repositório.
+Modelo geral.
+Mapas.
+Center-surround.
+Escolha da região mais saliente.
+
+\subsubsection{Resultados}
+Imagens. Resultados intuitivos.
+
+\subsubsection{Comparações}
+Métricas.
+Comparações com modelos no topo.
+
+\subsection{Modelos novos}
+Deep learning everywhere.
+
+\section{Produção Científica}
+Modelo Att.
+Notas: Estudo de métricas.
+Estudo de sistemas com Deep Learning.
+
+\section{Próximos passos}
+DeepFix. Vídeo.
+
+\printbibliography
+
+\end{document}
