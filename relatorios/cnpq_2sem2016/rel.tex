@@ -123,7 +123,7 @@ Entretanto, se o objeto de interesse for composto por múltiplas \tit{features}
 a serem buscadas (\eg uma linha horizontal verde),
 a localização do objeto é feita em tempo linear.
 
-Já \tit{Guided Search} diz que buscas por conjunções de \tit{features} são na
+Já Guided Search diz que buscas por conjunções de \tit{features} são na
 verdade mais rápidas pois a combinação das features gera um sinal de
 saliência mais forte no campo visual humano.
 
@@ -140,7 +140,7 @@ desenvolvidos no semestre.
 
 \subsection{Modelo atencional}
 A carga teórica adquirida foi útil para a concepção do nosso modelo,
-chamado de \ttt{att}.
+chamado de \tit{att}.
 Muitos mecanismos foram inspirados no VOCUS, lidando com as mesmas
 \tit{features} e em múltiplas dimensões da imagem.
 
@@ -237,7 +237,7 @@ respectivamente.
 
 \subsubsection{Implementação}
 Todas as etapas do modelo descritas aqui foram implementadas.
-A linguagem utilizada foi \tit{Python}, usando-se \tit{OpenCV} e \tit{numpy}.
+A linguagem utilizada foi Python, usando-se OpenCV e numpy.
 O código está disponível de modo público~\cite{att}.
 
 \subsubsection{Considerações}
@@ -269,7 +269,7 @@ Dois dos tipos principais de mapas-verdade:
 
 	\item Máscaras contínuas: As regiões salientes têm valores
 	contínuos em um intervalo de intensidade de \tit{pixels}, com valores
-	maiores representando uma saliência maior.
+	mais altos representando uma saliência maior.
 	São geralmente obtidas através dos pontos de fixação, aplicando-se
 	uma gaussiana adequada em cada ponto.
 \end{enumerate}
@@ -286,7 +286,7 @@ Alguns \tit{datasets} utilizados geralmente:
 
 	\item \ttt{MIT300~\cite{mit-300}:} 300 imagens de diversos tipos
 		com dados de fixação. Entretanto, os mesmos não estão disponíveis
-		e devem ser testados pelos donos do \tit{dataset}.
+		e devem ser testados pelos donos do \tit{benchmark}.
 \end{itemize}
 
 \subsubsection{Métricas}
@@ -348,7 +348,7 @@ falsos negativos mais que falsos positivos.
 igualmente.
 
 \subsubsection{Comparação com outros modelos}
-Foi construído um ambiente de \tit{benchmark} para o modelo \ttt{att},
+Foi construído um ambiente de \tit{benchmark} para o modelo \tit{att},
 que permite fazer testes automatizados com diversos \tit{datasets} e métricas.
 O primeiro uso deste ambiente foi para fazer uma busca inicial de
 hiperparâmetros para o modelo: muitos valores destes diminuíam muito o
@@ -365,13 +365,13 @@ Na comparação aqui mostrada, comparamos nosso modelo com três tipos de
 modelos: um que fica consistentemente entre os primeiros para diversas
 métricas (\tit{DeepFix}~\cite{DeepFix}), um que fica consistentemente na metade
 (\tit{Rosin Saliency 2}~\cite{rosinsal2}),
-e um que fica consistentemente entre os últimos (\tit{IttiKoch}~\cite{itti}).
-Usamos duas métricas para pontos de saliência (\ttt{AUC-Judd, NSS}) e duas para
-mapas contínuos (\ttt{SIM, CC}).
+e um que fica consistentemente entre os últimos (IttiKoch~\cite{itti}).
+Usamos duas métricas para pontos de saliência (AUC Judd e NSS) e duas para
+mapas contínuos (SIM e CC).
 \begin{figure}[H]
-%\begin{center}
+\begin{center}
     \includegraphics[width=1.1\linewidth]{img/comp.png}
-%\end{center}
+\end{center}
 \caption{Comparação de desempenho do modelo att com diversos modelos
 do \tit{MIT Saliency Benchmark}}
 \label{fig:comp}
@@ -387,8 +387,7 @@ Isso motiva a busca de uma nova abordagem para o nosso modelo.
 \section{Próximos passos}
 \subsection{Nova versão do modelo att}
 Alguns dos modelos computacionais de saliência visual que ficam consistentemente
-no topo da lista do \tit{MIT Saliency Benchmark} são:
-\tit{DeepFix}~\cite{DeepFix},
+no topo da lista do MITSAL são: \tit{DeepFix}~\cite{DeepFix},
 \tit{Salicon}~\cite{Salicon}, \tit{Deep Gaze 2}~\cite{DeepGaze2},
 \tit{SalNet}~\cite{SalNet}.
 O que todos estes têm em comum é o uso de técnicas de \tit{Deep Learning},
@@ -402,7 +401,7 @@ modelos dominantes.
 Uma pesquisa nos modelos do topo foi feita para analisar melhor suas técnicas
 e avaliar a possibilidade da implementação de suas ideias.
 Com base na boa descrição do modelo e os excelentes resultados, escolheu-se
-basear no \tit{DeepFix} para a nova versão do modelo \ttt{att}.
+basear no \tit{DeepFix} para a nova versão do modelo att.
 Planeja-se implementar o modelo como um todo -- ou sua maior parte --.
 
 \subsubsection{Extensão para vídeo}
@@ -411,11 +410,11 @@ também em vídeos. A extensão de modelos para vídeos não é imediata, pois
 deve-se contar com efeitos como a transição de foco de atenção ao longo do
 tempo, um efeito que não existe em imagens.
 Assim, faz parte dos próximos passos desenvolver um modo de estender o modelo
-novo do \ttt{att} -- baseado no \tit{DeepFix} -- para análise
+novo do att -- provavelmente baseado no \tit{DeepFix} -- para análise
 atencional em vídeos.
 Tal contribuição seria inédita até o momento para a área.
 
-\subsection{Construção de \tit{Framework}}
+\subsection{Construção \tit{Framework}}
 A etapa final é a construção de um \tit{Framework}.
 O mesmo será implementado em um robô móvel, onde serão definidas tarefas
 de navegação e será feita uma avaliação do desempenho do robô.

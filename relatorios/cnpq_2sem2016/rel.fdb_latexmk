@@ -1,11 +1,10 @@
 # Fdb version 3
-["biber rel_parcial_erik_perillo_2sem2016"] 1481720981 "rel_parcial_erik_perillo_2sem2016.bcf" "rel_parcial_erik_perillo_2sem2016.bbl" "rel_parcial_erik_perillo_2sem2016" 1481721666
-  "rel_parcial_erik_perillo_2sem2016.bcf" 1481721665 96852 6d656055f3a831dccabf9cf242fe5cd9 ""
-  "rel_parcial_erik_perillo_2sem2016.bib" 1481328178 4370 fcd69041b90936f00f672dad97e95686 ""
+["biber rel"] 1481470126 "rel.bcf" "rel.bbl" "rel" 1481470451
+  "rel.bcf" 1481470451 96822 dc1545e5b117266ef71574d3baa61e41 ""
+  "rel.bib" 1481470111 4370 fcd69041b90936f00f672dad97e95686 ""
   (generated)
-  "rel_parcial_erik_perillo_2sem2016.blg"
-  "rel_parcial_erik_perillo_2sem2016.bbl"
-["pdflatex"] 1481721662 "rel_parcial_erik_perillo_2sem2016.tex" "rel_parcial_erik_perillo_2sem2016.pdf" "rel_parcial_erik_perillo_2sem2016" 1481721666
+  "rel.bbl"
+["pdflatex"] 1481470447 "rel.tex" "rel.pdf" "rel" 1481470451
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1479649822 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1479649810 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1479649813 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -122,13 +121,13 @@
   "img/arara_y_cs.png" 1481246108 91159 4ac52925b8107600e8f74ec44bd5f71b ""
   "img/att.png" 1481248512 654662 24d7b64c19d40ead445cd0aa62adc319 ""
   "img/comp.png" 1481322721 18355 3001b5534f637f3c30079494c4f35ed2 ""
-  "rel_parcial_erik_perillo_2sem2016.aux" 1481721665 7691 624838a0946c2c3df5bda0c2cbe6fa5c ""
-  "rel_parcial_erik_perillo_2sem2016.bbl" 1481720986 16300 fb367d19f4e7f3fb501f08b5ab12e67d "biber rel_parcial_erik_perillo_2sem2016"
-  "rel_parcial_erik_perillo_2sem2016.run.xml" 1481721665 2533 a2d0f6d53bfbe3e8ce2a6edd32ef7280 ""
-  "rel_parcial_erik_perillo_2sem2016.tex" 1481721657 19432 f1c4d9b9ab65c1c2a70df49412c7d626 ""
+  "rel.aux" 1481470451 7688 9be4d0d7a54f95139640f13e88063da6 ""
+  "rel.bbl" 1481470128 16300 fb367d19f4e7f3fb501f08b5ab12e67d "biber rel"
+  "rel.run.xml" 1481470451 2293 b3a714732e02b6f8fffad4bc02672eca ""
+  "rel.tex" 1481470445 19329 686899fb53fc0e6fb62c07b8f390fc38 ""
   (generated)
-  "rel_parcial_erik_perillo_2sem2016.run.xml"
-  "rel_parcial_erik_perillo_2sem2016.log"
-  "rel_parcial_erik_perillo_2sem2016.pdf"
-  "rel_parcial_erik_perillo_2sem2016.bcf"
-  "rel_parcial_erik_perillo_2sem2016.aux"
+  "rel.aux"
+  "rel.bcf"
+  "rel.log"
+  "rel.pdf"
+  "rel.run.xml"
