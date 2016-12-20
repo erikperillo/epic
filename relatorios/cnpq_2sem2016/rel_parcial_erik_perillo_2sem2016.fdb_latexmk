@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber rel_parcial_erik_perillo_2sem2016"] 1481720981 "rel_parcial_erik_perillo_2sem2016.bcf" "rel_parcial_erik_perillo_2sem2016.bbl" "rel_parcial_erik_perillo_2sem2016" 1481721666
+["biber rel_parcial_erik_perillo_2sem2016"] 1481720981 "rel_parcial_erik_perillo_2sem2016.bcf" "rel_parcial_erik_perillo_2sem2016.bbl" "rel_parcial_erik_perillo_2sem2016" 1482255071
   "rel_parcial_erik_perillo_2sem2016.bcf" 1481721665 96852 6d656055f3a831dccabf9cf242fe5cd9 ""
   "rel_parcial_erik_perillo_2sem2016.bib" 1481328178 4370 fcd69041b90936f00f672dad97e95686 ""
   (generated)
-  "rel_parcial_erik_perillo_2sem2016.blg"
   "rel_parcial_erik_perillo_2sem2016.bbl"
-["pdflatex"] 1481721662 "rel_parcial_erik_perillo_2sem2016.tex" "rel_parcial_erik_perillo_2sem2016.pdf" "rel_parcial_erik_perillo_2sem2016" 1481721666
+  "rel_parcial_erik_perillo_2sem2016.blg"
+["pdflatex"] 1481721662 "rel_parcial_erik_perillo_2sem2016.tex" "rel_parcial_erik_perillo_2sem2016.pdf" "rel_parcial_erik_perillo_2sem2016" 1482255071
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1479649822 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1479649810 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1479649813 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -125,10 +125,10 @@
   "rel_parcial_erik_perillo_2sem2016.aux" 1481721665 7691 624838a0946c2c3df5bda0c2cbe6fa5c ""
   "rel_parcial_erik_perillo_2sem2016.bbl" 1481720986 16300 fb367d19f4e7f3fb501f08b5ab12e67d "biber rel_parcial_erik_perillo_2sem2016"
   "rel_parcial_erik_perillo_2sem2016.run.xml" 1481721665 2533 a2d0f6d53bfbe3e8ce2a6edd32ef7280 ""
-  "rel_parcial_erik_perillo_2sem2016.tex" 1481721657 19432 f1c4d9b9ab65c1c2a70df49412c7d626 ""
+  "rel_parcial_erik_perillo_2sem2016.tex" 1482255053 19432 f1c4d9b9ab65c1c2a70df49412c7d626 ""
   (generated)
-  "rel_parcial_erik_perillo_2sem2016.run.xml"
   "rel_parcial_erik_perillo_2sem2016.log"
-  "rel_parcial_erik_perillo_2sem2016.pdf"
-  "rel_parcial_erik_perillo_2sem2016.bcf"
+  "rel_parcial_erik_perillo_2sem2016.run.xml"
   "rel_parcial_erik_perillo_2sem2016.aux"
+  "rel_parcial_erik_perillo_2sem2016.bcf"
+  "rel_parcial_erik_perillo_2sem2016.pdf"
