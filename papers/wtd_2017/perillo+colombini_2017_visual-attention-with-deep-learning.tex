@@ -86,16 +86,105 @@ melhores modelos estado da arte no \tit{MIT300 benchmark}.
 \end{resumo}
 
 \section{Introduction}
-\begin{itemize}
-	\item What's attention?
-	\item Visual saliency
-    \item Old models, new methods
-\end{itemize}
-\section{Objectives}
-\begin{itemize}
-    \item Use old techniques to new, good model
-    \item Try to be simple
-\end{itemize}
+One of the most challenging unsolved problems in Artificial Intelligence is
+vision.
+It is fundamental for the conception of systems that interact with the real,
+physical world.
+Such systems would be useful for applications that involve
+robotics and tasks in domestic houses, industry and agriculture, so
+there is great potential for the benefit of society.
+
+Vision is remarkably data and computationally intensive:
+In humans, approximately half the brain is involved in
+vision-related tasks~\cite{fixott_1957}.
+Even our brains can't handle all the sheer amount of sensorial information
+that we receive every second: We have attention, a fundamental mechanism
+that, among other functionalities, filters out irrelevant information
+-- either visual or from other senses-- and helps focus our cognitive processes
+on what is important at a given moment.
+We consider these facts to be a strong evidence that, in order to solve
+vision, we need to have attention.
+
+\subsection{What is visual saliency?}
+Visual saliency can be defined as the delimitation of a certain spatial
+region of an image for further cognitive processing~\cite{treisman_1980}.
+Psychologists have been studying for at least half a century what makes we
+direct our visual focus to a certain region and how we do it.
+
+The phenomenon of visual saliency may emerge from two fundamentally
+different processes:
+There is \emph{top-down} attention, an internal
+stimuli of the agent (e.g. find a red apple in a tree because of hunger,
+which will automatically make red be reconizable more easily on the scene),
+and \emph{bottom-up} attention, an external process which captures the
+agent's attention from abrupt changes in visual stimuli or high contrast.
+It has been shown that some patterns are naturally visually salient for humans.
+Some of them are: color contrast (specially green-red and yellow-blue),
+luminance contrast, orientation contrast, high
+frequency movement~\cite{colombini_2016}.
+In this work, we focus on \emph{bottom-up} attention.
+\begin{figure}[hbt]
+\begin{center}
+		\begin{tabular} {cc}
+		\includegraphics[width=0.4\textwidth]{./img/giraffe_s.jpg} &
+		\includegraphics[width=0.4\textwidth]{./img/giraffe_m.jpg}\\
+        (a) & (b)
+		\end{tabular}
+\end{center}
+\caption{Example of visual saliency.
+    b) is the salience map where brighter pixels represent regions more
+    salient to humans on the original image a).}
+\label{fig:example}
+\end{figure}
+
+Visual salient regions on images are usually represented by
+\emph{saliency maps}.
+Such maps are grayscale images generated such that
+areas with pixels close to white express high saliency
+of the same region on the original image, whereas regions with pixels close
+to black represent a region of low saliency.
+Datasets with pairs image-map are usually obtained by colleting eye-fixation
+data from humans that looked at the images.
+
+\subsection{Computational models of Visual Saliency}
+Early computational models of visual saliency were generally built based on
+filtering of images for extraction of a pre-selected set of features
+considered important for \emph{bottom-up} attention.
+One example is \emph{Vocus}~\cite{frintrop_2005}, a model that extracts
+features such as color contrast, orientation and luminance contrast from
+different scales of the image to produce saliency maps like
+figure~\ref{fig:example}b.
+
+A rapid change of paradigm ocurred around 2015 when \emph{Deep Learning}
+techniques showed to be extremely effective in the generation of saliency
+maps.
+Models such as \emph{Salicon}~\cite{jiang_2015} showed that applying
+convolutional neural networks with weights initialized from networks used
+for image classification such as \emph{VGG-16}~\cite{zisserman_2014}
+could yield maps very similar to those generated from humans.
+As of today, at least nine out of the ten best models in the ranking of the
+\emph{MIT saliency benchmark}~\cite{mit_sal_bm} use \emph{Deep Learning}
+techniques.
+
+\subsection{Objectives}
+This work aims at building a visual saliency model that is a) effective,
+yielding results similar to other state of the art models,
+and b) relatively simple and computationally efficient.
+It is important that both criteria are matched because we aim at extending the
+model in the future for video and real time applications such as
+navigating robots.
+
+We present two models, one using hand-crafted feature extraction
+and the other using a fully convolutional neural network.
+We then compare the results of both.
+
+\begin{figure}[hbt]
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{./img/model.png}
+\end{center}
+\end{figure}
+
+
 \section{Methodology}
 \begin{itemize}
     \item Old method: be succint
