@@ -1,0 +1,119 @@
+% -- NAO MUDAR O TAMANHO DA FONTE.
+% -- O USO DO TAMANHO DA FONTE EM 12PT Eh OBRIGATORIO
+\documentclass[12pt]{article}
+
+% -- O USO DO TEMPLATE DA SBC Eh OBRIGATORIO
+% -- NAO ALTERAR NENHUMA PARAMETRO DO MODELO DA SBC
+% -- (E.G., MARGENS LATERAIS, RODAPE, CABECAÇHO, ENTRE OUTROS)
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+
+% descomente abaixo caso tenha problemas com a numeração das seções não
+% aparecerem. Em especial no Ububtu 16.x
+%\usepackage{etoolbox}
+%\makeatletter
+%\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+%\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+%\makeatother
+
+%macros
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\ttt}[1]{\texttt{#1}}
+
+% -- O USO DESTE COMANDO Eh OBRIGATORIO
+\sloppy
+
+% -- CERTIFIQUE-SE DE QUE O TITULO NAO ESTEJA ULTRAPASSANDO OS LIMITES
+% -- DAS MARGENS.
+% -- USE O COMANDO QUEBRA-DE-LINHA (\\) SE TITULO FOR MUITO LONGO.
+\title{Visual Attention with Deep Learning}
+
+% -- CERTIFIQUE-SE DE QUE O NOME DOS AUTORES ESTEJA CORRETO.
+% -- EM GERAL COLOCA-SE O ALUNO COMO PRIMEIRO AUTOR E O ORIENTADOR COMO
+% -- ULTIMO AUTOR.
+\author{Erik Perillo\inst{1}, Esther Luna Colombini\inst{1}}
+
+% -- CERTIFIQUE-SE DE QUE OS NOMES DAS INSTITUICOES E SEUS RESPECTIVOS ENDERECOS
+% -- NAO ESTEJAM ULTRAPASSANDO OS LIMITES DAS MARGENS. SE ISTO OCORRER, USE O
+% -- COMANDO QUEBRA-DE-LINHA (\\) OU ABREVIACOES APROPRIADAS.
+\address{Institute of Computing (IC) -- University of Campinas
+  (Unicamp)\\
+  Caixa Postal 6176 -- 13.084-971 -- Campinas -- SP -- Brazil
+  \email{erik.perillo@gmail.com, esther@ic.unicamp.br}
+}
+
+
+% -- CERTIFIQUE-SE DE QUE AS TABELAS E FIGURAS INSERIDAS NO
+% -- DOCUMENTO NAO ESTEJAM ULTRAPASSANDO
+% -- OS LIMITES DAS MARGENS.
+
+\begin{document}
+
+\maketitle
+
+% -- O RESUMO EM INGLES Eh OBRIGATORIO,
+% -- INDEPENDENTE DO IDIOMA EM QUE TRABALHO FOI ESCRITO
+\begin{abstract}
+Vision is a key element in one's process of understanding the world.
+The high volume of sensorial data is however problematic because
+most of the information is often irrelevant.
+Humans realize sensorial filtering by what we call attention.
+We propose the application of Deep Learning for obtaining a visual salience
+system which behaves similarly to humans.
+We built a new convolutional neural network with relatively
+simple architecture, yielding a performance level consistently among the
+best ten state of the art models in MIT300 benchmark.
+\end{abstract}
+
+% -- O RESUMO EM PORTUGUES Eh OBRIGATORIO, INDEPENDENTE DO
+% -- INDIOMA EM QUE O TRABALHO FOI ESCRITO
+\begin{resumo}
+A visão é elemento-chave no processo de entender o mundo para um ser.
+Entretanto, a alta quantidade de dados sensoriais é problemática,
+havendo muitas vezes irrelevância de informação.
+Nos seres humanos, há um filtro sensorial realizado pela atenção.
+Propomos a aplicação de
+\tit{Deep Learning} para a obtenção de um sistema de saliência visual que
+se comporte como o dos seres humanos.
+Construímos uma nova rede neural convolucional de arquitetura relativamente
+simples e com um desempenho que a coloca consistentemente entre os dez
+melhores modelos estado da arte no \tit{MIT300 benchmark}.
+\end{resumo}
+
+\section{Introduction}
+\begin{itemize}
+	\item What's attention?
+	\item Visual saliency
+    \item Old models, new methods
+\end{itemize}
+\section{Objectives}
+\begin{itemize}
+    \item Use old techniques to new, good model
+    \item Try to be simple
+\end{itemize}
+\section{Methodology}
+\begin{itemize}
+    \item Old method: be succint
+    \item New method: architecture, datasets, datapreproc, training
+\end{itemize}
+\section{Results}
+\begin{itemize}
+    \item Old method
+    \item New method, mit300 bm
+\end{itemize}
+\section{Conclusion}
+\begin{itemize}
+    \item Ey, that's pretty good
+    \item next steps
+\end{itemize}
+
+% -- NAO MUDAR O ESTILO DAS REFERENCIAS BIBLIOGRAFICAS. O USO DO PADRAO DA SBC Eh OBRIGATORIO
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}

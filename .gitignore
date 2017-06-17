@@ -6,11 +6,7 @@
 *.blg
 *.xml
 *-blx.bib
-
-planos_de_pesquisa/cnpq/plano_de_pesquisa.synctex.gz
-
-planos_de_pesquisa/cnpq/plano_de_pesquisa.fls
-
-planos_de_pesquisa/cnpq/plano_de_pesquisa.fdb_latexmk
-
-planos_de_pesquisa/cnpq/.plano_de_pesquisa.lb
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.lb

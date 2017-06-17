@@ -99,6 +99,8 @@ foco para um maior trabalho cognitivo em um certo momento.~\cite{ref:fit}
 Com base no comportamento de humanos, modelos computacionais que simulam
 a atenção o fazem geralmente por meio de mapas de saliência, que são
 computados para uma certa imagem.
+A figura~\ref{fig:sal-map} exemplifica um mapa.
+Pixels com valores altos (brancos) representam áreas de alta saliência.
 
 \begin{figure}[H]
     \centering
@@ -159,7 +161,8 @@ Tal rede chega a ter camadas de convolução com 512 filtros de dimensões 3x3.
 Os espaços de cor dos três modelos analisados são RGB e a normalização dos
 dados nos modelos é feita por todo o dataset.
 
-O modelo desenvolvido por nós usa um número consideravelmente menor de
+O modelo desenvolvido por nós (figura~\ref{fig:att-deep-model})
+usa um número consideravelmente menor de
 parâmetros: são 6 camadas de convolução, mas o total dos filtros de todas
 as camadas é de 209. O espaço de cor utilizado foi o LAB, pois há indícios
 que este seja um espaço de cor que melhor representa o sistema
@@ -171,6 +174,8 @@ O modelo é treinado com um conjunto de dados obtido pela mesclagem do
 \tit{Salicon}~\cite{ref:salicon-dataset},
 \tit{MIT-1003}~\cite{ref:judd-1003-dataset}
 \tit{CAT-2000}~\cite{ref:cat-2000-dataset}.
+A figura~\ref{fig:att-deep-pred} mostra um mapa de saliência produzido
+pelo modelo atual.
 
 \begin{figure}[H]
     \hspace*{-0.5in}
@@ -289,7 +294,6 @@ Para atendimento dos objetivos propostos, serão realizadas as seguintes etapas:
 	\hline
 \end{tabular}
 \end{table}
-
 
 \section{Referências}
 \printbibliography
