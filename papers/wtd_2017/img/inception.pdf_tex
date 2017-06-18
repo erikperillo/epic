@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{440.5689bp}%
+    \setlength{\unitlength}{439.921275bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,7 +48,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.33923121)%
+  \begin{picture}(1,0.32004205)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{./img/inception.pdf}}%
   \end{picture}%
 \endgroup%

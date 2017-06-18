@@ -8,6 +8,7 @@
 \usepackage{sbc-template}
 
 \usepackage{graphicx,url}
+\usepackage{float}
 
 %\usepackage[brazil]{babel}
 \usepackage[latin1]{inputenc}
@@ -19,11 +20,6 @@
 %\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 %\patchcmd{\ttlh@hang}{\noindent}{}{}{}
 %\makeatother
-
-%macros
-\newcommand{\tit}[1]{\textit{#1}}
-\newcommand{\tbf}[1]{\textbf{#1}}
-\newcommand{\ttt}[1]{\texttt{#1}}
 
 % -- O USO DESTE COMANDO Eh OBRIGATORIO
 \sloppy
@@ -59,8 +55,7 @@
 % -- O RESUMO EM INGLES Eh OBRIGATORIO,
 % -- INDEPENDENTE DO IDIOMA EM QUE TRABALHO FOI ESCRITO
 \begin{abstract}
-Vision is a key element in one's process of understanding the world.
-The high volume of sensorial data is however problematic because
+The high volume of sensorial data in vision is problematic because
 most of the information is often irrelevant.
 Humans realize sensorial filtering by what we call attention.
 We propose the application of Deep Learning for obtaining a visual salience
@@ -73,8 +68,7 @@ best ten state of the art models in MIT300 benchmark.
 % -- O RESUMO EM PORTUGUES Eh OBRIGATORIO, INDEPENDENTE DO
 % -- INDIOMA EM QUE O TRABALHO FOI ESCRITO
 \begin{resumo}
-A visão é elemento-chave no processo de entender o mundo para um ser.
-Entretanto, a alta quantidade de dados sensoriais é problemática,
+A alta quantidade de dados sensoriais na tarefa de visão é problemática,
 havendo muitas vezes irrelevância de informação.
 Nos seres humanos, há um filtro sensorial realizado pela atenção.
 Propomos a aplicação de
@@ -126,8 +120,8 @@ In this work, we focus on \emph{bottom-up} attention.
 \begin{figure}[hbt]
 \begin{center}
 		\begin{tabular} {cc}
-		\includegraphics[width=0.5\textwidth]{./img/soccer_s.jpg} &
-		\includegraphics[width=0.5\textwidth]{./img/soccer_m.jpg}\\
+		\includegraphics[width=0.4\textwidth]{./img/soccer_s.jpg} &
+		\includegraphics[width=0.4\textwidth]{./img/soccer_m.jpg}\\
         (a) & (b)
 		\end{tabular}
 \end{center}
@@ -202,11 +196,7 @@ A previously built classical model, which is strongly based on \emph{Vocus},
 is used for comparison purposes.
 
 \section{Methodology}
-\begin{itemize}
-    \item Old method: be succint
-    \item New method: architecture, datasets, datapreproc, training
-\end{itemize}
-
+\subsection{Proposed model}
 \begin{figure}[hbt]
     \centering
     \def\svgwidth{\columnwidth}
@@ -216,13 +206,127 @@ is used for comparison purposes.
         Filters are in format width$\times$height\_stride.}
 \end{figure}
 
+Figure~\ref{fig:model} illustrates the overall architecture of our fully
+convolutional neural network.
+The network extracts features from incresingly smaller dimensions of the
+input image and is composed of four main blocks:
+\begin{enumerate}
+    \item First level extracts low level features from the input image, of
+        dimensions $W\times H \times 3$ (width, height, depth), using
+        a single layer with 48 convolution filters followed by max-pooling
+        that reduces image by a factor of two.
+        It was found that further decreasing the number of filters in this
+        layer considerably hurts performance, which makes sense because it is
+        important to capture high spatial frequency and high contrast
+        information in the context of visual saliency.
+    \item Second level extracts low-medium level features from the
+        input of dimensions $W/2 \times H/2 \times 48$ using two layers
+        with 64 and 96 convolution filters, respectively, followed by
+        another max-pooling that reduces feature maps dimensions.
+    \item Third level extracts medium-high level features from input with
+        dimensions $W/4 \times H/4 \times 96$ using four convolution layers.
+        The first two have 128 filters each, the last two have 144 filters
+        each. Max-pooling is realized at the end, reducing maps dimension
+        again by a factor of two.
+        A considerable depth in this level was found to be important for
+        the networks performance.
+    \item Fourth and last level is composed of eight inception blocks
+        that extract high level features from the input with
+        dimensions $W/8 \times H/8 \times 144$.
+        Great level of depth and Inception blocks were found to be very
+        important at this level.
+        We conjecture that this is because this allows the network to use
+        information from different spatial dimensions as well as previous
+        layers (lower level saliency information) in the final map
+        computation, which is considered to be important for visual saliency.
+        A $1 \times 1$ convolution makes a linear combination of the output
+        maps at the end of the 8 inception blocks, producing the final
+        saliency map with dimensions $W/8 \times H/8 \times 1$.
+\end{enumerate}
+
 \begin{figure}[hbt]
     \centering
-    \def\svgwidth{0.7\linewidth}
+    \def\svgwidth{0.6\linewidth}
     \input{./img/inception.pdf_tex}
    \label{fig:inception}
     \caption{Inception block layout.}
 \end{figure}
+
+Figure~\ref{fig:inception} illustrates the inception architecture
+used in each block: We use filters of size $5 \times 5$, $3 \times 3$
+(both preceeded by $1\times 1$ convolutions in order to reduce number
+of input filters), $1 \times 1$ (which allows for carrying ahead
+of previous layers), and a max-pooling of size $3 \times 3$.
+Each of these operations is realized in parallel from the same input
+and the outputs are concatenated at the output, which allows
+for making complex combinations in the next level.
+The network has a total of $3717841$ parameters, which is a very low number
+compared to other models.
+
+\begin{table}[H]
+\centering
+\label{table:inception}
+\caption{Number of filters used at each inception block.}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+	\hline
+    Block & pool & conv 1$\times$1 & 3$\times$3 reduce &
+    conv 3$\times$3 & 5$\times$5 reduce & conv 5$\times$5\\
+    \hline
+    1 & 96 & 128 & 96 & 192 & 58 & 96\\
+    \hline
+    2 & 64 & 128 & 80 & 160 & 24 & 48\\
+    \hline
+    3 & 64 & 128 & 80 & 160 & 24 & 48\\
+    \hline
+    4 & 64 & 128 & 96 & 192 & 28 & 56\\
+    \hline
+    5 & 64 & 128 & 96 & 192 & 28 & 56\\
+    \hline
+    6 & 64 & 128 & 112 & 224 & 32 & 64\\
+    \hline
+    7 & 64 & 128 & 112 & 224 & 32 & 64\\
+    \hline
+    8 & 112 & 160 & 128 & 256 & 40 & 80\\
+    \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Implementation}
+The model was implemented using \emph{Theano} version \texttt{0.9.0.dev}
+along with the framework \emph{Lasagne} version \texttt{0.2.dev1}.
+Experiments were conducted on a machine with \emph{Ubuntu 16.04 LTS} and
+kernel \emph{Linux} version \texttt{4.8.0-54-generic}.
+We used a GPU \emph{NVIDIA GTX 1080} for training the model.
+
+\subsection{Training}
+\subsubsection{Data pre-processing}
+We resize images to dimensions $320\times240\times3$ during training.
+Each image is normalized channel-wise subtracting the channel mean and
+dividing by the standard deviation.
+This technique differs from others models that tend to normalize by the
+dataset mean and standard deviations.
+We consider normalizing per image to be more reasonable in the context of
+visual saliency and it indeed resulted in better performance in our previous
+tests.
+We also convert the images to the LAB colorspace.
+Our prior tests showed slighly better performance using LAB instead of the
+commonly used RGB\@.
+\emph{Vocus}~\cite{frintrop_2005} cites that the LAB colorspace is more
+closely related to human vision by encopassing red-green, yellow-blue and
+luminance maps.  We conjecture that these maps facilitate extraction of
+important luminance and color contrasts by the learned convolution filters.
+
+\subsubsection{Datasets}
+We considered three datasets for training:
+\begin{itemize}
+    \item SALICON~\cite{salicon}: 15000 images of various types with
+        fixation data collected online from a crowdsourcing effort.
+    \item Judd~\cite{judd}: 1003 images of various types with fixation data
+        from 15 people per image.
+    \item CAT2000~\cite{cat2000}: 2000 images from 20 different categories
+    with fixation data from 24 people per image.
+\end{itemize}
 
 
 \begin{table}[H]
@@ -247,19 +351,6 @@ is used for comparison purposes.
     \hline
 \end{tabular}
 \end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
-	\hline
-    Block number & conv 3x3 reduce & conv 3x3 & conv 5x5 reduce & conv 5x5
-    & conv 1x1 & pool\\
-    \hline
-    1 & 32 & 64 & 24 & 48 & 64 & 64\\
-    \hline
-\end{tabular}
-\end{table}
-
 
 \section{Results}
 \begin{itemize}
