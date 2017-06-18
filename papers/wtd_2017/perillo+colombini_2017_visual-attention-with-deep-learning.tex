@@ -55,28 +55,28 @@
 % -- O RESUMO EM INGLES Eh OBRIGATORIO,
 % -- INDEPENDENTE DO IDIOMA EM QUE TRABALHO FOI ESCRITO
 \begin{abstract}
-The high volume of sensorial data in vision is problematic because
-most of the information is often irrelevant.
+The high volume of visual data contains information that is
+mostly irrelevant for intelligent agents.
 Humans realize sensorial filtering by what we call attention.
-We propose the application of Deep Learning for obtaining a visual salience
-system which behaves similarly to humans.
-We built a new convolutional neural network with relatively
-simple architecture, yielding a performance level consistently among the
-best ten state of the art models in MIT300 benchmark.
+We propose a new fully convolutional neural network with relatively
+simple architecture for a visual salience system that behaves
+similarly to humans, yielding a performance level consistently among the
+best ten state of the art models in MIT300 benchmark while having around
+three times less parameters than others.
 \end{abstract}
 
 % -- O RESUMO EM PORTUGUES Eh OBRIGATORIO, INDEPENDENTE DO
 % -- INDIOMA EM QUE O TRABALHO FOI ESCRITO
 \begin{resumo}
-A alta quantidade de dados sensoriais na tarefa de visão é problemática,
-havendo muitas vezes irrelevância de informação.
+A alta quantidade de dados visuais contém informação que é em sua maior
+parte irrelevante para agentes inteligentes.
 Nos seres humanos, há um filtro sensorial realizado pela atenção.
-Propomos a aplicação de
-\tit{Deep Learning} para a obtenção de um sistema de saliência visual que
-se comporte como o dos seres humanos.
-Construímos uma nova rede neural convolucional de arquitetura relativamente
-simples e com um desempenho que a coloca consistentemente entre os dez
-melhores modelos estado da arte no \tit{MIT300 benchmark}.
+Propomos uma nova rede neural totalmente convolucional com arquitetura
+relativamente simples para um sistema de saliência visual que se comporta
+similarmente a humanos,
+com um desempenho que a coloca consistentemente entre os dez
+melhores modelos estado da arte no \tit{MIT300 benchmark} com cerca de
+três vezes menos parâmetros que outros.
 \end{resumo}
 
 \section{Introduction}
@@ -331,8 +331,28 @@ $5\times10^{-5}$ and L2 regularization of $3\times10^{-5}$.
 The whole training process took around two and a half hours.
 
 \section{Results}
+\begin{figure}[hbt]
+\begin{center}
+		\begin{tabular} {ccc}
+        Stimulus & Ground-truth & Ours\\
+		\includegraphics[width=0.21\textwidth]{./img/monkey_s.jpg} &
+        \includegraphics[width=0.21\textwidth]{./img/monkey_gt.jpg} &
+		\includegraphics[width=0.21\textwidth]{./img/monkey_m.jpg}\\
+		\includegraphics[width=0.21\textwidth]{./img/person_s.jpg} &
+        \includegraphics[width=0.21\textwidth]{./img/person_gt.jpg} &
+		\includegraphics[width=0.21\textwidth]{./img/person_m.jpg}\\
+		\includegraphics[width=0.21\textwidth]{./img/sign_s.jpg} &
+        \includegraphics[width=0.21\textwidth]{./img/sign_gt.jpg} &
+		\includegraphics[width=0.21\textwidth]{./img/sign_m.jpg}\\
+		\end{tabular}
+\end{center}
+\caption{Examples of predictions made by our model.}
+\label{fig:preds}
+\end{figure}
+
 \begin{table}[H]
     \centering
+    \label{table:results}
     \caption{State of the art models and results on \tit{MIT300 benchmark}}
     \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
@@ -356,15 +376,24 @@ The whole training process took around two and a half hours.
         \hline
     \end{tabular}
 \end{table}
-\begin{itemize}
-    \item Old method
-    \item New method, mit300 bm
-\end{itemize}
+
+Figure~\ref{fig:preds} illustrate some predictions made by our model.
+They are generally considerably similar to the ground truth.
+We tested our model on the 300 images of the \emph{MIT300 benchmark}.
+Table~\ref{table:results} shows the results.
+Metrics in bold show our values and the best values of the ranking.
+Our model achieves results comparable to the best models, while having
+at least one fourth of the parameters of any other model in the comparison.
+
 \section{Conclusion}
-\begin{itemize}
-    \item Ey, that's pretty good
-    \item next steps
-\end{itemize}
+In this paper, we proposed a novel fully convolutional network for the
+prediction of visual saliency on images.
+Our model architecture and data preprocessing were designed specifically
+for the task of salience prediction.
+Our methods showed to be very effective, yielding a network with performance
+on \emph{MIT300 benchmark} consistently among the ten best results on various
+metrics while having around three times less parameters than other state of
+the art models.
 
 % -- NAO MUDAR O ESTILO DAS REFERENCIAS BIBLIOGRAFICAS. O USO DO PADRAO DA SBC Eh OBRIGATORIO
 \bibliographystyle{sbc}
