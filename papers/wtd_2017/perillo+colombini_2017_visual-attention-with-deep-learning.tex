@@ -100,14 +100,14 @@ vision-related tasks~\cite{fixott_1957}.
 Even our brains can't handle all the sheer amount of sensorial information
 that we receive every second: We have attention, a fundamental mechanism
 that, among other functionalities, filters out irrelevant information
--- either visual or from other senses-- and helps focus our cognitive processes
-on what is important at a given moment.
-We consider these facts to be a strong evidence that, in order to solve
+-- either visual or from other senses-- and helps us focus our cognitive
+processes on what is important at a given moment.
+These facts are a strong evidence that, in order to solve
 vision, we need to have attention.
 
 \subsection{What is visual saliency?}
 Visual saliency can be defined as the delimitation of a certain spatial
-region of an image for further cognitive processing~\cite{treisman_1980}.
+region on an image for further cognitive processing~\cite{treisman_1980}.
 Psychologists have been studying for at least half a century what makes we
 direct our visual focus to a certain region and how we do it.
 
@@ -126,8 +126,8 @@ In this work, we focus on \emph{bottom-up} attention.
 \begin{figure}[hbt]
 \begin{center}
 		\begin{tabular} {cc}
-		\includegraphics[width=0.4\textwidth]{./img/giraffe_s.jpg} &
-		\includegraphics[width=0.4\textwidth]{./img/giraffe_m.jpg}\\
+		\includegraphics[width=0.5\textwidth]{./img/soccer_s.jpg} &
+		\includegraphics[width=0.5\textwidth]{./img/soccer_m.jpg}\\
         (a) & (b)
 		\end{tabular}
 \end{center}
@@ -146,13 +146,16 @@ to black represent a region of low saliency.
 Datasets with pairs image-map are usually obtained by colleting eye-fixation
 data from humans that looked at the images.
 
-\subsection{Computational models of Visual Saliency}
+\subsection{Related work}
 Early computational models of visual saliency were generally built based on
 filtering of images for extraction of a pre-selected set of features
 considered important for \emph{bottom-up} attention.
-One example is \emph{Vocus}~\cite{frintrop_2005}, a model that extracts
+Many of them are based on theoretical models of attention, such as the
+\emph{Feature Integration Theory}~\cite{treisman_1980}
+and \emph{Guided Search}~\cite{wolfe_1989}.
+\emph{Vocus}~\cite{frintrop_2005} is a computational model that extracts
 features such as color contrast, orientation and luminance contrast from
-different scales of the image to produce saliency maps like
+different scales of the image to produce saliency maps in the style of
 figure~\ref{fig:example}b.
 
 A rapid change of paradigm ocurred around 2015 when \emph{Deep Learning}
@@ -160,11 +163,32 @@ techniques showed to be extremely effective in the generation of saliency
 maps.
 Models such as \emph{Salicon}~\cite{jiang_2015} showed that applying
 convolutional neural networks with weights initialized from networks used
-for image classification such as \emph{VGG-16}~\cite{zisserman_2014}
+for image classification, e.g. \emph{VGG-16}~\cite{zisserman_2014}
 could yield maps very similar to those generated from humans.
+Later works further explored this idea.
+\emph{ML-net}~\cite{cornia_2016} uses the output from different layers
+of \emph{VGG-16} to use information from various dimensions and levels of
+abstraction.
+\emph{DeepFix}~\cite{kruthiventi_2015} extends a pre-trained model with
+new layers that account for global features and center bias.
+\emph{Salnet}~\cite{pan_2016} is a work that explores two models that are
+remarkably simple yet provides good results.
 As of today, at least nine out of the ten best models in the ranking of the
 \emph{MIT saliency benchmark}~\cite{mit_sal_bm} use \emph{Deep Learning}
 techniques.
+
+\subsection{Motivation}
+Current state of the art models are in general quite expensive computationally,
+partly because most of them are based on very big pre-trained networks.
+Even \emph{Salnet}, one of the simplest models, is composed
+of 25.8 million parameters.
+While pre-trained weights from classification tasks showed to be effective
+for saliency prediction, it is reasonable to question whether
+creating a network from scratch could yield a smaller amount of parameters
+that are more efficient for the sole task of salience prediction.
+Also, there are some ideas from previous work on psychology that weren't
+found to be used in current models but are considered worthwhile to be
+explored.
 
 \subsection{Objectives}
 This work aims at building a visual saliency model that is a) effective,
@@ -173,23 +197,70 @@ and b) relatively simple and computationally efficient.
 It is important that both criteria are matched because we aim at extending the
 model in the future for video and real time applications such as
 navigating robots.
-
-We present two models, one using hand-crafted feature extraction
-and the other using a fully convolutional neural network.
-We then compare the results of both.
-
-\begin{figure}[hbt]
-\begin{center}
-    \includegraphics[width=1.0\textwidth]{./img/model.png}
-\end{center}
-\end{figure}
-
+We build a novice fully convolutional neural network.
+A previously built classical model, which is strongly based on \emph{Vocus},
+is used for comparison purposes.
 
 \section{Methodology}
 \begin{itemize}
     \item Old method: be succint
     \item New method: architecture, datasets, datapreproc, training
 \end{itemize}
+
+\begin{figure}[hbt]
+    \centering
+    \def\svgwidth{\columnwidth}
+    \input{./img/model.pdf_tex}
+    \label{fig:model}
+    \caption{Overview of the network architecture.
+        Filters are in format width$\times$height\_stride.}
+\end{figure}
+
+\begin{figure}[hbt]
+    \centering
+    \def\svgwidth{0.7\linewidth}
+    \input{./img/inception.pdf_tex}
+   \label{fig:inception}
+    \caption{Inception block layout.}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+	\hline
+	Block number & Filter name & Number of filters\\
+	\hline
+    1 & conv 1 & 48\\
+    \hline
+    2 & conv 1 & 64\\
+    \hline
+    2 & conv 2 & 96\\
+    \hline
+    3 & conv 1 & 128\\
+    \hline
+    3 & conv 2 & 128\\
+    \hline
+    3 & conv 3 & 144\\
+    \hline
+    3 & conv 4 & 144\\
+    \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+	\hline
+    Block number & conv 3x3 reduce & conv 3x3 & conv 5x5 reduce & conv 5x5
+    & conv 1x1 & pool\\
+    \hline
+    1 & 32 & 64 & 24 & 48 & 64 & 64\\
+    \hline
+\end{tabular}
+\end{table}
+
+
 \section{Results}
 \begin{itemize}
     \item Old method
