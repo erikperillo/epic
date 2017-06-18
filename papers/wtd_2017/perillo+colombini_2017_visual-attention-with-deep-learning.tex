@@ -181,9 +181,6 @@ and b) relatively simple and computationally efficient.
 It is important that both criteria are matched because we aim at extending the
 model in the future for video and real time applications such as
 navigating robots.
-We build a novice fully convolutional neural network.
-A previously built classical model, which is strongly based on \emph{Vocus},
-is used for comparison purposes.
 
 \section{Methodology}
 Implementations were made using \emph{Theano} version \texttt{0.9.0.dev}
@@ -238,7 +235,7 @@ input image. It is composed of four main blocks:
 
 \begin{figure}[hbt]
     \centering
-    \def\svgwidth{0.45\linewidth}
+    \def\svgwidth{0.5\linewidth}
     \input{./img/inception.pdf_tex}
    \label{fig:inception}
     \caption{Inception block layout.}
