@@ -27,7 +27,7 @@
 % -- CERTIFIQUE-SE DE QUE O TITULO NAO ESTEJA ULTRAPASSANDO OS LIMITES
 % -- DAS MARGENS.
 % -- USE O COMANDO QUEBRA-DE-LINHA (\\) SE TITULO FOR MUITO LONGO.
-\title{Visual Attention with Deep Learning}
+\title{Efficient Visual Attention with Deep Learning}
 
 % -- CERTIFIQUE-SE DE QUE O NOME DOS AUTORES ESTEJA CORRETO.
 % -- EM GERAL COLOCA-SE O ALUNO COMO PRIMEIRO AUTOR E O ORIENTADOR COMO
@@ -91,8 +91,8 @@ there is great potential for the benefit of society.
 Vision is remarkably data and computationally intensive:
 In humans, approximately half the brain is involved in
 vision-related tasks~\cite{fixott_1957}.
-Even our brains can't handle all the sheer amount of sensorial information
-that we receive every second: We have attention, a fundamental mechanism
+Even our minds can't handle all the sheer amount of sensorial information
+received every second: We have attention, a fundamental mechanism
 that, among other functionalities, filters out irrelevant information
 -- either visual or from other senses-- and helps us focus our cognitive
 processes on what is important at a given moment.
@@ -102,8 +102,7 @@ vision, we need to have attention.
 \subsection{What is visual saliency?}
 Visual saliency can be defined as the delimitation of a certain spatial
 region on an image for further cognitive processing~\cite{treisman_1980}.
-The phenomenon of visual saliency may emerge from two fundamentally
-different processes:
+The phenomenon may emerge from two fundamentally different processes:
 There is \emph{top-down} attention, an internal
 stimuli of the agent (e.g. find a red apple in a tree because of hunger,
 which will automatically make red be reconizable more easily on the scene),
@@ -113,8 +112,8 @@ In this work, we focus on \emph{bottom-up} attention.
 \begin{figure}[hbt]
 \begin{center}
 		\begin{tabular} {cc}
-		\includegraphics[width=0.33\textwidth]{./img/soccer_s.jpg} &
-		\includegraphics[width=0.33\textwidth]{./img/soccer_m.jpg}\\
+		\includegraphics[width=0.39\textwidth]{./img/traffic_sign_s.jpg} &
+		\includegraphics[width=0.39\textwidth]{./img/traffic_sign_m.jpg}\\
         (a) & (b)
 		\end{tabular}
 \end{center}
@@ -124,7 +123,7 @@ In this work, we focus on \emph{bottom-up} attention.
 \label{fig:example}
 \end{figure}
 
-Visual salient regions on images are usually represented by
+Visually salient regions on images are usually represented by
 \emph{saliency maps}.
 Such maps are grayscale images generated such that
 areas with pixels close to white express high saliency
@@ -138,9 +137,9 @@ Early computational models of visual saliency were generally built based on
 filtering of images for extraction of a pre-selected set of features
 considered important for \emph{bottom-up} attention.
 \emph{Vocus}~\cite{frintrop_2005} is a computational model that extracts
-features such as color contrast, orientation and luminance contrast from
-different scales of the image, features shown to be naturally salient to
-humans~\cite{colombini_2016}.
+features shown to be naturally salient to humans such as color/luminance
+contrast and orientation~\cite{colombini_2016} from different scales of the
+image.
 
 A rapid change of paradigm ocurred around 2015 when \emph{Deep Learning}
 techniques showed to be extremely effective in the generation of saliency
@@ -149,17 +148,19 @@ Models such as \emph{Salicon}~\cite{jiang_2015} showed that applying
 convolutional neural networks with weights initialized from networks used
 for image classification, e.g. \emph{VGG-16}~\cite{zisserman_2014}
 could yield maps very similar to those generated from humans.
-Later works further explored this idea.
-\emph{ML-net}~\cite{cornia_2016} uses the output from different layers
+\emph{ML-Net}~\cite{cornia_2016} uses the output from different layers
 of \emph{VGG-16} to use information from various dimensions and levels of
 abstraction.
 \emph{DeepFix}~\cite{kruthiventi_2015} extends a pre-trained model with
 new layers that account for global features and center bias.
 \emph{Salnet}~\cite{pan_2016} is a work that explores two models that are
-remarkably simple yet provides good results.
-As of today, at least nine out of the ten best models in the ranking of the
-\emph{MIT saliency benchmark}~\cite{mit_sal_bm}, a benchmark that uses
-a variety of metrics to rank models, use \emph{Deep Learning} techniques.
+simple yet provide good results.
+Models are usually evaluated and ranked on
+\emph{MIT saliency benchmark}~\cite{mit_sal_bm}, which uses a variety of
+metrics to express how close generated saliency maps are to those created from
+human data.
+As of today, at least nine out of the ten best models in the ranking use
+Deep Learning.
 
 \subsection{Motivation}
 Current state of the art models are in general quite expensive computationally,
@@ -168,8 +169,8 @@ The convolutional layers of \emph{VGG-16} are composed of around 14.7
 million parameters.
 While pre-trained weights from classification tasks showed to be effective
 for saliency prediction, it is reasonable to question whether
-creating a network from scratch could yield a smaller amount of parameters
-that are more efficient for the sole task of salience prediction.
+creating a proper network from scratch could yield a smaller amount of
+parameters that are more efficient for the sole task of salience prediction.
 Also, there are some ideas from previous work on psychology that weren't
 found to be used in current models but are considered worthwhile to be
 explored.
@@ -182,27 +183,22 @@ It is important that both criteria are matched because we aim at extending the
 model in the future for video and real time applications such as
 navigating robots.
 
-\section{Methodology}
-Implementations were made using \emph{Theano} version \texttt{0.9.0.dev}
-along with the framework \emph{Lasagne} version \texttt{0.2.dev1}.
-Experiments were conducted on a machine with \emph{Ubuntu 16.04 LTS} and
-kernel \emph{Linux} version \texttt{4.8.0-54-generic}.
-We used a GPU \emph{NVIDIA GTX 1080} for training the model.
+\section{Proposed model}
+Figure~\ref{fig:model} illustrates the overall architecture of our fully
+convolutional neural network.
+It extracts features from increasingly smaller dimensions of the
+input image.
 
-\subsection{Proposed model}
 \begin{figure}[hbt]
     \centering
     \def\svgwidth{\columnwidth}
     \input{./img/model.pdf_tex}
     \label{fig:model}
     \caption{Overview of the network.
-        Filters sizes are in format w$\times$h\_stride.}
+        Filters sizes are in format width$\times$height\_stride.}
 \end{figure}
 
-Figure~\ref{fig:model} illustrates the overall architecture of our fully
-convolutional neural network.
-The network extracts features from increasingly smaller dimensions of the
-input image. It is composed of four main blocks:
+The network is composed of four main blocks:
 \begin{enumerate}
     \item First level extracts low level features from the input image, of
         dimensions $W\times H \times 3$ (width, height, depth), using
@@ -230,35 +226,35 @@ input image. It is composed of four main blocks:
         important at this level.
         A $1 \times 1$ convolution makes a linear combination of the output
         maps at the end of the 8 inception blocks, followed by ReLu, producing
-        the final saliency map with dimensions $W/8 \times H/8 \times 1$.
+        the final saliency map of dimensions $W/8 \times H/8 \times 1$.
 \end{enumerate}
 
-\begin{figure}[hbt]
+\begin{figure}[H]
     \centering
-    \def\svgwidth{0.5\linewidth}
+    \def\svgwidth{0.60\linewidth}
     \input{./img/inception.pdf_tex}
    \label{fig:inception}
     \caption{Inception block layout.}
 \end{figure}
 
-Figure~\ref{fig:inception} illustrates the inception architecture
+Figure~\ref{fig:inception} illustrates the inception
+architecture~\cite{szegedy_2014}
 used in each block: We use filters of size $5 \times 5$, $3 \times 3$
 (both preceeded by $1\times 1$ convolutions in order to reduce number
-of input filters), $1 \times 1$ (which allows for carrying ahead
-of previous layers), and a max-pooling of size $3 \times 3$.
+of input filters), $1 \times 1$, and a max-pooling of size $3 \times 3$.
 Each of these operations is realized in parallel from the same input
 and the outputs are concatenated at the output.
 Inception allows the network to use
 information from different spatial dimensions as well as previous
 layers (lower level saliency information) in the final map
 computation, which is considered to be important for visual saliency.
-The network has a total of $3717841$ parameters, which is a very low number
+The network has a total of $3717841$ parameters, a very low number
 compared to other models.
 
 \begin{table}[H]
 \centering
 \label{table:inception}
-\caption{Number of filters used at each inception block.}
+\caption{Number of filters used in each inception block.}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 	\hline
     Block & pool & conv 1$\times$1 & 3$\times$3 reduce &
@@ -283,6 +279,14 @@ compared to other models.
 \end{tabular}
 \end{table}
 
+\subsection{Implementation}
+We used \emph{Theano} \texttt{0.9.0.dev}
+along with \emph{Lasagne} \texttt{0.2.dev1}
+on a machine with \emph{Ubuntu 16.04 LTS} and
+kernel \emph{Linux} \texttt{4.8.0-54-generic}.
+Training was conducted on a GPU \emph{NVIDIA GTX 1080}.
+Code is available at \texttt{https://goo.gl/WzpyYJ}.
+
 \subsection{Training}
 We resize images to dimensions $320\times240\times3$ during training.
 Each image is normalized channel-wise subtracting the channel mean and
@@ -293,9 +297,9 @@ saliency is highly connected to the context of the image.
 We also convert the images to the LAB colorspace.
 \emph{Vocus}~\cite{frintrop_2005} cites that the LAB colorspace is more
 closely related to human vision by encopassing red-green, yellow-blue and
-luminance maps. We conjecture that these maps facilitate extraction of
+luminance maps. We conjecture that this colorspace facilitate extraction of
 important luminance and color contrasts by the learned convolution filters.
-Our prior tests showed slighly better performance using image-wise
+Our prior tests showed better performance using image-wise
 normalization and LAB instead of the commonly used RGB\@.
 
 We aimed at maximizing (or minimizing the negative) of the
@@ -307,7 +311,7 @@ predictions~\cite{judd_2016}, but we consider $CC$ to be the most appropriate
 because it simmetrically penalizes both false positives and false negatives.
 
 We considered two datasets for training:
-\emph{SALICON}~\cite{salicon}, with 15000 images, and
+\emph{SALICON}~\cite{jiang_2015}, with 15000 images, and
 \emph{Judd}~\cite{judd}, with 1003 images.
 The network was trained using Stochastic Gradient Descent with Nesterov
 Momentum of $0.9$.
@@ -316,15 +320,16 @@ horizontally and vertically and the target normalized by mean-std
 (Last conv layer had ReLu removed in this step).
 We first used mean-std normalization
 of targets because it was noted that it allowed for a faster convergence.
-The network was trained for 5 epochs with learning rate of $0.009$
+Training iterated for 5 epochs with learning rate of $0.009$
 and then for 3 epochs with learning rate of $0.001$.
-We then switched to target normalized by unit normalization.
+We then switched to using unit normalization on targets.
 The network was trained for 1 epoch with learning rate of
 $3\times10^{-5}$ and L2 regularization of $10^{-4}$.
 Finally, we used Judd with data augmentation by flipping images horizontally
 and the target normalized by unit normalization.
-The network was trained for 2 epochs with learning rate of
+Training iterated for 2 epochs with learning rate of
 $5\times10^{-5}$ and L2 regularization of $3\times10^{-5}$.
+Batch sizes were 10 for SALICON and 2 for Judd.
 The whole training process took around two and a half hours.
 
 \section{Results}
@@ -350,40 +355,43 @@ The whole training process took around two and a half hours.
 \begin{table}[H]
     \centering
     \label{table:results}
-    \caption{State of the art models and results on \tit{MIT300 benchmark}}
+    \caption{State of the art models and metric scores on
+    \emph{MIT300 benchmark}.}
     \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
         \tbf{Model} & Num. parameters & AUC-Judd $\uparrow$ & CC $\uparrow$
             & NSS $\uparrow$ & Sim $\uparrow$ & EMD $\downarrow$\\
         \hline
-        Inf humans & - & 0.92 & 1.0 & 3.29 & 1.0 & 0\\
+        Infinite humans & - & 0.92 & 1.0 & 3.29 & 1.0 & 0\\
         \hline
-        \emph{DeepFix} & $>$16.7 million & \textbf{0.87} & \textbf{0.78}
-            & \textbf{2.26} & \textbf{0.67} & \textbf{2.04}\\
+        \emph{DeepFix} & $\approx$16.7 million & 0.87 & 0.78
+            & 2.26 & 0.67 & 2.04\\
         \hline
-        \emph{Salicon} & $>$14.7 million & \textbf{0.87} & 0.74 & 2.12
+        \emph{Salicon} & $\approx$14.7 million & 0.87 & 0.74 & 2.12
             & 0.60 & 2.62\\
         \hline
-        \textbf{\emph{Ours}} & \textbf{3.72 million} & \textbf{0.85} &
+        \textbf{Ours} & \textbf{3.72 million} & \textbf{0.85} &
         \textbf{0.71} & \textbf{1.98} & \textbf{0.62} & \textbf{2.37}\\
         \hline
-        \emph{ML-Net} & $>$15.4 million & 0.85 & 0.69 & 2.07 & 0.60 & 2.53\\
+        \emph{ML-Net} & $\approx$15.4 million & 0.85 & 0.69 & 2.07 & 0.60
+            & 2.53\\
         \hline
         \emph{SalNet} & 25.8 million & 0.83 & 0.57 & 1.51 & 0.52 & 3.31\\
         \hline
     \end{tabular}
 \end{table}
 
-Figure~\ref{fig:preds} illustrate some predictions made by our model.
+Predition took an average time of 8 milliseconds.
+Figure~\ref{fig:preds} show some maps generated by our model.
 They are generally considerably similar to the ground truth.
 We tested our model on the 300 images of the \emph{MIT300 benchmark}.
-Table~\ref{table:results} shows the results.
-Metrics in bold show our values and the best values of the ranking.
-Our model achieves results comparable to the best models, while having
-at least one fourth of the parameters of any other model in the comparison.
+Table~\ref{table:results} shows the results,
+metrics in bold show our values.
+Our model achieves results comparable to the best state of the art models,
+while having at least one fourth of the number of parameters.
 
 \section{Conclusion}
-In this paper, we proposed a novel fully convolutional network for the
+In this paper, we proposed a novel fully convolutional neural network for the
 prediction of visual saliency on images.
 Our model architecture and data preprocessing were designed specifically
 for the task of salience prediction.
