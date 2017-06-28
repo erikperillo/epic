@@ -1,0 +1,112 @@
+Um dos maiores subproblemas da Inteligência Artificial é a visão.
+A visão é fundamental pra uma quantidade enorme de seres vivos na Terra.
+
+Na verdade, há biólogos que acreditam que o surgimento dos primeiros olhos
+foi um dos responsáveis pela explosão do pré-cambriano: um crescimento
+desenfreado no número de espécies do planeta que aconteceu
+aproximadamente 340 milhões de anos atrás.
+
+Não é exagero dizer que a visão é o sentido mais importante para os seres
+humanos.
+É a principal fonte de informação que usamos pra ter ciência do mundo ao nosso
+redor.
+
+Às vezes ela nos deixa meio confusos... Mas no geral ela funciona muito bem.
+
+Um dos grandes problemas é que a visão é um processo muito custoso.
+Há neurocientistas que dizem que mais da metade do nosso cérebro está envolvida
+em alguma tarefa visual.
+
+A quantidade de informação visual que recebemos a cada segundo é colossal.
+Nem nossa mente é capaz de lidar com tudo isso de uma vez.
+
+Essa questão é resolvida com um processo mental fundamental: a atenção.
+Com atuação não limitada apenas à visão, a atenção é o filtro que a nossa
+mente realiza para que possamos focar nosso poder cognitivo apenas ao que
+importa num dado momento.
+Sem a atenção, nossa mente não seria capaz de lidar com o mundo.
+Assim, para a Inteligência Artificial, não só a visão é um problema importante,
+mas a atenção também é fundamental.
+Focando na atenção visual, é ela que nos permite analisar cenas tão complexas
+como essa, focando em uma parte de cada vez, como essa pessoa na canga
+
+e a família no barco.
+
+Atenção visual pode ser definida como a seleção de uma certa região
+espacial do campo visual para posterior processamento cognitivo.
+
+A atenção pode emergir de dois caminhos diferentes:
+O que chamamos de top-down, que são estímulos internos que guiam na nossa
+seletividade de estímulos;
+E a bottom-up, que são estímulos externos que captam, roubam nossa atenção.
+Também chamamos de saliência visual, que é como vou chamá-la agora e a que
+focamos neste trabalho.
+A atenção bottom-up é muito interessante porque ela gera atenção involuntária.
+Acontece que tem padrões visuais que são naturalmente chamativos para o ser
+humano, principalmente questões de contraste.
+
+Por exemplo, contraste de cor:
+nesta imagem, quase todas as pessoas instintivamente olham
+primeiramente para o objeto azul.
+
+Isso não é nada especial do azul, mas sim do contexto da cena:
+Nesta imagem, é provável que você olhou primeiro para o objeto amarelo.
+
+Outros padrões (ou features) são: diferenças de tamanho;
+
+Ou de orientação.
+Há muitas outras características naturalmente chamativas e há estudos
+na área de psicologia sobre elas.
+
+As imagens que eu mostrei atrás são sintéticas.
+Mas em imagens do "mundo real", esse fenômeno ainda acontece:
+Há regiões da imagem que são naturalmente salientes para os seres humanos
+em geral.
+Neste exemplo, você provavelmente olha primeiro pro extintor.
+Temos informação sobre onde humanos olham por
+vários datasets com de milhares de imagens que
+foram observadas por milhares de pessoas, geralmente com dispositivos de
+eye tracking.
+As imagens têm regiões que são mais prováveis de chamar a atenção.
+
+Com os dados coletados, podemos gerar o que chamamos de mapas de saliência.
+Essa imagem ilustra um mapa de saliência.
+São imagens que têm pixels com intensidade maior, ou mais brancos, nas partes
+que foram mais chamativas para seres humanos.
+Assim, se nessa região do mapa temos uma mancha branca, quer dizer que essa
+região na imagem foi mais saliente visualmente para seres humanos.
+
+Temos outros exemplos aqui,
+
+aqui,
+
+aqui.
+
+A pergunta agora é: podemos fazer um computador identificar saliências visuais?
+
+Isto é:
+dada uma imagem, queremos gerar um mapa de saliência coerente com o que
+seria gerado por humanos.
+Modelos computacionais com esse objetivo têm sido desenvolvidos há alguns anos.
+Muitos sistemas usam os achados da psicologia para levar em consideração
+contrastes, cor, orientação etc, extraindo features da imagem que salientam
+essas questões.
+
+O grande problema é que em imagens do mundo real, há combinações de fatores
+muito complexas.
+
+Isso torna muito difícil fazer modelos que captem as nuances da saliência
+de forma satisfatória apenas extraindo features feitas à mão baseadas
+em achados da psicologia.
+
+Isto é: entendemos que, na imagem da esquerda, as pessoas vão olhar mais pra
+parte verde e o porquê disso.
+Mas pra onde as pessoas vão olhar aqui nesta imagem do mundo real?
+Como programamos para isso? Difícil dizer.
+
+Esse era inclusive o problema da classificação alguns anos atrás:
+É desafiador extrair um conjunto de features à mão que lidem com todas as
+nuances do mundo real.
+Na classificação, um boost na performance foi dado com o uso de deep learning
+que atacava justamente esse problema: as features eram aprendidas.
+E é isso que foi feito para saliência visual.
