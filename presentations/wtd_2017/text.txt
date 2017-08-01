@@ -1,37 +1,42 @@
-Um dos maiores subproblemas da Inteligência Artificial é a visão.
-A visão é fundamental pra uma quantidade enorme de seres vivos na Terra.
+[Intro]
+Olá, bom dia, meu nome é Erik.
+
+Pra falar do meu trabalho, preciso falar de visão.
+A visão é muito importante pra uma quantidade enorme de seres vivos na Terra.
 
 Na verdade, há biólogos que acreditam que o surgimento dos primeiros olhos
 foi um dos responsáveis pela explosão do pré-cambriano: um crescimento
 desenfreado no número de espécies do planeta que aconteceu
-aproximadamente 340 milhões de anos atrás.
+340 milhões de anos atrás.
 
-Não é exagero dizer que a visão é o sentido mais importante para os seres
-humanos.
+Desde essa época, os sistemas visuais evoluíram muito.
+Não é exagero dizer que, nos seres humanos, a visão é o sentido mais importante.
 É a principal fonte de informação que usamos pra ter ciência do mundo ao nosso
 redor.
 
 Às vezes ela nos deixa meio confusos... Mas no geral ela funciona muito bem.
 
+(1:10)
+[Problema]
 Um dos grandes problemas é que a visão é um processo muito custoso.
 Há neurocientistas que dizem que mais da metade do nosso cérebro está envolvida
 em alguma tarefa visual.
 
-A quantidade de informação visual que recebemos a cada segundo é colossal.
-Nem nossa mente é capaz de lidar com tudo isso de uma vez.
+A cada segundo, somos bombardeados com uma quantidade colossal de informação.
+É simplesmente impossível para o nosso cérebro lidar com tudo isso ao mesmo
+tempo.
 
-Essa questão é resolvida com um processo mental fundamental: a atenção.
-Com atuação não limitada apenas à visão, a atenção é o filtro que a nossa
+Essa questão é resolvida pela mente com a atenção.
+Não limitada apenas à visão, a atenção é o filtro que a nossa
 mente realiza para que possamos focar nosso poder cognitivo apenas ao que
 importa num dado momento.
-Sem a atenção, nossa mente não seria capaz de lidar com o mundo.
-Assim, para a Inteligência Artificial, não só a visão é um problema importante,
-mas a atenção também é fundamental.
+Sem a atenção, não seríamos capazes de lidar com o mundo.
 Focando na atenção visual, é ela que nos permite analisar cenas tão complexas
 como essa, focando em uma parte de cada vez, como essa pessoa na canga
 
 e a família no barco.
 
+[Background:conceitos]
 Atenção visual pode ser definida como a seleção de uma certa região
 espacial do campo visual para posterior processamento cognitivo.
 
