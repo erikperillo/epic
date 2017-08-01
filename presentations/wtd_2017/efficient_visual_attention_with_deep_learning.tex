@@ -23,7 +23,7 @@
 \newcommand{\ttt}[1]{\texttt{#1}}
 
 %title
-\title{Atenção Visual Eficiente com Deep Learning}
+\title{Efficient Visual Attention with Deep Learning}
 \subtitle{}
 \author{Erik Perillo, Esther Colombini}
 \date{}
@@ -56,12 +56,12 @@
 %    \end{figure}
 %\end{frame}
 
-\begin{frame}{}
-    \begin{figure}
-        \centering
-        \includegraphics[width=1.0\linewidth]{./img/confusing_image_4.jpg}
-    \end{figure}
-\end{frame}
+%\begin{frame}{}
+%    \begin{figure}
+%        \centering
+%        \includegraphics[width=1.0\linewidth]{./img/confusing_image_4.jpg}
+%    \end{figure}
+%\end{frame}
 
 \begin{frame}{}
     \begin{figure}
@@ -191,11 +191,10 @@
 \end{frame}
 
 \begin{frame}{Modelo de saliência visual}
-    \tbf{Problemas:}
+    \tbf{Problema:}
     \begin{itemize}[<+->]
-        \item Saliência emerge de relações muito complexas em imagens normais
-        \item É difícil captar todas as nuances envolvidas apenas extraindo
-            \tit{features} pré-determinadas
+        \item É difícil captar todas as nuances envolvidas na saliência
+            em imagens
     \end{itemize}
 \end{frame}
 
@@ -214,32 +213,30 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{VGG-16}
+\begin{frame}{}
     \begin{center}
         \includegraphics[width=0.8\textwidth]{./img/vgg16.png}
     \end{center}
 \end{frame}
 
-\section{Objetivo}
+%\section{Objetivo}
 
 \begin{frame}{}
     \begin{quote}
         É possível um modelo de saliência visual que seja \tbf{efetivo} e
-        mais \tbf{computacionalmente eficiente}?
+        mais \tbf{eficiente}?
     \end{quote}
 \end{frame}
 
-\section{Modelo Proposto}
-
-\begin{frame}{Hipótese: aspectos relevantes}
+\begin{frame}{Hipótese: items relevantes}
     \begin{itemize}[<+->]
-        \item Rede neural totalmente convolucional específica para saliência
-        \item Arquitetura que extraia informações de contraste e
-            múltiplas dimensões
+        \item Arquitetura de rede neural \tbf{específica} para saliência visual
         \item Pré-processamento de dados adequado ao contexto de saliência
             visual
     \end{itemize}
 \end{frame}
+
+\section{Modelo Proposto}
 
 \begin{frame}{Arquitetura da rede}
     \begin{figure}[hbt]
@@ -426,10 +423,10 @@
 
 \begin{frame}{Conclusões}
     \begin{itemize}[<+->]
-        \item Obteve-se uma nova rede neural totalmente convolucional
-            para detecção de saliência visual
+        \item É possível obter redes convolucionais mais eficientes para
+            detecção de saliência visual
         \item Nosso modelo tem desempenho comparável ao estado da arte
-            tendo cerca de \tbf{3/4} menos parâmetros
+            tendo cerca de \tbf{1/4} do número de parâmetros
         \item Arquitetura e pré-processamento de dados \tbf{específicos
             para o contexto de saliência visual} mostraram-se importantes
     \end{itemize}

@@ -1,4 +1,4 @@
-[Intro]
+[Intro][1:10]
 Olá, bom dia, meu nome é Erik.
 
 Pra falar do meu trabalho, preciso falar de visão.
@@ -16,8 +16,7 @@ redor.
 
 Às vezes ela nos deixa meio confusos... Mas no geral ela funciona muito bem.
 
-(1:10)
-[Problema]
+[Problema][1:10]
 Um dos grandes problemas é que a visão é um processo muito custoso.
 Há neurocientistas que dizem que mais da metade do nosso cérebro está envolvida
 em alguma tarefa visual.
@@ -36,7 +35,7 @@ como essa, focando em uma parte de cada vez, como essa pessoa na canga
 
 e a família no barco.
 
-[Background:conceitos]
+[Background:Atenção Visual]
 Atenção visual pode ser definida como a seleção de uma certa região
 espacial do campo visual para posterior processamento cognitivo.
 
@@ -87,6 +86,7 @@ aqui,
 
 aqui.
 
+[Background:Atenção visual artificial]
 A pergunta agora é: podemos fazer um computador identificar saliências visuais?
 
 Isto é:
@@ -109,7 +109,8 @@ parte verde e o porquê disso.
 Mas pra onde as pessoas vão olhar aqui nesta imagem do mundo real?
 Como programamos para isso? Difícil dizer.
 
-Esse era inclusive o problema da classificação alguns anos atrás:
+[Background:Estado da arte]
+Esse era o problema da classificação alguns anos atrás:
 É desafiador extrair um conjunto de features à mão que lidem com todas as
 nuances do mundo real.
 Na classificação, um boost na performance foi dado com o uso de deep learning
