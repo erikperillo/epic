@@ -66,60 +66,32 @@ enormes quantias de dados.
 mecanismos semelhantes que sirvam a sistemas de inteligência
 artificial em máquinas.
 
+Um conceito importante na atenção visual é a distinção
+\tit{Bottom-up vs. Top-down}: Por componente \tit{bottom-up} de
+atenção entende-se saliências instintivas percebidas por mudanças
+e/ou contrastes muito grandes em uma cena. O componente \tit{top-down}
+é aquele que dá saliência variável às \tit{features} de acordo
+com a meta do agente do momento.
+Neste trabalho, foca-se na atenção \tit{bottom-up}, também chamada de
+saliência visual.
+
+%Os avanços recentes em \tit{Deep Learning} levaram a modelos computacionais
+%ainda mais eficientes.
 A atenção tem sido foco de estudo há anos, resultando em diversas teorias
 em psicologia sobre a atenção humana que inspiraram a implementação de
 modelos computacionais bem sucedidos.
-Os avanços recentes em \tit{Deep Learning} levaram a modelos computacionais
-ainda mais eficientes.
-
-\subsection{Objetivos}
-Neste trabalho, objetivamos construir um modelo atencional eficiente, focando
-primeiramente na atenção visual.
-O objetivo é que o modelo possa ser usado em um \tit{framework} atencional
-para robôs móveis em conjunto com outros mecanismo de atenção sensorial.
-
-Em resumo, as principais atividades do trabalho envolveram:
-\begin{itemize}
-    \item Revisão bibliográfica sobre teorias sobre a atenção, diversos
-        modelos e métricas.
-    \item Implementação de um modelo atencional com métodos tradicionais.
-    \item Implementação de um modelo atencional com \tit{Deep Learning}, com
-        eficiência suficiente para posterior uso em robôs móveis.
-\end{itemize}
-
-As atividades desenvolvidas são mais detalhadas no decorrer do documento.
-
-\section{Materiais e métodos}
-\subsection{Conceitos básicos}
-Dois dos conceitos importantes para o entendimento da literatura do meio são:
-\begin{itemize}
-    \item \tit{features}: Características básicas que formam entidades
-        visuais. Podem ser de várias classes, como cor
-        (verde, azul), orientação (horizontal, vertical), luminância, tamanho.
-    \item \tit{Bottom-up vs. Top-down}: Por componente \tit{bottom-up} de
-        atenção entende-se saliências instintivas percebidas por mudanças
-        e/ou contrastes muito grandes em uma cena. O componente \tit{top-down}
-        é aquele que dá saliência variável às \tit{features} de acordo
-        com a meta do agente do momento.
-\end{itemize}
-Neste trabalho, foca-se na atenção \tit{bottom-up}.
-
-A maioria dos modelos computacionais baseia-se em teorias formadas na
-psicologia.
-Duas das mais famosas são a \tit{Feature Integration Theory}
-(FIT)~\cite{TreismanGelade1980} e a
+Duas das mais famosas teorias da psicologia sobre atenção visual
+são a \tit{Feature Integration Theory} (FIT)~\cite{TreismanGelade1980} e a
 \tit{Guided Search}~\cite{Wolfe1989}.
-Ambas provêm contribuiões importantes para o entendimento dos processos
-de saliência visual.
-Diversos modelos computacionais foram criados baseando-se em ideias delas.
-
+Ambas provêm contribuições importantes para o entendimento dos processos
+de saliência visual
+e diversos modelos computacionais foram criados baseando-se em ideias delas.
 A FIT indica basicamente que se a busca de um objeto de interesse em uma
 cena for por apenas uma \tit{feature}, a localização é feita em tempo
 instantâneo.
 Entretanto, se o objeto de interesse for composto por múltiplas \tit{features}
 a serem buscadas (\eg uma linha horizontal verde),
 a localização do objeto é feita em tempo linear.
-
 Já \tit{Guided Search} diz que buscas por conjunções de \tit{features} são na
 verdade mais rápidas pois a combinação das features gera um sinal de
 saliência mais forte no campo visual humano.
@@ -147,6 +119,28 @@ nas imagens.
 \label{fig:salmap}
 \end{figure}
 
+\subsection{Objetivos}
+Neste trabalho, objetivamos construir um modelo atencional eficiente, focando
+primeiramente na saliência visual.
+Assim, o modelo deve ser capaz de, dada uma imagem de entrada qualquer,
+produzir um mapa de saliência como o da figura~\ref{fig:salmap}, que seja
+o mais fiel possível a um mapa que seria gerado por seres humanos.
+O objetivo é que o modelo possa ser usado em um \tit{framework} atencional
+para robôs móveis em conjunto com outros mecanismo de atenção sensorial.
+
+Em resumo, as principais atividades do trabalho envolvem:
+\begin{itemize}
+    \item Revisão bibliográfica sobre teorias sobre a atenção, diversos
+        modelos e métricas.
+    \item Implementação de um modelo atencional com métodos tradicionais.
+    \item Implementação de um modelo atencional com \tit{Deep Learning}, com
+        eficiência suficiente para posterior uso em robôs móveis.
+\end{itemize}
+
+As atividades desenvolvidas são mais detalhadas no decorrer do documento.
+
+\section{Materiais e métodos}
+%\subsection{Conceitos básicos}
 \subsection{Avaliação de desempenho}
 Foi feita uma pesquisa das métricas e \tit{datasets} mais usados para
 avaliação dos modelos computacionais, pois isso
@@ -166,7 +160,7 @@ Dois dos tipos principais de mapas-verdade:
 	onde as mesmas olham em um intervalo de tempo. Apenas os pixels com
 	fixação são brancos.
 
-	\item Máscaras contínuas: As regiões salientes têm valores
+	\item Mapas contínuos: As regiões salientes têm valores
 	contínuos em um intervalo de intensidade de \tit{pixels}, com valores
 	maiores representando uma saliência maior.
 	São geralmente obtidas através dos pontos de fixação, aplicando-se
@@ -248,10 +242,13 @@ falsos negativos mais que falsos positivos.
 \ttt{CC} também é boa por ser neutra e penalizar falsos positivos/negativos
 igualmente.
 
-O \tit{MIT300 benchmark} é, além de um dataset, um \tit{benchmark} amplamente
+\subsubsection{MIT300 benchmark}
+O \tit{MIT300 benchmark}~\cite{mit-300} é, além de um dataset,
+um \tit{benchmark} amplamente
 utilizado para a avaliação do desempenho de modelos de saliência visual.
-Diversas métricas, são utilizadas para a ordenação dos modelos em um
+Diversas métricas são utilizadas para a ordenação dos modelos em um
 \tit{ranking}.
+É nele que os modelos aqui desenvolvidos serão avaliados.
 
 \subsection{Modelo atencional com técnicas tradicionais}
 O VOCUS~\cite{Frintrop2006} é um modelo atencional computacional
@@ -431,7 +428,7 @@ A rede é composta de quatro blocos principais:
         \tit{Max-pooling} acontece no final.
         Um grande número de filtros neste nível mostrou-se importante para
         o desempenho da rede.
-    \item O quatro e último nível é composto de oito blocos \tit{inception}
+    \item O quarto e último nível é composto de oito blocos \tit{inception}
         que extraem \tit{features} de alto nível de abstração da entrada
         com dimensões $W/8 \times H/8 \times 144$.
         Um número elevado de blocos mostrou-se importante.
@@ -463,8 +460,10 @@ aspectos importantes no contexto de saliência visual.
    \label{fig:newinception}
 \end{figure}
 
-The network has a total of $3717841$ parameters, a very low number
-compared to other models. Table \ref{table:inception} details the filter configuration for the inception layers.
+A rede tem um total de $3717841$ parâmetros, um número muito baixo comparado
+a outros modelos.
+A tabela \ref{table:inception} detalha os números de filtros para cada
+bloco \tit{inception} utilizado.
 
 \begin{table}[H]
 \centering
@@ -506,8 +505,8 @@ disponível em \texttt{https://goo.gl/WzpyYJ}.
 \subsubsection{Treinamento}
 Durante o treinamento, as imagens foram redimensionadas para
 $320\times240\times3$.
-Além disso, cada imagem é normalizada por canal pela subtração da média e
-divisão pelo desvio padrão de cada canal.
+Cada imagem é normalizada por canal pela subtração da média e
+divisão pelo desvio padrão.
 Além disso, dois aspectos são importantes nesta etapa:
 O uso de normalização por imagem, ao invés de pelo \tit{dataset}, e a
 conversão do espaço de cor das imagens para LAB (ao invés do comum RGB).
@@ -525,7 +524,7 @@ desempenho da rede.
 A função objetivo a se minimizar foi
 o coeficiente de correlação entre o mapa de saliência \tit{ground-truth} $G$
 e o mapa previsto $P$:
-$$CC(P, G) = cov(P, G)/(\sigma(P)\sigma(G))$$
+$$CC(P, G) = \frac{cov(P, G)}{(\sigma(P)\sigma(G))}$$
 Tal função de custo é considerada apropriada pois ela penaliza simetricamente
 falsos positivos e negativos.
 
@@ -538,7 +537,7 @@ imagens horizontalmente e verticalmente.
 O treinamento ocorreu por 5 épocas com \tit{learning rate} de $0.009$
 e então por 3 épocas com \tit{learning rate} de $0.001$.
 Mudou-se então para o \tit{dataset} Judd.
-O treinamento ocorreu por mais uma época, com learning rate de
+O treinamento ocorreu por mais uma época, com \tit{learning rate} de
 $3\times10^{-5}$ e regularização L2 de $10^{-4}$.
 Os tamanhos de batch foram 10 para SALICON e 2 para Judd.
 O processo de treinamento todo levou cerca de duas horas e meia.
@@ -590,21 +589,19 @@ modelos do ranking.
         Modelo & Num. parâmetros & AUC-Judd $\uparrow$ & CC $\uparrow$
             & NSS $\uparrow$ & Sim $\uparrow$ & EMD $\downarrow$\\
         \hline
-        Infinite humans & - & 0.92 & 1.0 & 3.29 & 1.0 & 0\\
-        \hline
-        \emph{DeepFix} & $\approx$16.7 million & 0.87 & 0.78
+        \emph{DeepFix} & $\approx$16.7 milhões & 0.87 & 0.78
             & 2.26 & 0.67 & 2.04\\
         \hline
-        \emph{Salicon} & $\approx$14.7 million & 0.87 & 0.74 & 2.12
+        \emph{Salicon} & $\approx$14.7 milhões & 0.87 & 0.74 & 2.12
             & 0.60 & 2.62\\
         \hline
-        \textbf{DeepPeek} & \textbf{3.72 million} & \textbf{0.85} &
+        \textbf{DeepPeek} & \textbf{3.72 milhões} & \textbf{0.85} &
         \textbf{0.71} & \textbf{1.98} & \textbf{0.62} & \textbf{2.37}\\
         \hline
-        \emph{ML-Net} & $\approx$15.4 million & 0.85 & 0.69 & 2.07 & 0.60
+        \emph{ML-Net} & $\approx$15.4 milhões & 0.85 & 0.69 & 2.07 & 0.60
             & 2.53\\
         \hline
-        \emph{SalNet} & 25.8 million & 0.83 & 0.57 & 1.51 & 0.52 & 3.31\\
+        \emph{SalNet} & 25.8 milhões & 0.83 & 0.57 & 1.51 & 0.52 & 3.31\\
         \hline
         \textbf{att} & - & \textbf{0.62} &
         \textbf{0.12} & \textbf{0.34} & \textbf{0.33} & \textbf{5.28}\\
@@ -629,7 +626,7 @@ Os resultados indicam que as técnicas atuais de aprendizado
 de filtros de extração de \tit{features} são de fato necessárias para
 um bom desempenho na tarefa de detecção de saliência visual.
 
-O modelo \tit{DeepPeek}, mostra um bom desempenho, sendo comparável
+O modelo \tit{DeepPeek} mostra um bom desempenho, sendo comparável
 ao dos melhores modelos atualmente, tendo apenas cerca de $1/4$ do número
 de parâmetros dos outros modelos.
 Assim, conclui-se que um modelo eficiente foi obtido com sucesso.
