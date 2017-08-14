@@ -355,18 +355,43 @@ chamativos e relações complexas de contraste e cor.
 Um significativo aumento no desempenho dos modelos ocorreu quando começou-se
 a usar técnicas de \tit{Deep Learning} para a tarefa.
 
-Modelos como \emph{Salicon}~\cite{jiang_2015} demonstraram que o uso de redes
-neurais convolucionais com
+\emph{Salicon}~\cite{jiang_2015} foi um dos primeiros modelos a usar
+\tit{Deep Learning}, demonstrando que o uso de redes neurais convolucionais com
 pesos inicializados de redes utilizadas para classificação, como a
 \emph{VGG-16}~\cite{zisserman_2014},
-poderiam levar à mapas de saliência visual muito similares àqueles
+poderiam levar a mapas de saliência visual muito similares àqueles
 gerados por humanos.
-A \emph{ML-Net}~\cite{cornia_2016} usa a saída de diferentes camadas da
+Sua arquitetura (ilustrada na figura~\ref{fig:salicon})
+leva em consideração múltiplas dimensões da imagem, o que é
+esperado para um bom desempenho no contexto de saliência visual.
+Isso é feito colocando-se na entrada a imagem juntamente com sua versão
+redimensionada pela metade.
+\begin{figure}[H]
+\begin{center}
+        \includegraphics[width=0.9\linewidth]{img/salicon.png}
+\end{center}
+\caption{Arquitetura do modelo \tit{Salicon}.}
+\label{fig:salicon}
+\end{figure}
+
+\emph{ML-Net}~\cite{cornia_2016} também considera diversas dimensões da
+imagem para o cômputo do mapa de saliência, porém isto é feito
+usando-se a saída de diferentes camadas da
 \emph{VGG-16}, combinado-as em várias dimensões e diferentes níveis de
-abstração enquanto a \emph{DeepFix}~\cite{kruthiventi_2015} estende um modelo pré-treinado com
-novos layers que consideram \tit{features} globais e \tit{center bias}. Finalmente, 
-a \emph{Salnet}~\cite{pan_2016} explora dois modelos bastante simples mas
-com bons resultados.
+abstração.
+
+\emph{DeepFix}~\cite{kruthiventi_2015} é um dos modelos com maior desempenho
+atualmente. Seu diferencial é estender um modelo pré-treinado (\emph{VGG-16})
+com dois tipos principais de camadas: Um bloco \tit{inception}, que extrai
+features de diversas dimensões da imagem em paralelo, e um componente que
+leva em consideração o \tit{center bias}: um viés presenta em fotos comuns
+onde as partes mais salientes da imagem tendem a estar no centro da imagem
+por assim terem sido fotografadas.
+
+\emph{Salnet}~\cite{pan_2016} explora dois modelos bastante simples, um
+com uma rede convolucional rasa, com poucas camadas e um
+\tit{fully connected layer} no final, e um modelo que é a \emph{VGG-16}
+pré-treinada com ligeiras modificações.
 
 O grande problema dos modelos atuais que usam \tit{Deep Learning} é que estes
 são custosos, em geral porque muitos usam redes treinadas para tarefas que não
