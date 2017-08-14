@@ -96,9 +96,9 @@ Já \tit{Guided Search} diz que buscas por conjunções de \tit{features} são n
 verdade mais rápidas pois a combinação das features gera um sinal de
 saliência mais forte no campo visual humano.
 
-\subsubsection{Mapas de saliência}
+\subsection{Mapas de saliência}
 Um conceito importante no contexto de saliência visual são os mapas
-de saliência (figura~\ref{fig:salmap}).
+de saliência (Figura~\ref{fig:salmap}).
 Para cada imagem, o seu respectivo mapa de saliência é um mapa onde
 regiões mais chamativas para humanos na imagem original são mais claras,
 e regiões menos chamativas são mais escuras.
@@ -120,42 +120,37 @@ nas imagens.
 \end{figure}
 
 \subsection{Objetivos}
-Neste trabalho, objetivamos construir um modelo atencional eficiente, focando
-primeiramente na saliência visual.
-Assim, o modelo deve ser capaz de, dada uma imagem de entrada qualquer,
-produzir um mapa de saliência como o da figura~\ref{fig:salmap}, que seja
+Neste trabalho, objetivamos construir um modelo atencional de saliência visual que possa ser executado em um robô móvel de forma eficiente. Assim, o modelo deve ser capaz de, dada uma imagem de entrada qualquer,
+produzir um mapa de saliência como o da Figura~\ref{fig:salmap}, que seja
 o mais fiel possível a um mapa que seria gerado por seres humanos.
 O objetivo é que o modelo possa ser usado em um \tit{framework} atencional
-para robôs móveis em conjunto com outros mecanismo de atenção sensorial.
+para robôs móveis em conjunto com outros mecanismos de atenção sensorial.
 
 Em resumo, as principais atividades do trabalho envolvem:
 \begin{itemize}
-    \item Revisão bibliográfica sobre teorias sobre a atenção, diversos
-        modelos e métricas.
+    \item Revisão bibliográfica sobre teorias sobre a atenção, principais modelos e métricas.
     \item Implementação de um modelo atencional com métodos tradicionais.
     \item Implementação de um modelo atencional com \tit{Deep Learning}, com
         eficiência suficiente para posterior uso em robôs móveis.
 \end{itemize}
 
-As atividades desenvolvidas são mais detalhadas no decorrer do documento.
+Cada atividade desenvolvida será mais detalhada no decorrer do documento.
 
 \section{Materiais e métodos}
-%\subsection{Conceitos básicos}
+%\subsection{Modelos}
+
 \subsection{Avaliação de desempenho}
-Foi feita uma pesquisa das métricas e \tit{datasets} mais usados para
-avaliação dos modelos computacionais, pois isso
-é muito importante para o avanço do trabalho.
-As métricas expressam o quão similares são os mapas de saliência gerados
-por modelos computacionais em relação ao dos seres humanos
-(\tit{ground-truth}).
+Inicialmente, uma pesquisa sobre as métricas e \tit{datasets} mais usados para
+avaliação dos modelos atencionais computacionais foi conduzida uma vez que estes pontos são imprescindíveis  para o avanço do trabalho. As métricas expressam o quão similares são os mapas de saliência gerados
+por modelos computacionais em relação ao dos seres humanos (\tit{ground-truth}) enquanto os \emph{datasets} provêm a base de testes do sistema.
 
 \subsubsection{\tit{Datasets}}
-Os \tit{datasets} são compostos de imagens juntamente ao conjunto-verdade,
-algo que indica como os mapas de saliência para cada imagem deveriam ser.
+Os \tit{datasets} são compostos de imagens acompanhadas do seu conjunto-verdade,
+que indica como os mapas de saliência para cada imagem deveriam ser caso fossem observados por humanos.
 
-Dois dos tipos principais de mapas-verdade:
+Dois dos principais tipos de mapas-verdade:
 \begin{enumerate}
-	\item Pontos de fixação de olhar: Algum dispositivo de
+	\item Pontos de fixação de olhar: Um dispositivo de
 	\tit{eye-tracking} é usado em pessoas para determinar as regiões na imagem
 	onde as mesmas olham em um intervalo de tempo. Apenas os pixels com
 	fixação são brancos.
@@ -179,16 +174,17 @@ Alguns \tit{datasets} utilizados geralmente:
 
 	\item \ttt{MIT300~\cite{mit-300}:} 300 imagens de diversos tipos
 		com dados de fixação. Entretanto, os mesmos não estão disponíveis
-		e devem ser testados pelos donos do \tit{dataset}.
+		e devem ser testados pelos gestores do \tit{dataset}.
 
     \item \ttt{SALICON}~\cite{jiang_2015}: 15000 imagens de diversos tipos
         com dados de fixação e contínuos.
 \end{itemize}
 
 \subsubsection{Métricas}
-Muitas das métricas aqui mostradas são discutidas em~\cite{judd2},
+
+As principais métricas utilizadas na literatura são discutidas em~\cite{judd2},
 onde a aplicabilidade, significado, vantagens e desvantagens
-de cada uma são discutidas mais a fundo.
+de cada uma são apresentadas mais a fundo. Considerando as métricas mais utilizadas e apropriadas para o contexto deste trabalho, selecionamos as seguintes:
 
 \begin{itemize}
 	\item \ttt{AUC-Judd}\newline
@@ -229,18 +225,13 @@ de cada uma são discutidas mais a fundo.
 	Usado em~\cite{mit-300}.
 \end{itemize}
 
-Para \tit{ground-truth} por pontos binários de fixação,
-\ttt{AUC} é razoável para casos em que se quer um
-bom \tit{recall} e que falsos negativos mas com valores relativamente baixos
+Considerando uma base com \tit{ground-truth} computados por pontos binários de fixação, a escolha da \ttt{AUC} como métrica é adequada para casos em que se quer um bom \tit{recall} e onde falsos negativos, mas com valores relativamente baixos,
 não importam muito. Isso é verdade em casos em que o foco atencional será
 direcionado apenas à região de maior valor.
-\ttt{NSS} também pode ser válido pois ele penaliza falsos positivos mesmo
+A \ttt{NSS} também pode ser válida nestes casos pois ela penaliza falsos positivos mesmo
 que baixos, focando mais em \tit{precision}.
 Para \tit{ground-truth} contínuos derivados de pontos de fixação,
-\ttt{SIM} é bom quando importa-se com \tit{recall}, pois a métrica penaliza
-falsos negativos mais que falsos positivos.
-\ttt{CC} também é boa por ser neutra e penalizar falsos positivos/negativos
-igualmente.
+\ttt{SIM} é considerada uma boa métrica quando o processo de \tit{recall} é relevante uma vez que a métrica penaliza falsos negativos mais que falsos positivos. Já a \ttt{CC} tem uma característica neutra, penalizando falsos positivos/negativos igualmente. No geral, para uma avaliação mais completa do modelo, múltiplas métricas são empregadas.
 
 \subsubsection{MIT300 benchmark}
 O \tit{MIT300 benchmark}~\cite{mit-300} é, além de um dataset,
@@ -253,8 +244,8 @@ Diversas métricas são utilizadas para a ordenação dos modelos em um
 \subsection{Modelo atencional com técnicas tradicionais}
 O VOCUS~\cite{Frintrop2006} é um modelo atencional computacional
 para a detecção de saliências visuais.
-A maioria dos seus componentes é feita com base nas ideias da FIT\@.
-Seu componente \tit{bottom-up}, ilustrado na figura~\ref{fig:vocus},
+A maioria dos seus componentes é construído com base nas ideias da FIT\@.
+Seu componente \tit{bottom-up}, ilustrado na Figura~\ref{fig:vocus},
 lida com as \tit{features}: cor, intensidade, orientação.
 Seus mapas de saliência são calculados com base nessas \tit{features}
 e em diversas dimensões da imagem.
@@ -270,14 +261,15 @@ Muitos mecanismos foram inspirados no VOCUS, lidando com as mesmas
 \end{figure}
 
 \subsubsection{Extração de \tit{features}}
-O modelo extrai os seguintes mapas de uma certa imagem:
+No VOCUS, os seguintes mapas de características são extraídos de uma imagem:
 luminância, luminância invertida, vermelho, verde, amarelo, azul,
 orientações vertical, horizontal, 45\degree e 135\degree.
 Os de luminância e cor podem ser extraídos pela conversão da imagem para o
-espaço de cor LAB e as orientações são extraídas usando-se filtros de Gabor.
+espaço de cor LAB e as orientações são extraídas através de filtros de Gabor.
 
 \subsubsection{Extração de saliência}
-Para cada mapa, a saliência é calculada usando-se o mecanismo de
+
+Para cada mapa extraído, a saliência é calculada usando-se o mecanismo de
 \tit{center-surround}~\cite{Frintrop2006}:
 uma operação que basicamente extrai contrastes fortes
 do mapa, dando intensidades de pixel altas para essas regiões.
@@ -303,7 +295,7 @@ no mapa de cor.}
 \subsubsection{Mapas de saliência para cada \tit{feature}}
 Para cada \tit{feature} (\eg vermelho) é calculado o \tit{center-surround}.
 Isso é feito na imagem original e em diversas outras dimensões dela,
-calculando-se a pirâmide da imagem. Geralmente usa-se quatro níveis.
+calculando-se a pirâmide da imagem. Geralmente são usados quatro níveis.
 Isso é importante para capturar saliências nos mais diversos níveis de detalhe
 da imagem. Uma vez calculados, todos os mapas de uma certa \tit{feature}
 são redimensionados para as dimensões originais e somados, formando assim
@@ -311,10 +303,10 @@ um mapa de \tit{feature}.
 
 \subsubsection{Normalização}
 Uma vez calculados os mapas para cada \tit{feature} (vermelho,
-orientação horizontal etc), é preciso fazer uma normalização nos mesmos.
-Isso se deve ao fato que, se há grande frequência de picos de saliência
-no mapa de vermelho, por exemplo, este não é de muito valor, pois o que se
-quer identificar são regiões salientes com relação à imagem como um todo.
+orientação horizontal, etc.), é preciso fazer uma normalização nos mesmos.
+Isso se deve ao fato de que, se há grande frequência de picos de saliência
+no mapa de vermelho, por exemplo, estes picos não devem ter grande importância uma vez que se
+deseja identificar regiões salientes com relação à imagem como um todo (global).
 Assim, para cada mapa é calculado um peso de normalização.
 
 São diversos os critérios desenvolvidos, como: número de máximos locais,
@@ -329,8 +321,8 @@ Uma combinação hierárquica dos mapas é feita após as normalizações.
 No final dessa operação, há três mapas: cor, luminância
 e orientação.
 Eles são formados simplesmente somando e normalizando suas instâncias:
-O de cor, por exemplo, é formado somando-se os mapas de saliência de
-vermelho, verde, amarelo e azul.
+o de cor, por exemplo, é formado pela soma dos mapas de saliência de
+vermelho, verde, amarelo e azul. A Figura \ref{fig:maps} apresenta os mapas extraídos para cada uma das dimensões descritas.
 \begin{figure}[H]
 \begin{center}
 		\begin{tabular} {ccc}
@@ -339,23 +331,22 @@ vermelho, verde, amarelo e azul.
             \includegraphics[width=0.3\linewidth]{img/arara_ort_map.png}
 		\end{tabular}
 \end{center}
-\caption{Mapas de saliência da figura original~\ref{fig:extrfeat}.
+\caption{Mapas de saliência da Figura original~\ref{fig:extrfeat}.
     Esquerda: mapa de cor. Centro: mapa de luminância. Direita: mapa de
 orientação.}
 \label{fig:maps}
 \end{figure}
 
 \subsubsection{Combinação final}
-É dado um peso para cada mapa de saliência (cor, luminância, orientação)
-e então eles são somados e normalizados. Nos testes feitos, obteve-se
+Para composição do mapa de saliência global, um peso é atribuído para cada mapa de saliência (cor, luminância, orientação) e então eles são somados e normalizados. Nos testes feitos, obteve-se
 melhores resultados dando peso maior para a cor e menor para a orientação.
-Nos exemplos aqui, os pesos são 2, 1, 0.1 para cor, luminância e orientação,
+Nos exemplos aqui apresentados, os pesos são 2, 1, 0.1 para cor, luminância e orientação,
 respectivamente.
 
 \subsubsection{Implementação}
 Todas as etapas do modelo descritas aqui foram implementadas.
 A linguagem utilizada foi \tit{Python}, usando-se \tit{OpenCV} e \tit{numpy}.
-O código está disponível de modo público~\cite{att}.
+O código está disponível publicamente em ~\cite{att}.
 
 \subsection{Modelo atencional com \tit{Deep Learning}}
 A tarefa de detecção de saliência visual torna-se especialmente difícil em
@@ -366,34 +357,31 @@ a usar técnicas de \tit{Deep Learning} para a tarefa.
 
 Modelos como \emph{Salicon}~\cite{jiang_2015} demonstraram que o uso de redes
 neurais convolucionais com
-pesos inicializados de redes utilizadas para classificação como a
-\emph{VGG-16}~\cite{zisserman_2014}
-poderiam levar a mapas de saliência visual muito similares a aqueles
+pesos inicializados de redes utilizadas para classificação, como a
+\emph{VGG-16}~\cite{zisserman_2014},
+poderiam levar à mapas de saliência visual muito similares àqueles
 gerados por humanos.
-\emph{ML-Net}~\cite{cornia_2016} usa a saída de diferentes camadas da
+A \emph{ML-Net}~\cite{cornia_2016} usa a saída de diferentes camadas da
 \emph{VGG-16}, combinado-as em várias dimensões e diferentes níveis de
-abstração.
-\emph{DeepFix}~\cite{kruthiventi_2015} extende um modelo pré-treinado com
-novos layers que consideram \tit{features} globais e \tit{center bias}.
-\emph{Salnet}~\cite{pan_2016} explora dois modelos que são simples mas
-dão bons resultados.
+abstração enquanto a \emph{DeepFix}~\cite{kruthiventi_2015} estende um modelo pré-treinado com
+novos layers que consideram \tit{features} globais e \tit{center bias}. Finalmente, 
+a \emph{Salnet}~\cite{pan_2016} explora dois modelos bastante simples mas
+com bons resultados.
 
 O grande problema dos modelos atuais que usam \tit{Deep Learning} é que estes
-são custosos, em geral porque muitos usam redes de tarefas que não
-originalmente são detecção de saliência visual, como classificação.
+são custosos, em geral porque muitos usam redes treinadas para tarefas que não
+são originalmente de detecção de saliência visual, como classificação, por exemplo.
 Tais redes são feitas para classificar milhares de objetos, o que requer
-muitos parâmetros. Assim, busca-se um modelo que seja eficiente,
-tendo bons resultados e sendo menos computacionalmente custoso.
+muitos parâmetros. Considerando o nosso objetivo de utilizar o modelo em sistemas embarcados em robôs reais, buscamos um modelo que seja eficiente, com bons resultados e computacionalmente menos custoso.
 Para esta tarefa, exploramos diversos métodos de pré-processamento de dados
-e uma arquitetura de rede neural totalmente convolucional que fossem relevantes
-no contexto de saliência visual.
-O modelo final foi nomeado \tit{DeepPeek}.
+e uma arquitetura de rede neural totalmente convolucional que fossem ambos relevantes
+no contexto de saliência visual. O modelo final proposto foi nomeado \tit{DeepPeek}.
 
 \subsubsection{Arquitetura proposta}
-A figura~\ref{fig:model} mostra a arquitetura da rede neural totalmente
+A Figura~\ref{fig:model} mostra a arquitetura da rede neural totalmente
 convolucional proposta no trabalho.
 A rede extrai \tit{features} de dimensões cada vez menores da imagem de
-entrada.
+entrada, sendo composta de quatro blocos principais:
 
 \begin{figure}[H]
     \centering
@@ -404,8 +392,6 @@ entrada.
         Tamanhos de filtros estão em formato
         largura$\times$altura\_passo.}
 \end{figure}
-
-A rede é composta de quatro blocos principais:
 
 \begin{enumerate}
     \item O primeiro nível extrai \tit{features} de baixo nível de abstração
@@ -432,7 +418,7 @@ A rede é composta de quatro blocos principais:
         que extraem \tit{features} de alto nível de abstração da entrada
         com dimensões $W/8 \times H/8 \times 144$.
         Um número elevado de blocos mostrou-se importante.
-        Uma convulução de $1 \times 1$ no final faz uma combinação linear
+        Uma convolução de $1 \times 1$ no final faz uma combinação linear
         dos mapas de saída dos blocos \tit{inception}, seguida por ReLU,
         produzindo o mapa final de saliência de dimensões
         $W/8 \times H/8 \times 1$.
@@ -440,7 +426,7 @@ A rede é composta de quatro blocos principais:
         com interpolação bicúbica.
 \end{enumerate}
 
-A figura \ref{fig:newinception} ilustra a arquitetura
+A Figura \ref{fig:newinception} ilustra a arquitetura
 \tit{inception}~\cite{szegedy_2014}
 usada em cada bloco onde são aplicados
 filtros de dimensões $5 \times 5$, $3 \times 3$
@@ -495,7 +481,7 @@ bloco \tit{inception} utilizado.
 \end{table}
 
 \subsubsection{Implementação}
-A rede foi implementada usando-se \emph{Theano} \texttt{0.9.0.dev}
+A rede proposta foi implementada usando-se \emph{Theano} \texttt{0.9.0.dev}
 com \emph{Lasagne} \texttt{0.2.dev1}
 em uma máquina com \emph{Ubuntu 16.04 LTS} e
 kernel \emph{Linux} \texttt{4.8.0-54-generic}.
@@ -508,7 +494,7 @@ $320\times240\times3$.
 Cada imagem é normalizada por canal pela subtração da média e
 divisão pelo desvio padrão.
 Além disso, dois aspectos são importantes nesta etapa:
-O uso de normalização por imagem, ao invés de pelo \tit{dataset}, e a
+1) o uso de normalização por imagem, ao invés de pelo \tit{dataset}, e 2) a
 conversão do espaço de cor das imagens para LAB (ao invés do comum RGB).
 Esses procedimentos não foram encontrados na literatura, mas são consideradas
 importantes no contexto de saliência visual.
@@ -516,9 +502,9 @@ A normalização por imagem usa mais informação do contexto global da imagem, 
 \emph{VOCUS} cita que o espaço de cor LAB é mais fiel ao sistema visual humano
 uma vez que ele contém mapas vermelho-verde, amarelo-azul e mapas de
 luminância.
-Conjectura-se que tais mapas facilitam na extração de \tit{features}
+Conjectura-se que tais mapas facilitam a extração de \tit{features}
 importantes.
-Experimentos iniciais mostraram que as duas técnicas resultam em melhor
+Experimentos preliminares mostraram que as duas técnicas resultam em melhor
 desempenho da rede.
 
 A função objetivo a se minimizar foi
@@ -543,7 +529,7 @@ Os tamanhos de batch foram 10 para SALICON e 2 para Judd.
 O processo de treinamento todo levou cerca de duas horas e meia.
 
 \section{Resultados}
-As figuras~\ref{fig:att} e ~\ref{fig:preds} ilustram, respectivamente,
+As Figuras~\ref{fig:att} e ~\ref{fig:preds} ilustram, respectivamente,
 mapas gerados pelos modelos \tit{att} (tradicional) e \tit{DeepPeek}
 (com \tit{Deep Learning}).
 A tabela ~\ref{table:results} mostra os resultados obtidos pela submissão
@@ -642,11 +628,11 @@ de aspectos novos.
 Saliência em vídeo é importante para o uso do sistema por robôs móveis.
 
 \section{Publicações derivadas do trabalho}
-O trabalho envolvido na obtenção do modelo \tit{DeepPeek} resultou em um
+O trabalho desenvolvido na obtenção do modelo \tit{DeepPeek} resultou em um
 artigo, \tit{Efficient Visual Attention with Deep Learning}~\cite{myarticle},
 publicado no WTD2017~\cite{wtd2017} do Instituto de Computação da Unicamp.
 O artigo e a apresentação do mesmo resultaram na premiação de
-\tbf{melhor trabalho de Iniciação Científica} do WTD2017.
+\tbf{melhor trabalho de Iniciação Científica} do Instituto de Computação. Os resultados finais serão submetidos a uma publicação de referência na área.
 
 \printbibliography
 
