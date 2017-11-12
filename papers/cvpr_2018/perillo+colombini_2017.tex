@@ -1,82 +1,77 @@
-% -- NAO MUDAR O TAMANHO DA FONTE.
-% -- O USO DO TAMANHO DA FONTE EM 12PT Eh OBRIGATORIO
-\documentclass[12pt]{article}
+\documentclass[10pt,twocolumn,letterpaper]{article}
 
-% -- O USO DO TEMPLATE DA SBC Eh OBRIGATORIO
-% -- NAO ALTERAR NENHUMA PARAMETRO DO MODELO DA SBC
-% -- (E.G., MARGENS LATERAIS, RODAPE, CABECAÇHO, ENTRE OUTROS)
-\usepackage{sbc-template}
+\usepackage{cvpr}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
-\usepackage{graphicx,url}
-\usepackage{float}
+% Include other packages here, before hyperref.
 
-%\usepackage[brazil]{babel}
-\usepackage[latin1]{inputenc}
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
 
-% descomente abaixo caso tenha problemas com a numeração das seções não
-% aparecerem. Em especial no Ububtu 16.x
-%\usepackage{etoolbox}
-%\makeatletter
-%\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
-%\patchcmd{\ttlh@hang}{\noindent}{}{}{}
-%\makeatother
+% \cvprfinalcopy % *** Uncomment this line for the final submission
 
-% -- O USO DESTE COMANDO Eh OBRIGATORIO
-\sloppy
+\def\cvprPaperID{****} % *** Enter the CVPR Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
 
-% -- CERTIFIQUE-SE DE QUE O TITULO NAO ESTEJA ULTRAPASSANDO OS LIMITES
-% -- DAS MARGENS.
-% -- USE O COMANDO QUEBRA-DE-LINHA (\\) SE TITULO FOR MUITO LONGO.
-\title{Efficient Visual Attention with Deep Learning}
-
-% -- CERTIFIQUE-SE DE QUE O NOME DOS AUTORES ESTEJA CORRETO.
-% -- EM GERAL COLOCA-SE O ALUNO COMO PRIMEIRO AUTOR E O ORIENTADOR COMO
-% -- ULTIMO AUTOR.
-\author{Erik Perillo\inst{1}, Esther Luna Colombini\inst{1}}
-
-% -- CERTIFIQUE-SE DE QUE OS NOMES DAS INSTITUICOES E SEUS RESPECTIVOS ENDERECOS
-% -- NAO ESTEJAM ULTRAPASSANDO OS LIMITES DAS MARGENS. SE ISTO OCORRER, USE O
-% -- COMANDO QUEBRA-DE-LINHA (\\) OU ABREVIACOES APROPRIADAS.
-\address{Institute of Computing (IC) -- University of Campinas
-  (Unicamp)\\
-  Caixa Postal 6176 -- 13.084-971 -- Campinas -- SP -- Brazil
-  \email{erik.perillo@gmail.com, esther@ic.unicamp.br}
-}
-
-
-% -- CERTIFIQUE-SE DE QUE AS TABELAS E FIGURAS INSERIDAS NO
-% -- DOCUMENTO NAO ESTEJAM ULTRAPASSANDO
-% -- OS LIMITES DAS MARGENS.
-
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+\ifcvprfinal\pagestyle{empty}\fi
 \begin{document}
 
-\maketitle
+%%%%%%%%% TITLE
+\title{Efficient Visual Attention with Deep Learning}
 
-% -- O RESUMO EM INGLES Eh OBRIGATORIO,
-% -- INDEPENDENTE DO IDIOMA EM QUE TRABALHO FOI ESCRITO
+\author{First Author\\
+Institution1\\
+Institution1 address\\
+{\tt\small firstauthor@i1.org}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+\and
+Second Author\\
+Institution2\\
+First line of institution2 address\\
+{\tt\small secondauthor@i2.org}
+}
+
+\maketitle
+%\thispagestyle{empty}
+
+%%%%%%%%% ABSTRACT
 \begin{abstract}
-The high volume of visual data usually available for autonomous applications contains information that is
-mostly irrelevant for intelligent agents. Humans perform sensorial filtering through a mechanism called attention. In this work, we present a new fully convolutional neural network architecture designed for detecting visual salience. Experiments carried out with the MIT300 benchmark presented state-of-the-art performance and a parameter reduction of 3/4 compared to similar models.
+The high volume of visual data
+contains information that is mostly irrelevant for intelligent agents.
+Humans perform sensorial filtering through a mechanism called attention.
+In this work, we present a new fully convolutional neural network
+architecture designed for detecting visual salience.
+Experiments carried out with the MIT300 benchmark presented state-of-the-art
+performance and a parameter reduction of 3/4 compared to similar models.
 \end{abstract}
 
-% -- O RESUMO EM PORTUGUES Eh OBRIGATORIO, INDEPENDENTE DO
-% -- INDIOMA EM QUE O TRABALHO FOI ESCRITO
-\begin{resumo}
-O alto volume de dados visuais geralmente disponível para aplicações autônomas contém informações que são, em sua grande parte,  irrelevantes para agentes inteligentes. Os seres humanos realizam uma filtragem sensorial através de um mecanismo chamado atenção. Este trabalho descreve uma nova arquitetura de rede neural convolucional projetada para detectar a saliência visual. Os experimentos realizados com o benchmark MIT300 apresentaram desempenho compatível com os melhores modelos e uma redução de parâmetros de 3/4 em comparação com modelos similares.
-\end{resumo}
-
+%%%%%%%%% BODY TEXT
 \section{Introduction}
-%\vspace{-0.3cm}
-One of the most challenging unsolved problems in Artificial Intelligence is vision.
-However, it is fundamental for the conception of systems that interact with the real
-physical world. These systems would be useful for applications such as service
-robots operating in houses, industry and agriculture, with great potential for the benefit of society.
+One of the most challenging unsolved problems in Artificial Intelligence
+is vision.
+However, it is fundamental for the conception of systems that interact
+with the real physical world.
+Such systems would be useful for applications in areas like
+domestic services, industry and agriculture,
+with great potential for the benefit of society.
 
 Vision is remarkably data and computationally intensive.
 In humans, approximately half of the brain is involved in
 vision-related tasks~\cite{fixott_1957}.
 Even our minds can not handle all the sheer amount of sensorial information
-received every second. In order to deal with this immense amount of data, we have attentional systems, a fundamental mechanism
+received every second. In order to deal with this amount of data,
+humans have attentional systems, a fundamental mechanism
 that, among other functions, filters out irrelevant information
 -- either visual or from other senses-- and helps us focusing our cognitive
 processes on what is important at a given moment.
@@ -86,25 +81,28 @@ vision problems, attention should be applied.
 Visual attention can be defined as the delimitation of a certain spatial
 region on an image for further cognitive processing~\cite{treisman_1980}.
 The phenomenon emerges from two fundamentally different processes:
-the \emph{top-down} mechanism that implements our longer-term cognitive strategies by biasing attention according to our interests (e.g. find a red apple in a tree because of hunger,
+the \emph{top-down} mechanism that implements our longer-term cognitive
+strategies by biasing attention according to one's interests
+(e.g. find a red apple in a tree because of hunger,
 which will make red be more recognizable on the scene),
-and the \emph{bottom-up} mechanism~\cite{colombini_2016}, a process generated through external stimuli
+and the \emph{bottom-up} mechanism~\cite{colombini_2016},
+a process generated through external stimuli
 that captures one's attention from its conspicuousness level.
 In this work, we focus on the latter, also named visual saliency.
 
-\begin{figure}[H]
 \begin{center}
-		\begin{tabular} {cc}
-		\includegraphics[width=0.35\textwidth]{./img/traffic_sign_s.jpg} &
-		\includegraphics[width=0.35\textwidth]{./img/traffic_sign_m.jpg}\\
-        (a) & (b)
-		\end{tabular}
-\end{center}
+\begin{figure}[t]
+\begin{tabular} {cc}
+\includegraphics[width=0.22\textwidth]{./img/traffic_sign_s.jpg} &
+\includegraphics[width=0.22\textwidth]{./img/traffic_sign_m.jpg}\\
+(a) & (b)
+\end{tabular}
 \caption{Example of visual saliency.
-    b) is the salience map where brighter pixels represent regions more
-    salient to humans on the original image a).}
+    b) is the salience map where brighter pixels (warmer colors)
+    represent regions more salient to humans on the original image a).}
 \label{fig:example}
 \end{figure}
+\end{center}
 
 Visually salient regions on images are usually represented by
 \emph{saliency maps} (Figure~\ref{fig:example}). In these maps, images are generated such that
@@ -127,15 +125,20 @@ maps.
 Models such \emph{Salicon}~\cite{jiang_2015} demonstrated that the use of 
 convolutional neural networks with weights initialized from
 image classification networks, e.g. \emph{VGG-16}~\cite{zisserman_2014}
-could lead to salience maps very similar to those generated from humans.
+could considerably increase the similarity of computed maps to those
+generated from humans.
 \emph{ML-Net}~\cite{cornia_2016} uses the output of different layers
 of \emph{VGG-16}, combining them in many dimensions and various levels of
-abstraction. \emph{DeepFix}~\cite{kruthiventi_2015} extends a pre-trained model with
-new layers that account for global features and center bias, whereas \emph{Salnet}~\cite{pan_2016} explores two models that are
-simple yet provide good results. These models are usually evaluated and ranked on
+abstraction.
+\emph{DeepFix}~\cite{kruthiventi_2015} extends a pre-trained model with
+new layers that account for global features and center bias,
+whereas \emph{Salnet}~\cite{pan_2016} explores two models that are
+simple yet provide good results.
+These models are usually evaluated and ranked on
 \emph{MIT saliency benchmark}~\cite{mit_sal_bm}, which uses a variety of
-metrics to express how close generated saliency maps are to those created from
-human data. As of today, at least nine out of the ten best models in the ranking use
+metrics to express how close generated saliency maps are to those created
+from human data.
+As of today, at least nine out of the ten best models in the ranking use
 Deep Learning.
 
 \subsection{Motivation}
@@ -154,7 +157,7 @@ used in current models but that are considered worthwhile to explore.
 This work aims at building a visual saliency model that is a) effective,
 yielding results similar to other state of the art models,
 and b) relatively simple and computationally efficient.
-It is important that both criteria are matched because we aim at extending the
+It is important that both criteria are matched in order to extend the
 model in the future for video and real time applications such as
 navigating robots.
 
@@ -163,19 +166,10 @@ Figure~\ref{fig:model} shows the overall architecture of the fully
 convolutional neural network proposed in this work.
 It extracts features from increasingly smaller dimensions of the
 input image.
-
-\begin{figure}[hbt]
-    \centering
-    \def\svgwidth{0.9\columnwidth}
-    \input{./img/model.pdf_tex}
-    \label{fig:model}
-    \caption{Overview of the network.
-        Filters sizes are in format width$\times$height\_stride.}
-\end{figure}
-
 The network is composed of four main blocks:
 
-\textbf{The first} level extracts low level features from the input image, of
+\begin{enumerate}
+    \item The first level extracts low level features from the input image, of
         dimensions $W\times H \times 3$ (width, height, depth), using
         a single layer with 48 convolution filters with ReLu activation
         followed by max-pooling that reduces image by a factor of two.
@@ -183,18 +177,19 @@ The network is composed of four main blocks:
         layer considerably hurts performance, which makes sense because it is
         important to capture high spatial frequency and high contrast
         information in the context of visual saliency.
-\textbf{The second} level extracts low-medium level features from the
+    \item The second level extracts low-medium level features from the
         input of dimensions $W/2 \times H/2 \times 48$ using two layers
         with 64 and 96 convolution filters, respectively, followed by ReLU
         activation and max-pooling.
-		\textbf{The third }level extracts medium-high level features from input with
+    \item The third level extracts medium-high level features from input with
         dimensions $W/4 \times H/4 \times 96$ using four convolution layers.
-        The first two layers have 128 filters each whereas the last two have 144 filters
-        each. Every convolution layer is followed by ReLu.
+        The first two layers have 128 filters each whereas the last two 
+        have 144 filters each.
+        Every convolution layer is followed by ReLu.
         Max-pooling is carried out at the end.
         A considerable depth in this level was found to be important for
         the network's performance.
-\textbf{The fourth} and last level is composed of eight inception blocks
+    \item The fourth and last level is composed of eight inception blocks
         that extract high level features from the input with
         dimensions $W/8 \times H/8 \times 144$.
         Great level of depth and Inception blocks were found to be very
@@ -202,10 +197,21 @@ The network is composed of four main blocks:
         A $1 \times 1$ convolution makes a linear combination of the output
         maps at the end of the 8 inception blocks, followed by ReLu, producing
         the final saliency map of dimensions $W/8 \times H/8 \times 1$.
+\end{enumerate}
+
+\begin{figure*}
+\begin{center}
+\def\svgwidth{1.5\columnwidth}
+\input{./img/model.pdf_tex}
+\label{fig:model}
+    \caption{Overview of the network.
+        Filters sizes are in format width$\times$height\_stride.}
+\end{center}
+\end{figure*}
 
 \begin{figure}[!htb]
     \centering
-    \def\svgwidth{0.57\linewidth}
+    \def\svgwidth{\linewidth}
     \input{./img/inception.pdf_tex}
     \caption{Inception block layout.}
    \label{fig:newinception}
@@ -255,44 +261,50 @@ compared to other models. Table \ref{table:inception} details the filter configu
 \end{table}
 
 \subsection{Implementation}
-The network was implemented using \emph{Theano} \texttt{0.9.0.dev}
-along with \emph{Lasagne} \texttt{0.2.dev1}
+The network was implemented using \emph{Tensorflow} \texttt{1.3.0}
 on a machine with \emph{Ubuntu 16.04 LTS} and
 kernel \emph{Linux} \texttt{4.8.0-54-generic}.
 Training was conducted on a GPU \emph{NVIDIA GTX 1080} and the
 code is available at \texttt{https://goo.gl/WzpyYJ}.
 
-\subsection{Training}
-During training, the input images were resized to dimensions $320\times240\times3$.
-Moreover, each image is normalized channel-wise by the subtraction of the channel mean and
-division by the standard deviation. Besides, two aspects are worth mentioning in this pre-training phase: the use of normalizations per image, rather than per dataset, and the conversion of the images colorspace to the LAB colorspace. The choice regarding normalization was made because visual saliency is highly connected to the context of the image, hence saliency depends on the local context.
-As for the colorspace, \emph{Vocus}~\cite{frintrop_2005} cites that the LAB colorspace is more
-closely related to human vision once it encompasses red-green, yellow-blue and
-luminance maps. We conjecture that this colorspace facilitates extraction of
+\subsection{Data pre-processing}
+Input images were resized to dimensions $320\times240\times3$.
+Moreover, each image is normalized channel-wise by the subtraction of
+the channel mean and division by the standard deviation.
+
+Two aspects are worth mentioning in this process:
+the use of normalizations per image, rather than per dataset,
+and the conversion of the images colorspace to the LAB colorspace.
+The choice regarding normalization was made because visual saliency is highly
+connected to the context of the image, hence saliency depends on the local
+context.
+As for the colorspace, \emph{Vocus}~\cite{frintrop_2005} cites that the
+LAB colorspace is more closely related to human vision once it encompasses
+red-green, yellow-blue and
+luminance maps.
+We conjecture that this colorspace facilitates extraction of
 important luminance and color contrasts by the learned convolution filters.
-Prior experiments conducted by our group showed better performance using image-wise
-normalization and LAB instead of the commonly used RGB\@.
+%TODO: define section
+Section X details experiments showing how these processing steps affect
+the performance of the model in comparison to using RGB and/or normalizing
+by the dataset mean and standard deviation.
 
-In order to evaluate the model, the \emph{Correlation Coefficient} between the ground-truth saliency map $G$ and
-the predicted map $P$: $CC(P, G) = cov(P, G)/(\sigma(P)\sigma(G))$ was considered.
-In fact, there is a variety of metrics for evaluating saliency
-predictions~\cite{judd_2016}, but $CC$ is considered one of the most appropriate
-because it symmetrically penalizes both false positives and false negatives. However, other typical metrics were also evaluated (as it can be seen in \ref{table:results}).
-
-For training, two datasets were considered:
+\subsection{Training}
+Two datasets were used:
 \emph{SALICON}~\cite{jiang_2015}, with 15000 images, and
 \emph{Judd}~\cite{judd}, with 1003 images.
-The network was trained using Stochastic Gradient Descent with Nesterov
-Momentum of $0.9$. SALICON was first used with data augmentation by flipping images
-horizontally and vertically and the target normalized by mean-std
-(Last conv layer had ReLu removed in this step).
-Mean-std normalization of targets was applied because it led to faster convergence.
-Training iterated for 5 epochs with learning rate of $0.009$
-and then for 3 epochs with learning rate of $0.001$. Then, we switched to using unit normalization on targets.
-The network was trained for 1 epoch with learning rate of
-$3\times10^{-5}$ and L2 regularization of $10^{-4}$. Finally, Judd dataset was used with data augmentation by flipping images horizontally and the target normalized by unit normalization.
-Training iterated for 2 epochs with learning rate of
-$5\times10^{-5}$ and L2 regularization of $3\times10^{-5}$. Batch sizes were 10 for SALICON and 2 for Judd. The complete training process took around two and a half hours.
+Data augmentation was applied by flipping images
+horizontally and vertically and applying random disturbances to the image:
+blur, adding noise, shifting and shearing.
+The cost function to be minimized was the \emph{Mean Squared Error} between
+the ground-truth saliency map $G$ and the predicted map $P$, using
+the \emph{Adam Optimizer}.
+A batch size of 24 samples was used.
+
+\emph{SALICON} dataset was first used.
+Training iterated for X epochs with learning rate of $0.001$.
+Finally, \emph{Judd} was used for Y epochs with learning rate of Z.
+Training process took around X hours.
 
 \section{Results}
 Prediction took an average time of 8 milliseconds. Figure~\ref{fig:preds} shows some maps generated by the proposed model.
@@ -307,25 +319,24 @@ on \emph{MIT300 benchmark} consistently among the ten best results on various
 metrics while having around $3/4$  less parameters than other state of
 the art models.
 
-\begin{figure}[hbt]
+\begin{figure*}
 \begin{center}
-		\begin{tabular} {ccc}
-        Stimulus & Ground-truth & Proposed Model\\
-		\includegraphics[width=0.19\textwidth]{./img/monkey_s.jpg} &
-        \includegraphics[width=0.19\textwidth]{./img/monkey_gt.jpg} &
-		\includegraphics[width=0.19\textwidth]{./img/monkey_m.jpg}\\
-		\includegraphics[width=0.19\textwidth]{./img/person_s.jpg} &
-        \includegraphics[width=0.19\textwidth]{./img/person_gt.jpg} &
-		\includegraphics[width=0.19\textwidth]{./img/person_m.jpg}\\
-		\includegraphics[width=0.19\textwidth]{./img/sign_s.jpg} &
-        \includegraphics[width=0.19\textwidth]{./img/sign_gt.jpg} &
-		\includegraphics[width=0.19\textwidth]{./img/sign_m.jpg}\\
-		\end{tabular}
+    \begin{tabular} {ccc}
+    Stimulus & Ground-truth & Proposed Model\\
+    \includegraphics[width=0.25\textwidth]{./img/monkey_s.jpg} &
+    \includegraphics[width=0.25\textwidth]{./img/monkey_gt.jpg} &
+    \includegraphics[width=0.25\textwidth]{./img/monkey_m.jpg}\\
+    \includegraphics[width=0.25\textwidth]{./img/person_s.jpg} &
+    \includegraphics[width=0.25\textwidth]{./img/person_gt.jpg} &
+    \includegraphics[width=0.25\textwidth]{./img/person_m.jpg}\\
+    \includegraphics[width=0.25\textwidth]{./img/sign_s.jpg} &
+    \includegraphics[width=0.25\textwidth]{./img/sign_gt.jpg} &
+    \includegraphics[width=0.25\textwidth]{./img/sign_m.jpg}\\
+    \end{tabular}
 \end{center}
-\caption{Examples of predictions made by our model.}
-\label{fig:preds}
-\end{figure}
-
+    \caption{Examples of predictions made by our model.}
+    \label{fig:preds}
+\end{figure*}
 
 \begin{table}[!htb]
 	\small
@@ -357,8 +368,9 @@ the art models.
     \end{tabular}
 \end{table}
 
-% -- NAO MUDAR O ESTILO DAS REFERENCIAS BIBLIOGRAFICAS. O USO DO PADRAO DA SBC Eh OBRIGATORIO
-\bibliographystyle{sbc}
+{\small
+\bibliographystyle{ieee}
 \bibliography{bibliography}
+}
 
 \end{document}
