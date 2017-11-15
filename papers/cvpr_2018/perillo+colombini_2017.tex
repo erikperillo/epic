@@ -47,7 +47,7 @@ First line of institution2 address\\
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-Visual saliency detection is an important component of attention.
+Visual saliency is an important component of attention.
 It helps animals survive and can also be used by computer vision applications
 to filter out irrelevant information from high volumes of data.
 In this work, we present a new fully convolutional neural network
@@ -92,6 +92,13 @@ a process generated through external stimuli
 that captures one's attention from its conspicuousness level.
 In this work, we focus on the latter, also named visual saliency.
 
+Visually salient regions on images are usually represented by
+\emph{saliency maps} (Figure~\ref{fig:example}). In these maps, images are generated such that
+areas with high-valued pixels express high saliency on the original image,
+whereas regions with low-valued pixels represent low saliency.
+Datasets with such maps are obtained by collecting eye-fixation
+data from humans while observing the scenes.
+
 \begin{center}
 \begin{figure}[t]
 \begin{tabular} {cc}
@@ -105,13 +112,6 @@ In this work, we focus on the latter, also named visual saliency.
 \label{fig:example}
 \end{figure}
 \end{center}
-
-Visually salient regions on images are usually represented by
-\emph{saliency maps} (Figure~\ref{fig:example}). In these maps, images are generated such that
-areas with high-valued pixels express high saliency on the original image,
-whereas regions with low-valued pixels represent low saliency.
-Datasets with such maps are obtained by collecting eye-fixation
-data from humans while observing the scenes.
 
 \subsection{Related work}
 Early computational models of visual saliency were generally built based on
@@ -129,7 +129,7 @@ convolutional neural networks with weights initialized from
 image classification networks, e.g. \emph{VGG-16}~\cite{zisserman_2014}
 could considerably increase the similarity of computed maps to those
 generated from humans.
-It uses different scales of the image as input to capture relevant
+\emph{Salicon} uses different scales of the image as input to capture relevant
 information in the context of saliency, using the same network weights
 for each dimension.
 \emph{ML-Net}~\cite{cornia_2016} uses the output of different layers
@@ -158,8 +158,11 @@ While pre-trained weights from classification tasks showed to be effective
 for saliency prediction, it is reasonable to question whether
 creating a proper network from scratch could yield a smaller amount of
 parameters that are more efficient for the sole task of saliency prediction.
-Also, there are some ideas from previous work on psychology-based models that
-were not used in current models but that are considered worthwhile to explore.
+Also, there are some data processing methods from previous work on
+psychology-based models that were not used in current models but
+are considered worthwhile to explore,
+such as using global information from the scene and a colorspace more
+closely related to human vision.
 
 \subsection{Objectives}
 This work aims at building a visual saliency model that is a) effective,
@@ -225,7 +228,7 @@ $3 \times 3$ convolution, a sequence of two $3 \times 3$ convolutions
 (these two types are preceded by $1\times 1$ convolutions in order to
 reduce the number of input filters), $1 \times 1$ convolution,
 and a max-pooling of size $3 \times 3$.
-Each of these operations is executed in parallel from the same input
+Each of those operations is executed in parallel from the same input
 and the outputs are concatenated at the output.
 Inception allows the network to use
 information from different spatial dimensions as well as previous
@@ -276,9 +279,6 @@ inception layers.
 
 \subsection{Data pre-processing}
 Input images were resized to dimensions $320\times240\times3$.
-Two main operations in the data pre-processing step are considered
-relevant for the network's performance:
-
 Each image is normalized channel-wise by the subtraction of
 the channel mean and division by the standard deviation:
 $$C = \frac{C - \mu_C}{\sigma_C}$$
@@ -292,8 +292,6 @@ Images are converted from RGB colorspace to the LAB colorspace.
 LAB colorspace is more closely related to human vision once it encompasses
 red-green, yellow-blue and
 luminance maps.
-We conjecture that this colorspace facilitates extraction of
-important luminance and color contrasts by the learned convolution filters.
 
 Section~\ref{sec:dataproc_compar} describes experiments carried out
 to investigate how different data pre-processing techniques affect the
@@ -316,12 +314,18 @@ blur, adding noise, shifting and shearing.
 The cost function to be minimized was the \emph{Mean Squared Error} between
 the ground-truth saliency map $G$ and the predicted map $P$, using
 the \emph{Adam Optimizer}.
-A batch size of 24 samples was used.
 
+Training iterated calculating the mean loss on the validation set
+after each epoch, and it stopped when the validation loss started to increase.
 \emph{SALICON} dataset was first used.
-Training iterated for X epochs with learning rate of $0.001$.
-Finally, \emph{Judd} was used for Y epochs with learning rate of Z.
-Training process took around X hours.
+Number of images was $12000$ in the training and $1500$ in the validation set.
+Training iterated for 12 epochs with learning rate of $1\times10^{-4}$
+and batch size of 24
+Finally, \emph{Judd} was used, with $800$ images in the training set
+and $203$ images in the validation set.
+Training iterated for 3 epochs with learning rate of $1\times10^{-5}$
+and batch size of 10.
+The whole training process took around 4 hours.
 
 \section{Experimental Results}
 \begin{figure*}
@@ -339,14 +343,9 @@ Training process took around X hours.
     \includegraphics[width=0.25\textwidth]{./img/sign_m.jpg}\\
     \end{tabular}
 \end{center}
-    \caption{Examples of predictions made by our model.}
+    \caption{Examples of predictions made by the proposed model.}
     \label{fig:preds}
 \end{figure*}
-
-\subsection{Results on MIT300 benchmark}
-Prediction took an average time of 8 milliseconds. Figure~\ref{fig:preds} shows some maps generated by the proposed model.
-They are generally considerably similar to the ground truth. For evaluation, we submitted the model to the \emph{MIT300 saliency benchmark} that has around 300 images and is commonly used to rank such models. Table~\ref{table:results} shows the resulting values for the most common metrics.
-The proposed model achieved results comparable to those of the state of the art while having, at least, one fourth of the number of parameters.
 
 \begin{table*}
 	\small
@@ -359,7 +358,7 @@ The proposed model achieved results comparable to those of the state of the art 
         Model & Num. parameters & AUC-Judd $\uparrow$ & CC $\uparrow$
             & NSS $\uparrow$ & Sim $\uparrow$ & EMD $\downarrow$\\
         \hline
-        Infinite humans & - & 0.92 & 1.0 & 3.29 & 1.0 & 0\\
+        Baseline: Infinite humans & - & 0.92 & 1.0 & 3.29 & 1.0 & 0\\
         \hline
         \emph{DeepFix} & $\approx$16.7 million & 0.87 & 0.78
             & 2.26 & 0.67 & 2.04\\
@@ -381,17 +380,53 @@ The proposed model achieved results comparable to those of the state of the art 
     \end{center}
 \end{table*}
 
+\subsection{Results on MIT300 benchmark}
+Prediction took an average time of 10 milliseconds.
+Figure~\ref{fig:preds} shows some maps generated by the proposed model.
+They are generally considerably similar to the ground truth. For evaluation, we submitted the model to the \emph{MIT300 saliency benchmark} that has around 300 images and is commonly used to rank such models. Table~\ref{table:results} shows the resulting values for the most common metrics.
+The proposed model achieved results comparable to those of the state of the art while having, at least, one fourth of the number of parameters.
+
 \subsection{Comparison of data processing methods}
 \label{sec:dataproc_compar}
-The model was trained on the \emph{SALICON} dataset, which as split into
+In order to investigate how the different data pre-processing methods
+affected model's performance, a comparison was made using two configurations:
+1) Using LAB colorspace and normalizing channel-wise with mean and standard
+deviation per image; and 2) using RGB colorspace, normalizing channel-wise
+with mean and standard deviation of the training dataset.
+The latter is commonly used in other models cited in this work.
+For each configuration, the model was trained on the
+\emph{SALICON} dataset, which as split into
 12000, 1500 and 1500 samples for training, validation and test, respectively.
-Four configurations of data pre-processing were considered:
-\begin{enumerate}
-    \item Images normalized per-channel with dataset statistics using RGB;
-    \item Images normalized per-channel with dataset statistics using LAB;
-    \item Images normalized per-channel with image statistics using LAB;
-    \item Images normalized per-channel with image statistics using RGB.
-\end{enumerate}
+
+Figure~\ref{fig:confs_losses} shows that configuration 1) converged faster
+and to a better optimum value.
+Figure~\ref{fig:confs_metrics} shows metrics computations on the test set.
+Overall, configuration 1) was better.
+We conjecture that the LAB colorspace in combination with normalization per
+image facilitates extraction of importante features for the context
+of saliency: luminance and color contrasts and information on the global level
+of the image.
+
+\begin{figure*}
+\begin{center}
+\begin{tabular} {cc}
+\includegraphics[width=0.45\linewidth]{./img/lab_perimg_losses.png} &
+\includegraphics[width=0.45\linewidth]{./img/rgb_perdset_losses.png}\\
+(1) & (2)
+\end{tabular}
+\caption{Progression of losses on test and validation
+    sets on configuration 1) (left) and 2) (right) during training.}
+\label{fig:confs_losses}
+\end{center}
+\end{figure*}
+
+\begin{center}
+\begin{figure}[t]
+\includegraphics[width=0.5\textwidth]{./img/metrics.png}
+\caption{Metrics evaluation on the test set for both configurations.}
+\label{fig:confs_metrics}
+\end{figure}
+\end{center}
 
 \section{Conclusion}
 In this paper, we proposed a novel fully convolutional neural network for the
