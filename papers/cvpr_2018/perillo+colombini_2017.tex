@@ -52,8 +52,8 @@ It helps animals survive and can also be used by computer vision applications
 to filter out irrelevant information from high volumes of data.
 In this work, we present a new fully convolutional neural network
 architecture designed for detecting visual saliency.
-We also propose methods of data pre-processing that are specifically
-benefical for the task of visual saliency detection.
+We also propose methods of data pre-processing that is specifically
+beneficial for the task of visual saliency detection.
 Experiments carried out with the MIT300 benchmark presented state-of-the-art
 performance and a parameter reduction of 3/4 compared to similar models.
 \end{abstract}
@@ -63,25 +63,25 @@ performance and a parameter reduction of 3/4 compared to similar models.
 One of the most challenging unsolved problems in Artificial Intelligence
 is vision.
 However, it is fundamental for the conception of systems that interact
-with the real physical world.
+in the real physical world.
 Such systems would be useful for applications in areas like
-domestic services, industry and agriculture,
+domestic services, industry, and agriculture,
 with great potential for the benefit of society.
 
-Vision is remarkably data and computationally intensive.
+Vision is remarkable data and computationally intensive.
 In humans, approximately half of the brain is involved in
 vision-related tasks~\cite{fixott_1957}.
-Even our minds can not handle all the sheer amount of sensorial information
+Even our minds cannot handle all the sheer amount of sensorial information
 received every second. In order to deal with this amount of data,
 humans have attentional systems, a fundamental mechanism
 that, among other functions, filters out irrelevant information
 -- either visual or from other senses-- and helps us focusing our cognitive
 processes on what is important at a given moment.
-These facts are a strong evidence that, in order to help solving the
+These facts are a strong evidence that in order to help to solve
 vision problems, attention should be applied.
 
 Visual attention can be defined as the delimitation of a certain spatial
-region on an image for further cognitive processing~\cite{treisman_1980}.
+the region on an image for further cognitive processing~\cite{treisman_1980}.
 The phenomenon emerges from two fundamentally different processes:
 the \emph{top-down} mechanism that implements our longer-term cognitive
 strategies by biasing attention according to one's interests
@@ -118,7 +118,7 @@ Early computational models of visual saliency were generally built based on
 filtering of images for extraction of a pre-selected set of features
 considered important for \emph{bottom-up} attention.
 \emph{Vocus}~\cite{frintrop_2005} is a computational model that extracts
-features shown to be naturally salient to humans such as color/luminance
+features are shown to be naturally salient to humans such as color/luminance
 contrast and orientation from different scales of the image.
 
 A rapid change of paradigm occurred around 2015 when \emph{Deep Learning}
@@ -137,11 +137,9 @@ of \emph{VGG-16}, combining them in many dimensions and various levels of
 abstraction.
 \emph{DeepFix}~\cite{kruthiventi_2015} extends a pre-trained model with
 inception~\cite{szegedy_2014} layers -- which use information from different
-scales of the image -- and a component for center bias, a
-phenomenon that arises from our tendency to take pictures with relevant
+scales of the image -- and a component for center bias, a phenomenon that arises from our tendency to take pictures with relevant
 objects at the center of the image.
-\emph{Salnet}~\cite{pan_2016} explores two models: a shallow convolutional
-network followed by a fully-connected layer and a fully convolutional
+\emph{Salnet}~\cite{pan_2016} explores two models: a shallow convolutional network followed by a fully-connected layer and a fully convolutional
 neural network with first layers' weights initialized from \emph{VGG-16}.
 
 Visual saliency detection models are usually evaluated and ranked on
@@ -149,8 +147,7 @@ Visual saliency detection models are usually evaluated and ranked on
 metrics to express how close generated saliency maps are to those created
 from human data.
 
-\subsection{Motivation}
-Current state of the art models are in general quite expensive computationally,
+However, current state of the art models are in general quite expensive computationally,
 partly because most of them are based on big pre-trained networks.
 The convolutional layers of \emph{VGG-16} are composed of around 14.7
 million parameters.
@@ -164,12 +161,11 @@ are considered worthwhile to explore,
 such as using global information from the scene and a colorspace more
 closely related to human vision.
 
-\subsection{Objectives}
 This work aims at building a visual saliency model that is a) effective,
-yielding results similar to other state of the art models,
+yielding results similar to another state of the art models,
 and b) relatively simple and computationally efficient.
 It is important that both criteria are matched in order to extend the
-model in the future for video and real time computer vision applications
+model in the future for video and real-time computer vision applications
 such as navigating robots.
 
 \section{Proposed model}
@@ -180,10 +176,10 @@ input image.
 The network is composed of four main blocks:
 
 \begin{enumerate}
-    \item The first level extracts low level features from the input image, of
+    \item The first level extracts low-level features from the input image, of
         dimensions $W\times H \times 3$ (width, height, depth), using
         a single layer with 48 convolution filters with ReLu activation
-        followed by max-pooling that reduces image by a factor of two.
+        followed by max-pooling that reduces the image by a factor of two.
         It was found that further decreasing the number of filters in this
         layer considerably hurts performance, which makes sense because it is
         important to capture high spatial frequency and high contrast
@@ -213,7 +209,7 @@ The network is composed of four main blocks:
 
 \begin{figure*}
 \begin{center}
-\def\svgwidth{1.5\columnwidth}
+\def\svgwidth{1.8\columnwidth}
 \input{./img/model.pdf_tex}
 \label{fig:model}
     \caption{Overview of the network.
@@ -287,9 +283,9 @@ normalized channel-wise using statistics computed from the dataset.
 However, visual saliency is highly connected to the context of the
 image, hence saliency depends on the local context.
 
-Images are converted from RGB colorspace to the LAB colorspace.
+Images are converted from RGB color space to the LAB colorspace.
 \emph{Vocus}~\cite{frintrop_2005} cites that the
-LAB colorspace is more closely related to human vision once it encompasses
+LAB color space is more closely related to human vision once it encompasses
 red-green, yellow-blue and
 luminance maps.
 
@@ -318,7 +314,7 @@ the \emph{Adam Optimizer}.
 Training iterated calculating the mean loss on the validation set
 after each epoch, and it stopped when the validation loss started to increase.
 \emph{SALICON} dataset was first used.
-Number of images was $12000$ in the training and $1500$ in the validation set.
+The number of images was $12000$ in the training and $1500$ in the validation set.
 Training iterated for 12 epochs with learning rate of $1\times10^{-4}$
 and batch size of 24
 Finally, \emph{Judd} was used, with $800$ images in the training set
@@ -383,27 +379,27 @@ The whole training process took around 4 hours.
 \subsection{Results on MIT300 benchmark}
 Prediction took an average time of 10 milliseconds.
 Figure~\ref{fig:preds} shows some maps generated by the proposed model.
-They are generally considerably similar to the ground truth. For evaluation, we submitted the model to the \emph{MIT300 saliency benchmark} that has around 300 images and is commonly used to rank such models. Table~\ref{table:results} shows the resulting values for the most common metrics.
-The proposed model achieved results comparable to those of the state of the art while having, at least, one fourth of the number of parameters.
+They are generally quite similar to the ground truth. For evaluation, we submitted the model to the \emph{MIT300 saliency benchmark} that has around 300 images and is commonly used to rank such models. Table~\ref{table:results} shows the resulting values for the most common metrics.
+The proposed model achieved results comparable to those of the state of the art while having, at least, one-fourth of the number of parameters.
 
 \subsection{Comparison of data processing methods}
 \label{sec:dataproc_compar}
 In order to investigate how the different data pre-processing methods
 affected model's performance, a comparison was made using two configurations:
-1) Using LAB colorspace and normalizing channel-wise with mean and standard
-deviation per image; and 2) using RGB colorspace, normalizing channel-wise
-with mean and standard deviation of the training dataset.
+1) Using LAB color space and normalizing channel-wise with mean and standard
+deviation per image; and 2) using RGB color space, normalizing channel-wise
+with a mean and standard deviation of the training dataset.
 The latter is commonly used in other models cited in this work.
 For each configuration, the model was trained on the
 \emph{SALICON} dataset, which as split into
-12000, 1500 and 1500 samples for training, validation and test, respectively.
+12000, 1500 and 1500 samples for training, validation, and test, respectively.
 
 Figure~\ref{fig:confs_losses} shows that configuration 1) converged faster
 and to a better optimum value.
 Figure~\ref{fig:confs_metrics} shows metrics computations on the test set.
 Overall, configuration 1) was better.
-We conjecture that the LAB colorspace in combination with normalization per
-image facilitates extraction of importante features for the context
+We conjecture that the LAB color space in combination with normalization per
+image facilitates extraction of important features for the context
 of saliency: luminance and color contrasts and information on the global level
 of the image.
 
@@ -437,7 +433,7 @@ Normalizing images channel-wise per image -- rather than per dataset -- showed
 to be important for a good performance of the model.
 Our methods showed to be effective, yielding to a network with performance
 on \emph{MIT300 benchmark} consistently among the ten best results on various
-metrics while having around $3/4$  less parameters than other state of
+metrics while having around $3/4$  fewer parameters than another state of
 the art models.
 
 {\small
