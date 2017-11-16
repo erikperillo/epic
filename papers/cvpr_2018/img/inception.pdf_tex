@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'inception.pdf' (pdf, eps, ps)
 %%
@@ -48,7 +48,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.35735634)%
+  \begin{picture}(1,0.32004205)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{./img/inception.pdf}}%
   \end{picture}%
 \endgroup%

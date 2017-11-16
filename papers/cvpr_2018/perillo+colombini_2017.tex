@@ -24,7 +24,7 @@
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{Efficient Visual Attention with Deep Learning}
+\title{Efficient Visual Saliency detection with Deep Learning}
 
 \author{First Author\\
 Institution1\\
@@ -51,9 +51,9 @@ Visual saliency is an important component of attention.
 It helps animals survive and can also be used by computer vision applications
 to filter out irrelevant information from high volumes of data.
 In this work, we present a new fully convolutional neural network
-architecture designed for detecting visual saliency.
-We also propose methods of data pre-processing that is specifically
-beneficial for the task of visual saliency detection.
+architecture designed for detecting visual saliency,
+with architecture and data pre-processing methods specific
+for the task of visual saliency detection.
 Experiments carried out with the MIT300 benchmark presented state-of-the-art
 performance and a parameter reduction of 3/4 compared to similar models.
 \end{abstract}
@@ -141,6 +141,8 @@ scales of the image -- and a component for center bias, a phenomenon that arises
 objects at the center of the image.
 \emph{Salnet}~\cite{pan_2016} explores two models: a shallow convolutional network followed by a fully-connected layer and a fully convolutional
 neural network with first layers' weights initialized from \emph{VGG-16}.
+Models that use weights from VGG-16 all use RGB images as input, subtracting
+channel-wise the mean of the dataset for each RGB channel.
 
 Visual saliency detection models are usually evaluated and ranked on
 \emph{MIT saliency benchmark}~\cite{mit_sal_bm}, which uses a variety of
@@ -186,18 +188,18 @@ The network is composed of four main blocks:
         information in the context of visual saliency.
     \item The second level extracts low-medium level features from the
         input of dimensions $W/2 \times H/2 \times 48$ using two layers
-        with 74 and 96 convolution filters, respectively, followed by ReLU
+        with 64 and 96 convolution filters, respectively, followed by ReLU
         activation and max-pooling.
     \item The third level extracts medium-high level features from input with
         dimensions $W/4 \times H/4 \times 96$ using four convolution layers
-        in sequence with 128, 144, 160 and 172 filters.
+        in sequence with 128, 128, 144 and 144 filters.
         Every convolution layer is followed by ReLu.
         Max-pooling is carried out at the end.
         A considerable depth in this level was found to be important for
         the network's performance.
     \item The fourth and last level is composed of eight inception blocks
         that extract high level features from the input with
-        dimensions $W/8 \times H/8 \times 172$.
+        dimensions $W/8 \times H/8 \times 96$.
         Great level of depth and Inception blocks were found to be very
         important at this level.
         A $1 \times 1$ convolution makes a linear combination of the output
@@ -217,43 +219,39 @@ The network is composed of four main blocks:
 \end{center}
 \end{figure*}
 
-Figure \ref{fig:newinception} illustrates the inception
-architecture used.
-Each inception layer applies
-$3 \times 3$ convolution, a sequence of two $3 \times 3$ convolutions
-(these two types are preceded by $1\times 1$ convolutions in order to
-reduce the number of input filters), $1 \times 1$ convolution,
-and a max-pooling of size $3 \times 3$.
-Each of those operations is executed in parallel from the same input
+Figure \ref{fig:inception} illustrates the inception
+architecture~\cite{szegedy_2014}
+used in each block where filters of size $5 \times 5$, $3 \times 3$
+(both preceded by $1\times 1$ convolutions in order to reduce the number
+of input filters), $1 \times 1$, and a max-pooling of size $3 \times 3$ are applied.
+Each of these operations is executed in parallel from the same input
 and the outputs are concatenated at the output.
 Inception allows the network to use
 information from different spatial dimensions as well as previous
 layers (lower level saliency information) in the final map
 computation, which is considered to be important for visual saliency.
-The network has a total of $3593842$ parameters, a very low number
-compared to other models.
-Table \ref{table:inception} details the filter configuration for the
-inception layers.
+The network has a total of $3717841$ parameters, a very low number
+compared to other models. Table \ref{table:inception} details the filter configuration for the inception layers.
 
 \begin{figure}[!htb]
     \centering
     \def\svgwidth{\linewidth}
     \input{./img/inception.pdf_tex}
     \caption{Inception block layout.}
-   \label{fig:newinception}
+   \label{fig:inception}
 \end{figure}
 
 \begin{table*}
-\begin{center}
-\small
+\centering
+	\small
 \label{table:inception}
 \caption{Number of filters used in each inception block.}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 	\hline
-    Block & pool & 1$\times$1 & 3$\times$3 reduce &
-    3$\times$3 & double 3$\times$3 reduce & double 3$\times$3\\
+    Block & pool & conv 1$\times$1 & 3$\times$3 reduce &
+    conv 3$\times$3 & 5$\times$5 reduce & conv 5$\times$5\\
     \hline
-    1 & 64 & 128 & 80 & 160 & 24 & 48\\
+    1 & 96 & 128 & 96 & 192 & 48 & 96\\
     \hline
     2 & 64 & 128 & 80 & 160 & 24 & 48\\
     \hline
@@ -270,7 +268,6 @@ inception layers.
     8 & 112 & 160 & 128 & 256 & 40 & 80\\
     \hline
 \end{tabular}
-\end{center}
 \end{table*}
 
 \subsection{Data pre-processing}
@@ -289,41 +286,41 @@ LAB color space is more closely related to human vision once it encompasses
 red-green, yellow-blue and
 luminance maps.
 
-Section~\ref{sec:dataproc_compar} describes experiments carried out
-to investigate how different data pre-processing techniques affect the
-performance of the model.
-
 \subsection{Implementation}
-The network was implemented using \emph{Tensorflow} \texttt{1.3.0}
+The network was implemented using \emph{Theano} \texttt{0.9.0.dev}
+along with \emph{Lasagne} \texttt{0.2.dev1}
 on a machine with \emph{Ubuntu 16.04 LTS} and
 kernel \emph{Linux} \texttt{4.8.0-54-generic}.
 Training was conducted on a GPU \emph{NVIDIA GTX 1080} and the
-code is available at \texttt{https://goo.gl/WzpyYJ}.
+code is available at \texttt{https://goo.gl/5JZMjb}
 
 \subsection{Training}
-Two datasets were used:
+The loss function to be minimized was the
+\emph{Correlation Coefficient} between the ground-truth saliency map $G$ and
+the predicted map $P$:
+$$CC(P, G) = \frac{cov(P, G)}{\sigma(P)\sigma(G)}$$
+$CC$ is considered one of the most appropriate~\cite{judd_2016}
+because it symmetrically penalizes both false positives and false negatives.
+
+Two datasets were considered:
 \emph{SALICON}~\cite{jiang_2015}, with 15000 images, and
 \emph{Judd}~\cite{judd}, with 1003 images.
-Data augmentation was applied by flipping images
-horizontally and vertically and applying random disturbances to the image:
-blur, adding noise, shifting and shearing.
-The cost function to be minimized was the \emph{Mean Squared Error} between
-the ground-truth saliency map $G$ and the predicted map $P$, using
-the \emph{Adam Optimizer}.
+The network was trained using Stochastic Gradient Descent with Nesterov
+Momentum of $0.9$.
+\emph{SALICON} was first used with data augmentation by flipping images
+horizontally and vertically and the target normalized by mean-std
+(Last conv layer had ReLu removed in this step).
+Mean-std normalization of targets was applied because it led to faster
+convergence.
+Training iterated for 5 epochs with learning rate of $0.009$
+and then for 3 epochs with learning rate of $0.001$.
+Then, unit normalization on targets started being used.
+The network was trained for 1 epoch with learning rate of
+$3\times10^{-5}$ and L2 regularization of $10^{-4}$. Finally, Judd dataset was used with data augmentation by flipping images horizontally and the target normalized by unit normalization.
+Training iterated for 2 epochs with learning rate of
+$5\times10^{-5}$ and L2 regularization of $3\times10^{-5}$. Batch sizes were 10 for SALICON and 2 for Judd. The complete training process took around two and a half hours.
 
-Training iterated calculating the mean loss on the validation set
-after each epoch, and it stopped when the validation loss started to increase.
-\emph{SALICON} dataset was first used.
-The number of images was $12000$ in the training and $1500$ in the validation set.
-Training iterated for 12 epochs with learning rate of $1\times10^{-4}$
-and batch size of 24
-Finally, \emph{Judd} was used, with $800$ images in the training set
-and $203$ images in the validation set.
-Training iterated for 3 epochs with learning rate of $1\times10^{-5}$
-and batch size of 10.
-The whole training process took around 4 hours.
-
-\section{Experimental Results}
+\section{Results}
 \begin{figure*}
 \begin{center}
     \begin{tabular} {ccc}
@@ -362,7 +359,7 @@ The whole training process took around 4 hours.
         \emph{Salicon} & $\approx$14.7 million & 0.87 & 0.74 & 2.12
             & 0.60 & 2.62\\
         \hline
-        \textbf{Proposed Model} & $\approx$\textbf{3.6 million}
+        \textbf{Proposed Model} & $\approx$\textbf{3.7 million}
             & \textbf{0.85} &
         \textbf{0.71} & \textbf{1.98} & \textbf{0.62} & \textbf{2.37}\\
         \hline
@@ -376,61 +373,17 @@ The whole training process took around 4 hours.
     \end{center}
 \end{table*}
 
-\subsection{Results on MIT300 benchmark}
-Prediction took an average time of 10 milliseconds.
+Prediction took an average time of 8 milliseconds.
 Figure~\ref{fig:preds} shows some maps generated by the proposed model.
 They are generally quite similar to the ground truth. For evaluation, we submitted the model to the \emph{MIT300 saliency benchmark} that has around 300 images and is commonly used to rank such models. Table~\ref{table:results} shows the resulting values for the most common metrics.
-The proposed model achieved results comparable to those of the state of the art while having, at least, one-fourth of the number of parameters.
-
-\subsection{Comparison of data processing methods}
-\label{sec:dataproc_compar}
-In order to investigate how the different data pre-processing methods
-affected model's performance, a comparison was made using two configurations:
-1) Using LAB color space and normalizing channel-wise with mean and standard
-deviation per image; and 2) using RGB color space, normalizing channel-wise
-with a mean and standard deviation of the training dataset.
-The latter is commonly used in other models cited in this work.
-For each configuration, the model was trained on the
-\emph{SALICON} dataset, which as split into
-12000, 1500 and 1500 samples for training, validation, and test, respectively.
-
-Figure~\ref{fig:confs_losses} shows that configuration 1) converged faster
-and to a better optimum value.
-Figure~\ref{fig:confs_metrics} shows metrics computations on the test set.
-Overall, configuration 1) was better.
-We conjecture that the LAB color space in combination with normalization per
-image facilitates extraction of important features for the context
-of saliency: luminance and color contrasts and information on the global level
-of the image.
-
-\begin{figure*}
-\begin{center}
-\begin{tabular} {cc}
-\includegraphics[width=0.45\linewidth]{./img/lab_perimg_losses.png} &
-\includegraphics[width=0.45\linewidth]{./img/rgb_perdset_losses.png}\\
-(1) & (2)
-\end{tabular}
-\caption{Progression of losses on test and validation
-    sets on configuration 1) (left) and 2) (right) during training.}
-\label{fig:confs_losses}
-\end{center}
-\end{figure*}
-
-\begin{center}
-\begin{figure}[t]
-\includegraphics[width=0.5\textwidth]{./img/metrics.png}
-\caption{Metrics evaluation on the test set for both configurations.}
-\label{fig:confs_metrics}
-\end{figure}
-\end{center}
+Proposed model achieved results comparable to those of the state of the art while having, at least, one-fourth of the number of parameters.
 
 \section{Conclusion}
 In this paper, we proposed a novel fully convolutional neural network for the
 prediction of visual saliency on images.
 The proposed model architecture was designed specifically
-for the task of saliency prediction.
-Normalizing images channel-wise per image -- rather than per dataset -- showed
-to be important for a good performance of the model.
+for the task of saliency prediction, with data pre-processing methods
+specific for the context of saliency prediction.
 Our methods showed to be effective, yielding to a network with performance
 on \emph{MIT300 benchmark} consistently among the ten best results on various
 metrics while having around $3/4$  fewer parameters than another state of
