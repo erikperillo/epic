@@ -1,0 +1,481 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>
+	Reviews For Paper
+</title>
+<style>
+body
+{
+	font-family:verdana,arial,helvetica;
+}
+#header
+{
+    width: 100%;
+    font-size: small;
+    background-color:#F7F7F7;
+}
+.headerSeparator
+{
+    background-color: #105586;
+}
+.printThemeText
+{
+    font-size:small;
+}
+.printThemeTable td
+{
+    vertical-align:top;
+}
+.printThemeGrid th
+{
+    color:white;
+    background:#5D7B9D;
+    font-weight:bold;
+}
+.printThemeGrid
+{
+    border-collapse:collapse;
+}
+.printThemeGrid td, .printThemeGrid th
+{
+    border:solid 1px #D6D3CE;
+    padding:4px 4px 4px 4px;
+}
+.printThemeGrid .row
+{ 
+    background-color:#F7F6F3;
+    color:#333333;
+    vertical-align:top;
+}
+.printThemeGrid .altrow
+{ 
+    background-color:White;
+    color:#284775;
+    vertical-align:top;
+}
+.cellprompt
+{
+	font-weight:bold;
+	white-space:nowrap;
+    width:100px;	
+}
+.paperHeader
+{
+    background-color:#dee3e7;
+    margin:5px 5px 15px 0px;
+    width:99%;
+    font-family:Verdana;
+    font-size:medium;
+    font-weight:bold;
+}
+.sectionHeader
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 0px;
+    width:99%;
+    text-decoration:underline;
+    font-family:Verdana;
+    font-size:small;
+    font-weight:bold;
+}
+.underlineheader
+{
+    text-decoration:underline;
+    font-weight:bold;
+    padding:5px 0px;
+}
+.response
+{
+    padding:5px 0px;
+}
+.reviewerlabel
+{
+    padding-right:20px;
+}
+.pageTitle
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 5px;
+    margin-top:10px;
+    width:99%;
+    font-family:Verdana;
+    font-size:medium;
+    font-weight:bold;
+}
+.submissionDetailsView
+{
+}
+.submissionDetailsView tr
+{
+    vertical-align:top;
+}
+.submissionDetailsView td.prompt
+{
+    font-weight:bold;
+}
+.submissionDetailsView tr.sectionSeparator
+{
+
+}
+.submissionDetailsView tr.sectionSeparator td
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 5px;
+    font-family:Verdana;
+    font-size:small;
+    font-weight:bold;
+    color:Navy;
+}
+/*CSS Grid View General Definitions*/
+.CssGridView
+{
+    font-size:small; 
+}
+
+.CssGridView td, .CssGridView th
+{
+    padding:4px 4px 4px 4px;
+}
+
+/*CSS Compact Grid View General Definitions*/
+.CssGridViewCompact img
+{
+    border-style:none;
+    border-width:0px;
+}
+
+.CssGridViewCompact
+{
+    font-size:1em;
+    border-style:solid;
+    border-color:#D6D3CE;
+    border-width:1px;
+}
+
+.CssGridViewCompact .hrow a
+{
+    font-size:1em;
+}
+
+.CssGridViewCompact .row a, .CssGridViewCompact .altrow a
+{
+    font-size:0.8em;
+}
+
+.CssGridViewCompact .row .normal a, .CssGridViewCompact .row .normal, .CssGridViewCompact .altrow .normal a, .CssGridViewCompact .altrow .normal
+{
+    font-size:1em;
+}
+
+/*CSS Grid View Header Styles*/
+.CssGridView .hrow, .CssGridViewCompact .hrow
+{ 
+    background-color:#5D7B9D;
+    font-weight:bold;
+    color:White;
+}
+
+
+.CssGridViewCompact .hrow td
+{ 
+    border-bottom-width:0px;
+}
+
+.CssGridViewCompact .hrow th
+{ 
+    border-top-width:0px;
+    font-size:0.8em;
+    vertical-align:top;
+    border-left-width:0px;
+    border-right-width:0px;
+}
+
+.CssGridViewCompact .smaller
+{
+    font-size:0.8em;
+}
+
+/*CSS Grid View Row Styles*/
+.CssGridViewCompact .row, .CssGridViewCompact .altrow
+{
+    border-top-style:solid;
+    border-top-color:#D6D3CE;
+    border-top-width:1px;
+    border-bottom-style:solid;
+    border-bottom-color:#D6D3CE;
+    border-bottom-width:1px;
+}
+
+/*CSS Grid View Header Styles*/
+.CssGridViewCompact .hrow .leftborder, .CssGridViewCompact .row .leftborder, .CssGridViewCompact .altrow .leftborder
+{
+    border-left-width:1px;
+    border-left-color:#D6D3CE;
+    border-left-style:solid;
+}
+
+.CssGridViewCompact .hrow .rightborder, .CssGridViewCompact .row .rightborder, .CssGridViewCompact .altrow .rightborder
+{
+    border-right-width:1px;
+    border-right-color:#D6D3CE;
+    border-right-style:solid;
+}
+
+.CssGridView .hrow a, .CssGridViewCompact .hrow a
+{ 
+    color:White;
+}
+ 
+.CssGridView .row, .CssGridViewCompact .row
+{ 
+    background-color:#F7F6F3;
+    color:#333333;
+    vertical-align:top;
+}
+
+.CssGridView .altrow, .CssGridViewCompact .altrow
+{ 
+    vertical-align:top;
+}
+
+.CssGridViewCompact .row td
+{ 
+    border-left-width:0px;
+    border-right-width:0px;
+}
+ 
+.CssGridViewCompact .altrow
+{ 
+    background-color:White;
+    color:#284775;
+    vertical-align:top;
+}
+
+.CssGridView .altrow tr, .CssGridViewCompact .altrow tr, .CssGridView .row tr, .CssGridViewCompact .row tr
+{ 
+    vertical-align:top;
+}
+</style>
+</head>
+<body>
+<form name="aspnetForm" method="post" action="./ViewReviewsForPaper.aspx?paperId=4028" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTAxNDM4ODU3Ng9kFgJmD2QWAgIDD2QWAmYPZBYCAgUPDxYCHgdWaXNpYmxlZ2QWBgIBD2QWAmYPZBYCZg9kFgQCAQ9kFgICAQ9kFgJmDw8WAh4EVGV4dAUENDAyOGRkAgIPZBYCAgEPZBYCZg8PFgIfAQU2RWZmaWNpZW50IFZpc3VhbCBTYWxpZW5jeSBkZXRlY3Rpb24gd2l0aCBEZWVwIExlYXJuaW5nZGQCAw8PFgIfAGhkZAIFDxYCHgtfIUl0ZW1Db3VudAIDFgZmD2QWBgIDD2QWAmYPFQETQXNzaWduZWRfUmV2aWV3ZXJfMWQCBw88KwARAwAPFgQeC18hRGF0YUJvdW5kZx8CAglkARAWABYAFgAMFCsAABYCZg9kFhQCAQ9kFgRmDw8WAh8BBU5bUGFwZXIgU3VtbWFyeV0gV2hhdCBpcyB0aGUgcGFwZXIgYWJvdXQ/IFBsZWFzZSwgYmUgY29uY2lzZSAoMyB0byA1IHNlbnRlbmNlcylkZAIBD2QWAmYPFQGHAkF1dGhvcnMgcHJlc2VudCBhIG5ldyBmdWxseSBjb252b2x1dGlvbmFsIG5ldXJhbCBuZXR3b3JrIGZvciA8YnIgLz5zYWxpZW5jeSBwcmVkaWN0aW9uIGFuZCBzaG93ZWQgaW1wcm92ZW1lbnRzIGluIHN0YXRlLW9mLXRoZS1hcnQgcGVyZm9ybWFuY2UgIG92ZXIgdGhlIE1JVDMwMCBiZW5jaG1hcmsgZGF0YXNldCAoYXMgdGhleSBjbGFpbSkuIFRoZWlyIG5ldCBoYXMgYWxzbyBtdWNoIGxlc3MgbnVtYmVyIG9mIHBhcmFtZXRlcnMuPGJyIC8+PGJyIC8+PGJyIC8+ZAICD2QWBGYPDxYCHwEF7gJbUGFwZXIgU3RyZW5ndGhzXSBQbGVhc2UgZGlzY3VzcywganVzdGlmeWluZyB5b3VyIGNvbW1lbnRzIHdpdGggdGhlIGFwcHJvcHJpYXRlIGxldmVsIG9mIGRldGFpbHMsIHRoZSBzdHJlbmd0aHMgb2YgdGhlIHBhcGVyIChpLmUuIG5vdmVsdHksIHRoZW9yZXRpY2FsIGFwcHJvYWNoIGFuZC9vciB0ZWNobmljYWwgY29ycmVjdG5lc3MsIGFkZXF1YXRlIGV2YWx1YXRpb24sIGNsYXJpdHksIGV0YykuICAgRm9yIGluc3RhbmNlLCBhIHRoZW9yZXRpY2FsIHBhcGVyIG1heSBuZWVkIG5vIGV4cGVyaW1lbnRzLCB3aGlsZSBhIHBhcGVyIHdpdGggYSBuZXcgYXBwcm9hY2ggbWF5IHJlcXVpcmUgY29tcGFyaXNvbnMgdG8gZXhpc3RpbmcgbWV0aG9kcy5kZAIBD2QWAmYPFQE6VGhpcyBwYXBlciwgd2hpbGUgaW50ZXJlc3RpbmcsIGFwcGVhcnMgdG8gYmUgaGFsZiBjb29rZWQhIGQCAw9kFgRmDw8WAh8BBZAHW1BhcGVyIFdlYWtuZXNzZXNdIFBsZWFzZSBkaXNjdXNzLCBqdXN0aWZ5aW5nIHlvdXIgY29tbWVudHMgd2l0aCB0aGUgYXBwcm9wcmlhdGUgbGV2ZWwgb2YgZGV0YWlscywgdGhlIHdlYWtuZXNzZXMgb2YgdGhlIHBhcGVyIChpLmUuIGxhY2sgb2Ygbm92ZWx0eSDigJMgZ2l2ZW4gcmVmZXJlbmNlcyB0byBwcmlvciB3b3JrLSwgbGFjayBvZiBub3ZlbHR5LCB0ZWNobmljYWwgZXJyb3JzLCBvci9hbmQgaW5zdWZmaWNpZW50IGV2YWx1YXRpb24sIGV0YykuICAgTm90ZTogSWYgeW91IHRoaW5rIHRoZXJlIGlzIGFuIGVycm9yIGluIHRoZSBwYXBlciwgcGxlYXNlIGV4cGxhaW4gd2h5IGl0IGlzIGFuIGVycm9yLiBBbHNvIHJlbWVtYmVyIHRoYXQgdGhlb3JldGljYWwgcmVzdWx0cy9pZGVhcyBhcmUgZXNzZW50aWFsIHRvIENWUFIgKHNvbWUgdGhlb3JldGljYWwgcGFwZXJzIG1heSBub3QgbmVlZCB0byBoYXZlIGV4cGVyaW1lbnRzKS4gSWYgdGhlIHRoZW9yeSBpcyBub3ZlbCBhbmQgaW50ZXJlc3RpbmcsIGJ1dCB0aGUgcmVzdWx0cyBkaWQgbm90IG91dHBlcmZvcm0gb3RoZXIgZXhpc3RpbmcgYWxnb3JpdGhtcywgaXQgaXMgbm90IG5lY2Vzc2FyaWx5IGEgcmVhc29uIHRvIHJlamVjdC4gSXQgaXMgbm90IGFwcHJvcHJpYXRlIHRvIGFzayBmb3IgY29tcGFyaXNvbnMgd2l0aCB1bnB1Ymxpc2hlZCBwYXBlcnMgYW5kIHBhcGVycyBwdWJsaXNoZWQgYWZ0ZXIgdGhlIENWUFIgZGVhZGxpbmUuIEluIGFsbCBjYXNlcywgcGxlYXNlIGJlIHBvbGl0ZSBhbmQgY29uc3RydWN0aXZlLiBDVlBSIDIwMTggcG9saWN5IG9uIGR1YWwgc3VibWlzc2lvbiBhbmQgYXJ4aXYgYXBwZWFycyBhdDogaHR0cDovL2N2cHIyMDE4LnRoZWN2Zi5jb20vc3VibWlzc2lvbi9tYWluX2NvbmZlcmVuY2UvYXV0aG9yX2d1aWRlbGluZXMuZGQCAQ9kFgJmDxUB4wRUaGUgaW50cm9kdWN0aW9uIHNlY3Rpb24gaXMgdmVyeSBzaG9ydCBhbmQgZG9lcyBub3QgZ2l2ZSBpbmZvcm1hdGlvbiByZWdhcmRpbmcgd2hhdCBpcyBwcmVzZW50ZWQgaGVyZS4gVGhlIHByb3Bvc2VkIGFyY2hpdGVjdHVyZSBzZWVtcyB2ZXJ5IGNsYXNzaWMgYW5kIGRvZXMgbm90IGludHJvZHVjZSBtdWNoIG5vdmVsdHkuIEhvd2V2ZXIsIHVzaW5nIExBQiBpbWFnZXMgc2VlbXMgbm92ZWwgSSBndWVzcyBoZXJlLjxiciAvPjxiciAvPldoYXQgZG9lcyB0aGlzIG1lYW4g4oCcIFRoZW4sIHVuaXQgbm9ybWFsaXphdGlvbiBvbiB0YXJnZXRzIHN0YXJ0ZWQgYmVpbmcgdXNlZC7igJ0/PGJyIC8+PGJyIC8+RGlkIHlvdSB0cmFpbiBvbiBTYWxpY29uIGFuZCBKdWRkIHNlcGFyYXRlbHkgb3IgY29tYmluZWQgdGhlIHR3bz88YnIgLz48YnIgLz5SZXN1bHRzIGluIHRhYmxlIDIgYXJlIG5pY2UgYnV0IG5vdCBzdGEuIDxiciAvPjxiciAvPkkgYW0gYWZyYWlkIHRoaXMgd29yayBpcyBub3QgcmVhZHkgYW5kIEkgaGF2ZSB0byByZWplY3QgaXQgYnV0IEkgaGlnaGx5IGVuY291cmFnZSB0aGUgYXV0aG9ycyB0byBleHRlbmQgdGhlaXIgd29yayBmb3IgZnV0dXJlIGNvbmZlcmVuY2VzLmQCBA9kFgRmDw8WAh8BBVlbUHJlbGltaW5hcnkgUmF0aW5nXSBQbGVhc2UgcmF0ZSB0aGUgcGFwZXIgYWNjb3JkaW5nIHRvIG9uZSBvZiB0aGUgZm9sbG93aW5nIHNpeCBjaG9pY2VzOmRkAgEPZBYCZg8VAQtXZWFrIFJlamVjdGQCBQ9kFgRmDw8WAh8BBeIBW1ByZWxpbWluYXJ5IEV2YWx1YXRpb25dIFBsZWFzZSBpbmRpY2F0ZSB0byB0aGUgQUMsIHlvdXIgZmVsbG93IHJldmlld2VycywgYW5kIHRoZSBhdXRob3JzIHlvdXIgY3VycmVudCBvcGluaW9uIG9uIHRoZSBwYXBlci4gUGxlYXNlIHRlbGwgdGhlIEFDcyB3aGF0IHBvaW50cyB5b3UgdGhpbmsgaGF2ZSB0aGUgbW9zdCB3ZWlnaHQgaW4geW91ciByZXZpZXdzIGFuZCBzdW1tYXJ5LCBhbmQgd2h5LmRkAgEPZBYCZg8VAQpTZWUgYWJvdmUuZAIGD2QWBGYPDxYCHwEFUltSZWJ1dHRhbCBSZXF1ZXN0c10gUGxlYXNlIHBvc2UgcXVlc3Rpb25zIHlvdSB3YW50IHRvIGJlIGFuc3dlcmVkIGluIHRoZSByZWJ1dHRhbC5kZAIBD2QWAmYPFQEKU2VlIGFib3ZlLmQCBw9kFgRmDw8WAh8BBQxbQ29uZmlkZW5jZV1kZAIBD2QWAmYPFQGDAVZlcnkgQ29uZmlkZW50IC0gdG8gc3RyZXNzIHRoYXQgeW91IGFyZSBwcmV0dHkgc3VyZSBhYm91dCB5b3VyIGNvbmNsdXNpb25zIChlLmcuLCB5b3UgYXJlIGFuIGV4cGVydCB3aG8gd29ya3MgaW4gdGhlIHBhcGVyJ3MgYXJlYSkuZAIID2QWBGYPDxYCHwEFiQFbRmluYWwgUmVjb21tZW5kYXRpb25dIFBsZWFzZSBwcm92aWRlIHlvdXIgZmluYWwgcmVjb21tZW5kYXRpb24gYnkgdGFraW5nIGludG8gY29uc2lkZXJhdGlvbiB0aGUgcmVidXR0YWwsIG90aGVyIHJldmlld3MgYW5kIGRpc2N1c3Npb25zLmRkAgEPZBYCZg8VAT1ObyByZWFkeSB5ZXQuIEp1c3QgYW4gaWRlYSB3aXRob3V0IG11Y2ggZXhwZXJpbWVudGFsIHN1cHBvcnQuZAIJD2QWBGYPDxYCHwEFU1tGaW5hbCBSYXRpbmddIFBsZWFzZSByYXRlIHRoZSBwYXBlciBhY2NvcmRpbmcgdG8gb25lIG9mIHRoZSBmb2xsb3dpbmcgc2l4IGNob2ljZXM6ZGQCAQ9kFgJmDxUBC1dlYWsgUmVqZWN0ZAIKDw8WAh8AaGRkAggPFQEAZAIBD2QWBgIDD2QWAmYPFQETQXNzaWduZWRfUmV2aWV3ZXJfMmQCBw88KwARAwAPFgQfA2cfAgIJZAEQFgAWABYADBQrAAAWAmYPZBYUAgEPZBYEZg8PFgIfAQVOW1BhcGVyIFN1bW1hcnldIFdoYXQgaXMgdGhlIHBhcGVyIGFib3V0PyBQbGVhc2UsIGJlIGNvbmNpc2UgKDMgdG8gNSBzZW50ZW5jZXMpZGQCAQ9kFgJmDxUBswFUaGlzIHBhcGVyIHRyYWlucyBhIHN0cmFpZ2h0Zm9yd2FyZCBkZWVwIG1vZGVsIGZvciBpbWFnZSBmaXhhdGlvbiBwcmVkaWN0aW9uLiBUaGUgd29yayBzZWVtcyB0byBiZSBub3QgZmluaXNoZWQgeWV0LiBUaGUgcGVyZm9ybWFuY2UgaXMgYWxzbyBsb3dlciB0aGFuIG1hbnkgcHJldmlvdXMgZGVlcCBtb2RlbHMuIGQCAg9kFgRmDw8WAh8BBe4CW1BhcGVyIFN0cmVuZ3Roc10gUGxlYXNlIGRpc2N1c3MsIGp1c3RpZnlpbmcgeW91ciBjb21tZW50cyB3aXRoIHRoZSBhcHByb3ByaWF0ZSBsZXZlbCBvZiBkZXRhaWxzLCB0aGUgc3RyZW5ndGhzIG9mIHRoZSBwYXBlciAoaS5lLiBub3ZlbHR5LCB0aGVvcmV0aWNhbCBhcHByb2FjaCBhbmQvb3IgdGVjaG5pY2FsIGNvcnJlY3RuZXNzLCBhZGVxdWF0ZSBldmFsdWF0aW9uLCBjbGFyaXR5LCBldGMpLiAgIEZvciBpbnN0YW5jZSwgYSB0aGVvcmV0aWNhbCBwYXBlciBtYXkgbmVlZCBubyBleHBlcmltZW50cywgd2hpbGUgYSBwYXBlciB3aXRoIGEgbmV3IGFwcHJvYWNoIG1heSByZXF1aXJlIGNvbXBhcmlzb25zIHRvIGV4aXN0aW5nIG1ldGhvZHMuZGQCAQ9kFgJmDxUBhgExLiBBIG1vZGVsIHRoYXQgY2FuIHByZWRpY3QgaW1hZ2Ugc2FsaWVuY3kgd2l0aCBsZXNzIHBhcmFtZXRlcnMuIDIuIFRoZSBhcHByb2FjaCBvdXRwZXJmb3JtcyBNTC1OZXQgYW5kIFNhbE5ldCBpbiB0ZXJtcyBvZiBTSU0gYW5kIENDLmQCAw9kFgRmDw8WAh8BBZAHW1BhcGVyIFdlYWtuZXNzZXNdIFBsZWFzZSBkaXNjdXNzLCBqdXN0aWZ5aW5nIHlvdXIgY29tbWVudHMgd2l0aCB0aGUgYXBwcm9wcmlhdGUgbGV2ZWwgb2YgZGV0YWlscywgdGhlIHdlYWtuZXNzZXMgb2YgdGhlIHBhcGVyIChpLmUuIGxhY2sgb2Ygbm92ZWx0eSDigJMgZ2l2ZW4gcmVmZXJlbmNlcyB0byBwcmlvciB3b3JrLSwgbGFjayBvZiBub3ZlbHR5LCB0ZWNobmljYWwgZXJyb3JzLCBvci9hbmQgaW5zdWZmaWNpZW50IGV2YWx1YXRpb24sIGV0YykuICAgTm90ZTogSWYgeW91IHRoaW5rIHRoZXJlIGlzIGFuIGVycm9yIGluIHRoZSBwYXBlciwgcGxlYXNlIGV4cGxhaW4gd2h5IGl0IGlzIGFuIGVycm9yLiBBbHNvIHJlbWVtYmVyIHRoYXQgdGhlb3JldGljYWwgcmVzdWx0cy9pZGVhcyBhcmUgZXNzZW50aWFsIHRvIENWUFIgKHNvbWUgdGhlb3JldGljYWwgcGFwZXJzIG1heSBub3QgbmVlZCB0byBoYXZlIGV4cGVyaW1lbnRzKS4gSWYgdGhlIHRoZW9yeSBpcyBub3ZlbCBhbmQgaW50ZXJlc3RpbmcsIGJ1dCB0aGUgcmVzdWx0cyBkaWQgbm90IG91dHBlcmZvcm0gb3RoZXIgZXhpc3RpbmcgYWxnb3JpdGhtcywgaXQgaXMgbm90IG5lY2Vzc2FyaWx5IGEgcmVhc29uIHRvIHJlamVjdC4gSXQgaXMgbm90IGFwcHJvcHJpYXRlIHRvIGFzayBmb3IgY29tcGFyaXNvbnMgd2l0aCB1bnB1Ymxpc2hlZCBwYXBlcnMgYW5kIHBhcGVycyBwdWJsaXNoZWQgYWZ0ZXIgdGhlIENWUFIgZGVhZGxpbmUuIEluIGFsbCBjYXNlcywgcGxlYXNlIGJlIHBvbGl0ZSBhbmQgY29uc3RydWN0aXZlLiBDVlBSIDIwMTggcG9saWN5IG9uIGR1YWwgc3VibWlzc2lvbiBhbmQgYXJ4aXYgYXBwZWFycyBhdDogaHR0cDovL2N2cHIyMDE4LnRoZWN2Zi5jb20vc3VibWlzc2lvbi9tYWluX2NvbmZlcmVuY2UvYXV0aG9yX2d1aWRlbGluZXMuZGQCAQ9kFgJmDxUBnQIxLiBUaGUgbW9kZWwgaXMgdG9vIHNpbXBsZS4gSXQgaXMganVzdCBhIHN0cmFpZ2h0Zm9yd2FyZCBkZWVwIG1vZGVsLiAyLiBUaGUgd29yayBzZWVtcyB0byBiZSBub3QgZmluaXNoZWQgeWV0LiBFeHBlcmltZW50IHNlY3Rpb24gdG9vIHNob3J0LiAzLiBQZXJmb3JtYW5jZSBpcyB3b3JzZSB0aGFuIERlZXBGaXggYW5kIFNhbGljb24uIEluIHRoaXMgY2FzZSwgdGhlIHBlcmZvcm1hbmNlIHNjb3JlcyBvZiB0aGUgcHJvcG9zZWQgbW9kZWwgc2hvdWxkIG5vdCBiZSBoaWdobGlnaHRlZCBpbiBib2xkLiBkAgQPZBYEZg8PFgIfAQVZW1ByZWxpbWluYXJ5IFJhdGluZ10gUGxlYXNlIHJhdGUgdGhlIHBhcGVyIGFjY29yZGluZyB0byBvbmUgb2YgdGhlIGZvbGxvd2luZyBzaXggY2hvaWNlczpkZAIBD2QWAmYPFQENU3Ryb25nIFJlamVjdGQCBQ9kFgRmDw8WAh8BBeIBW1ByZWxpbWluYXJ5IEV2YWx1YXRpb25dIFBsZWFzZSBpbmRpY2F0ZSB0byB0aGUgQUMsIHlvdXIgZmVsbG93IHJldmlld2VycywgYW5kIHRoZSBhdXRob3JzIHlvdXIgY3VycmVudCBvcGluaW9uIG9uIHRoZSBwYXBlci4gUGxlYXNlIHRlbGwgdGhlIEFDcyB3aGF0IHBvaW50cyB5b3UgdGhpbmsgaGF2ZSB0aGUgbW9zdCB3ZWlnaHQgaW4geW91ciByZXZpZXdzIGFuZCBzdW1tYXJ5LCBhbmQgd2h5LmRkAgEPZBYCZg8VAV5UaGUgd29yayBpcyBub3QgZmluaXNoZWQgeWV0LiBUaGUgbW9kZWwgaXMgdmVyeSBzaW1wbGUuIFRoZSBwZXJmb3JtYW5jZSBpcyBhbHNvIG5vdCB2ZXJ5IGdvb2QuZAIGD2QWBGYPDxYCHwEFUltSZWJ1dHRhbCBSZXF1ZXN0c10gUGxlYXNlIHBvc2UgcXVlc3Rpb25zIHlvdSB3YW50IHRvIGJlIGFuc3dlcmVkIGluIHRoZSByZWJ1dHRhbC5kZAIBD2QWAmYPFQEPTm90IG5lY2Vzc2FyeS4gZAIHD2QWBGYPDxYCHwEFDFtDb25maWRlbmNlXWRkAgEPZBYCZg8VAYMBVmVyeSBDb25maWRlbnQgLSB0byBzdHJlc3MgdGhhdCB5b3UgYXJlIHByZXR0eSBzdXJlIGFib3V0IHlvdXIgY29uY2x1c2lvbnMgKGUuZy4sIHlvdSBhcmUgYW4gZXhwZXJ0IHdobyB3b3JrcyBpbiB0aGUgcGFwZXIncyBhcmVhKS5kAggPZBYEZg8PFgIfAQWJAVtGaW5hbCBSZWNvbW1lbmRhdGlvbl0gUGxlYXNlIHByb3ZpZGUgeW91ciBmaW5hbCByZWNvbW1lbmRhdGlvbiBieSB0YWtpbmcgaW50byBjb25zaWRlcmF0aW9uIHRoZSByZWJ1dHRhbCwgb3RoZXIgcmV2aWV3cyBhbmQgZGlzY3Vzc2lvbnMuZGQCAQ9kFgJmDxUBLUEgd29yayBub3QgZmluaXNoZWQgeWV0LiBJIHN1Z2dlc3QgcmVqZWN0aW9uLmQCCQ9kFgRmDw8WAh8BBVNbRmluYWwgUmF0aW5nXSBQbGVhc2UgcmF0ZSB0aGUgcGFwZXIgYWNjb3JkaW5nIHRvIG9uZSBvZiB0aGUgZm9sbG93aW5nIHNpeCBjaG9pY2VzOmRkAgEPZBYCZg8VAQ1TdHJvbmcgUmVqZWN0ZAIKDw8WAh8AaGRkAggPFQEAZAICD2QWBgIDD2QWAmYPFQETQXNzaWduZWRfUmV2aWV3ZXJfM2QCBw88KwARAwAPFgQfA2cfAgIGZAEQFgAWABYADBQrAAAWAmYPZBYOAgEPZBYEZg8PFgIfAQVOW1BhcGVyIFN1bW1hcnldIFdoYXQgaXMgdGhlIHBhcGVyIGFib3V0PyBQbGVhc2UsIGJlIGNvbmNpc2UgKDMgdG8gNSBzZW50ZW5jZXMpZGQCAQ9kFgJmDxUBmwFBIGxpZ2h0LXdlaWdodCAofiAzLzQgcmVkdWNlZCBwYXJhbWV0ZXJzIHRoYW4gdGhlIHN0YXRlLW9mLXRoZS1hcnQgbW9kZWwpIENOTiBtb2RlbCB3aXRoIGNsb3NlIHRvIHN0YXRlLW9mLWFydCBwZXJmb3JtYW5jZSBpcyBwcm9wb3NlZCBpbiB0aGlzIHBhcGVyLjxiciAvPmQCAg9kFgRmDw8WAh8BBe4CW1BhcGVyIFN0cmVuZ3Roc10gUGxlYXNlIGRpc2N1c3MsIGp1c3RpZnlpbmcgeW91ciBjb21tZW50cyB3aXRoIHRoZSBhcHByb3ByaWF0ZSBsZXZlbCBvZiBkZXRhaWxzLCB0aGUgc3RyZW5ndGhzIG9mIHRoZSBwYXBlciAoaS5lLiBub3ZlbHR5LCB0aGVvcmV0aWNhbCBhcHByb2FjaCBhbmQvb3IgdGVjaG5pY2FsIGNvcnJlY3RuZXNzLCBhZGVxdWF0ZSBldmFsdWF0aW9uLCBjbGFyaXR5LCBldGMpLiAgIEZvciBpbnN0YW5jZSwgYSB0aGVvcmV0aWNhbCBwYXBlciBtYXkgbmVlZCBubyBleHBlcmltZW50cywgd2hpbGUgYSBwYXBlciB3aXRoIGEgbmV3IGFwcHJvYWNoIG1heSByZXF1aXJlIGNvbXBhcmlzb25zIHRvIGV4aXN0aW5nIG1ldGhvZHMuZGQCAQ9kFgJmDxUBkAFUaGUgYXV0aG9ycyBoYXZlIHNob3duIHRoYXQgZXZlbiB3aXRoIGxlc3MgcGFyYW1ldGVycyAoMy80IGNvbXBhcmVkIHRvIERlZXBGaXggbW9kZWwpLCBjbG9zZSB0byBzdGF0ZS1vZi1hcnQgcGVyZm9ybWFuY2UgY2FuIGJlIGFjaGlldmVkLiA8YnIgLz5kAgMPZBYEZg8PFgIfAQWQB1tQYXBlciBXZWFrbmVzc2VzXSBQbGVhc2UgZGlzY3VzcywganVzdGlmeWluZyB5b3VyIGNvbW1lbnRzIHdpdGggdGhlIGFwcHJvcHJpYXRlIGxldmVsIG9mIGRldGFpbHMsIHRoZSB3ZWFrbmVzc2VzIG9mIHRoZSBwYXBlciAoaS5lLiBsYWNrIG9mIG5vdmVsdHkg4oCTIGdpdmVuIHJlZmVyZW5jZXMgdG8gcHJpb3Igd29yay0sIGxhY2sgb2Ygbm92ZWx0eSwgdGVjaG5pY2FsIGVycm9ycywgb3IvYW5kIGluc3VmZmljaWVudCBldmFsdWF0aW9uLCBldGMpLiAgIE5vdGU6IElmIHlvdSB0aGluayB0aGVyZSBpcyBhbiBlcnJvciBpbiB0aGUgcGFwZXIsIHBsZWFzZSBleHBsYWluIHdoeSBpdCBpcyBhbiBlcnJvci4gQWxzbyByZW1lbWJlciB0aGF0IHRoZW9yZXRpY2FsIHJlc3VsdHMvaWRlYXMgYXJlIGVzc2VudGlhbCB0byBDVlBSIChzb21lIHRoZW9yZXRpY2FsIHBhcGVycyBtYXkgbm90IG5lZWQgdG8gaGF2ZSBleHBlcmltZW50cykuIElmIHRoZSB0aGVvcnkgaXMgbm92ZWwgYW5kIGludGVyZXN0aW5nLCBidXQgdGhlIHJlc3VsdHMgZGlkIG5vdCBvdXRwZXJmb3JtIG90aGVyIGV4aXN0aW5nIGFsZ29yaXRobXMsIGl0IGlzIG5vdCBuZWNlc3NhcmlseSBhIHJlYXNvbiB0byByZWplY3QuIEl0IGlzIG5vdCBhcHByb3ByaWF0ZSB0byBhc2sgZm9yIGNvbXBhcmlzb25zIHdpdGggdW5wdWJsaXNoZWQgcGFwZXJzIGFuZCBwYXBlcnMgcHVibGlzaGVkIGFmdGVyIHRoZSBDVlBSIGRlYWRsaW5lLiBJbiBhbGwgY2FzZXMsIHBsZWFzZSBiZSBwb2xpdGUgYW5kIGNvbnN0cnVjdGl2ZS4gQ1ZQUiAyMDE4IHBvbGljeSBvbiBkdWFsIHN1Ym1pc3Npb24gYW5kIGFyeGl2IGFwcGVhcnMgYXQ6IGh0dHA6Ly9jdnByMjAxOC50aGVjdmYuY29tL3N1Ym1pc3Npb24vbWFpbl9jb25mZXJlbmNlL2F1dGhvcl9ndWlkZWxpbmVzLmRkAgEPZBYCZg8VAdkKMSkgQ29tcGFyaXNvbiBkYXRhc2V0czogQXV0aG9ycyBoYXZlIGNvbXBhcmVkIHdpdGggb3RoZXIgbW9kZWxzIHdpdGggb25seSBNSVQzMDAgZGF0YXNldC4gVGhlIGF1dGhvcnMgc2hvdWxkIHRoZSBwZXJmb3JtYW5jZSBvZiBwcm9wb3NlZCBtZXRob2QgaW4gb3RoZXIgY2hhbGxlbmdpbmcgZGF0YXNldHMgc3VjaCBhcyBQQVNDQUwtUywgRFVULU9NUk9OLCBJUyBhbmQgQ0FUMjAwMC48YnIgLz48YnIgLz4yKSBMb3NzIGZ1bmN0aW9uOiBUaGUgYXV0aG9ycyBoYXZlIHByb3Bvc2VkIHRvIHVzZSBjcm9zcy1jb3JyZWxhdGlvbiBhcyB0aGVpciBsb3NzIGZ1bmN0aW9uIGFzIGNvbXBhcmVkIHRvIGV1Y2xpZGVhbiBvciBzaW1pbGFyaXR5IGxvc3MgYnkgb3RoZXIgd29ya3MuIEJ1dCB0aGUgaW50dWl0aW9uIGJlaGluZCB0aGlzIGlzIG5vdCBjbGVhci4gQWxzbywgYXMgdGhlIHRlcm1zIHVzZWQgaW4gZXF1YXRpb24gZnJvbSBsaW5lcyAzNjYtMzY4IGFyZSBub3QgZXhwbGFpbmVkLCBpdCBpcyBub3QgcG9zc2libGUgZm9yIHRoZSByZWFkZXIgdG8gdW5kZXJzdGFuZCB0aGUgaWRlYSBvZiB1c2luZyBjcm9zcy1jb3JyZWxhdGlvbiBsb3NzIGZ1bmN0aW9uLiBJdCB3b3VsZCBiZSBpbnRlcmVzdGluZyB0byBzZWUgaG93IG11Y2ggaW1wcm92ZW1lbnQgY2FuIG9uZSBnZXQgYnkgdXNpbmcgY3Jvc3MtY29ycmVsYXRpb24gbG9zcyBmdW5jdGlvbi4gIDxiciAvPjxiciAvPjMpIEV2YWx1YXRpb24gbWV0cmljOiBUaGUgYXV0aG9ycyBoYXZlIG5vdCBjb21wYXJlZCB3aXRoIHNBVUMgYW5kIEtMIG1ldHJpYy4gc0FVQyBpcyBpbXBvcnRhbnQgdG8gaWRlbnRpZnkgdGhlIGNlbnRyYWwgYmlhcyBvZiB0aGUgbW9kZWwuIFNvLCB0aGUgYXV0aG9ycyBhcmUgcmVxdWVzdGVkIHRvIGV2YWx1YXRlIHRoZWlyIG1vZGVsIHdpdGggcmVzcGVjdCB0byBzQVVDIGFuZCBLTCBtZXRyaWMuPGJyIC8+PGJyIC8+NCkgVGhlIGVxdWF0aW9ucyBhcmUgbm90IG51bWJlcmVkLiBUaGUgZXhwbGFuYXRpb24gb2YgdGhlIHRlcm1zIGFuZCBub3RhdGlvbnMgdXNlZCBpbiBlcXVhdGlvbnMgYXJlIG1pc3NpbmcsIHRodXMgY29uZnVzaW5nIGZvciB0aGUgcmVhZGVycyB0byBhc3N1bWUgdGhlIG1lYW5pbmcgb2YgdGhlIGVxdWF0aW9uIChGb3IgZS5nLCBlcXVhdGlvbnMgaW4gbGluZSAzNjYtMzY4KS48YnIgLz48YnIgLz41KUluIHF1YWxpdGF0aXZlIGV2YWx1YXRpb24sIHRoZSBhdXRob3JzIGhhdmUgc2hvd24gb25seSByZXN1bHQgYnkgdGhlaXIgbWV0aG9kIGFuZCBncm91bmQgdHJ1dGguIEl0IHdvdWxkIGJlIGJldHRlciB0byBzaG93IHRoZSByZXN1bHRzIGJ5IG90aGVyIG1ldGhvZHMgYXMgd2VsbCBmb3IgYmV0dGVyIGNvbXBhcmlzb24uIGQCBA9kFgRmDw8WAh8BBVlbUHJlbGltaW5hcnkgUmF0aW5nXSBQbGVhc2UgcmF0ZSB0aGUgcGFwZXIgYWNjb3JkaW5nIHRvIG9uZSBvZiB0aGUgZm9sbG93aW5nIHNpeCBjaG9pY2VzOmRkAgEPZBYCZg8VAQ1TdHJvbmcgUmVqZWN0ZAIFD2QWBGYPDxYCHwEF4gFbUHJlbGltaW5hcnkgRXZhbHVhdGlvbl0gUGxlYXNlIGluZGljYXRlIHRvIHRoZSBBQywgeW91ciBmZWxsb3cgcmV2aWV3ZXJzLCBhbmQgdGhlIGF1dGhvcnMgeW91ciBjdXJyZW50IG9waW5pb24gb24gdGhlIHBhcGVyLiBQbGVhc2UgdGVsbCB0aGUgQUNzIHdoYXQgcG9pbnRzIHlvdSB0aGluayBoYXZlIHRoZSBtb3N0IHdlaWdodCBpbiB5b3VyIHJldmlld3MgYW5kIHN1bW1hcnksIGFuZCB3aHkuZGQCAQ9kFgJmDxUBwwJUaGUgcGFwZXIgaXMgcG9vcmx5IHdyaXR0ZW4gd2l0aCBtaW5pbWFsIGV4cGxhbmF0aW9uIGZvciBtYXRoZW1hdGljYWwgbm90YXRpb25zLiBBbHNvLCBpbiB0aGUgZXhwZXJpbWVudGFsIHNlY3Rpb24sIGNvbXBhcmlzb24gd2l0aCBtYW55IGtleSBkYXRhc2V0cyB3aXRoIGltcG9ydGFudCBtZXRyaWNzIGFyZSBtaXNzaW5nLiBUaG91Z2gsIHRoZSBwYXBlciBvZmZlcnMgbGlnaHQtd2VpZ2h0IENOTiBtb2RlbCBmb3Igc2FsaWVuY3kgcHJlZGljdGlvbiwgaXQgbGFja3MgaW4gbm92ZWx0eSBhbmQgZGV0YWlsZWQgZXhwZXJpbWVudGFsIGV2YWx1YXRpb24uIDxiciAvPmQCBg9kFgRmDw8WAh8BBQxbQ29uZmlkZW5jZV1kZAIBD2QWAmYPFQGDAVZlcnkgQ29uZmlkZW50IC0gdG8gc3RyZXNzIHRoYXQgeW91IGFyZSBwcmV0dHkgc3VyZSBhYm91dCB5b3VyIGNvbmNsdXNpb25zIChlLmcuLCB5b3UgYXJlIGFuIGV4cGVydCB3aG8gd29ya3MgaW4gdGhlIHBhcGVyJ3MgYXJlYSkuZAIHDw8WAh8AaGRkAggPFQEAZBgDBR9jdGwwMCRjcGgkZ3ZSZXZpZXdzJGN0bDAyJGN0bDAwDzwrAAwBCAIBZAUfY3RsMDAkY3BoJGd2UmV2aWV3cyRjdGwwMSRjdGwwMA88KwAMAQgCAWQFH2N0bDAwJGNwaCRndlJldmlld3MkY3RsMDAkY3RsMDAPPCsADAEIAgFk6b3pHPtEuonq8N0RoPiAmrlag4o=" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="940AD923" />
+</div>
+<table id="header">
+<tr>
+<td width="100%"><a href='http&#58;&#47;&#47;cvpr2018.thecvf.com&#47;' target='_blank'>CVPR</a><br /><b>Computer Vision and Pattern Recognition 2018</b><br />Jun 19, 2018 - Jun 21, 2018, Salt Lake City, USA</td>
+</tr>
+<tr class='headerSeparator'>
+    <td style='height:5px'></td>
+</tr>
+</table>
+<table id="content"><tr><td class='contentBorder'>&nbsp;</td><td class="contentContainer">
+<span id="ctl00_cph_Label4" style="font-size:Small;font-weight:bold;">Reviews For Paper</span>
+<span id="ctl00_cph_lblErrorMessage" class="error" style="font-size:Small;"></span>
+<div id="ctl00_cph_pnlReviews">
+	
+    <span style="font-size:Small;"><table id="ctl00_cph_infoSubmission_tblInfo" class="nicetable2" style="text-align:left; width: 100%;">
+		<tr>
+			<td width="100px"><b>Paper ID</b></td>
+			<td><span id="ctl00_cph_infoSubmission_lblPaperId" style="font-size:Small;">4028</span></td>
+		</tr>
+		<tr>
+			<td><b>Title</b></td>
+			<td><span id="ctl00_cph_infoSubmission_lblPaperTitle" style="font-size:Small;">Efficient Visual Saliency detection with Deep Learning</span></td>
+		</tr>
+	</table>
+	</span>
+    
+    
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label1" style="font-size:Small;">Assigned_Reviewer_1</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Paper Summary] What is the paper about? Please, be concise (3 to 5 sentences)</td><td style="width:80%;">
+                            Authors present a new fully convolutional neural network for <br />saliency prediction and showed improvements in state-of-the-art performance  over the MIT300 benchmark dataset (as they claim). Their net has also much less number of parameters.<br /><br /><br />
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Paper Strengths] Please discuss, justifying your comments with the appropriate level of details, the strengths of the paper (i.e. novelty, theoretical approach and/or technical correctness, adequate evaluation, clarity, etc).   For instance, a theoretical paper may need no experiments, while a paper with a new approach may require comparisons to existing methods.</td><td style="width:80%;">
+                            This paper, while interesting, appears to be half cooked! 
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Paper Weaknesses] Please discuss, justifying your comments with the appropriate level of details, the weaknesses of the paper (i.e. lack of novelty – given references to prior work-, lack of novelty, technical errors, or/and insufficient evaluation, etc).   Note: If you think there is an error in the paper, please explain why it is an error. Also remember that theoretical results/ideas are essential to CVPR (some theoretical papers may not need to have experiments). If the theory is novel and interesting, but the results did not outperform other existing algorithms, it is not necessarily a reason to reject. It is not appropriate to ask for comparisons with unpublished papers and papers published after the CVPR deadline. In all cases, please be polite and constructive. CVPR 2018 policy on dual submission and arxiv appears at: http://cvpr2018.thecvf.com/submission/main_conference/author_guidelines.</td><td style="width:80%;">
+                            The introduction section is very short and does not give information regarding what is presented here. The proposed architecture seems very classic and does not introduce much novelty. However, using LAB images seems novel I guess here.<br /><br />What does this mean “ Then, unit normalization on targets started being used.”?<br /><br />Did you train on Salicon and Judd separately or combined the two?<br /><br />Results in table 2 are nice but not sta. <br /><br />I am afraid this work is not ready and I have to reject it but I highly encourage the authors to extend their work for future conferences.
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Preliminary Rating] Please rate the paper according to one of the following six choices:</td><td style="width:80%;">
+                            Weak Reject
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Preliminary Evaluation] Please indicate to the AC, your fellow reviewers, and the authors your current opinion on the paper. Please tell the ACs what points you think have the most weight in your reviews and summary, and why.</td><td style="width:80%;">
+                            See above.
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Rebuttal Requests] Please pose questions you want to be answered in the rebuttal.</td><td style="width:80%;">
+                            See above.
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Confidence]</td><td style="width:80%;">
+                            Very Confident - to stress that you are pretty sure about your conclusions (e.g., you are an expert who works in the paper's area).
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Final Recommendation] Please provide your final recommendation by taking into consideration the rebuttal, other reviews and discussions.</td><td style="width:80%;">
+                            No ready yet. Just an idea without much experimental support.
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Final Rating] Please rate the paper according to one of the following six choices:</td><td style="width:80%;">
+                            Weak Reject
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label1" style="font-size:Small;">Assigned_Reviewer_2</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Paper Summary] What is the paper about? Please, be concise (3 to 5 sentences)</td><td style="width:80%;">
+                            This paper trains a straightforward deep model for image fixation prediction. The work seems to be not finished yet. The performance is also lower than many previous deep models. 
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Paper Strengths] Please discuss, justifying your comments with the appropriate level of details, the strengths of the paper (i.e. novelty, theoretical approach and/or technical correctness, adequate evaluation, clarity, etc).   For instance, a theoretical paper may need no experiments, while a paper with a new approach may require comparisons to existing methods.</td><td style="width:80%;">
+                            1. A model that can predict image saliency with less parameters. 2. The approach outperforms ML-Net and SalNet in terms of SIM and CC.
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Paper Weaknesses] Please discuss, justifying your comments with the appropriate level of details, the weaknesses of the paper (i.e. lack of novelty – given references to prior work-, lack of novelty, technical errors, or/and insufficient evaluation, etc).   Note: If you think there is an error in the paper, please explain why it is an error. Also remember that theoretical results/ideas are essential to CVPR (some theoretical papers may not need to have experiments). If the theory is novel and interesting, but the results did not outperform other existing algorithms, it is not necessarily a reason to reject. It is not appropriate to ask for comparisons with unpublished papers and papers published after the CVPR deadline. In all cases, please be polite and constructive. CVPR 2018 policy on dual submission and arxiv appears at: http://cvpr2018.thecvf.com/submission/main_conference/author_guidelines.</td><td style="width:80%;">
+                            1. The model is too simple. It is just a straightforward deep model. 2. The work seems to be not finished yet. Experiment section too short. 3. Performance is worse than DeepFix and Salicon. In this case, the performance scores of the proposed model should not be highlighted in bold. 
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Preliminary Rating] Please rate the paper according to one of the following six choices:</td><td style="width:80%;">
+                            Strong Reject
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Preliminary Evaluation] Please indicate to the AC, your fellow reviewers, and the authors your current opinion on the paper. Please tell the ACs what points you think have the most weight in your reviews and summary, and why.</td><td style="width:80%;">
+                            The work is not finished yet. The model is very simple. The performance is also not very good.
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Rebuttal Requests] Please pose questions you want to be answered in the rebuttal.</td><td style="width:80%;">
+                            Not necessary. 
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Confidence]</td><td style="width:80%;">
+                            Very Confident - to stress that you are pretty sure about your conclusions (e.g., you are an expert who works in the paper's area).
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Final Recommendation] Please provide your final recommendation by taking into consideration the rebuttal, other reviews and discussions.</td><td style="width:80%;">
+                            A work not finished yet. I suggest rejection.
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Final Rating] Please rate the paper according to one of the following six choices:</td><td style="width:80%;">
+                            Strong Reject
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label1" style="font-size:Small;">Assigned_Reviewer_3</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Paper Summary] What is the paper about? Please, be concise (3 to 5 sentences)</td><td style="width:80%;">
+                            A light-weight (~ 3/4 reduced parameters than the state-of-the-art model) CNN model with close to state-of-art performance is proposed in this paper.<br />
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Paper Strengths] Please discuss, justifying your comments with the appropriate level of details, the strengths of the paper (i.e. novelty, theoretical approach and/or technical correctness, adequate evaluation, clarity, etc).   For instance, a theoretical paper may need no experiments, while a paper with a new approach may require comparisons to existing methods.</td><td style="width:80%;">
+                            The authors have shown that even with less parameters (3/4 compared to DeepFix model), close to state-of-art performance can be achieved. <br />
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Paper Weaknesses] Please discuss, justifying your comments with the appropriate level of details, the weaknesses of the paper (i.e. lack of novelty – given references to prior work-, lack of novelty, technical errors, or/and insufficient evaluation, etc).   Note: If you think there is an error in the paper, please explain why it is an error. Also remember that theoretical results/ideas are essential to CVPR (some theoretical papers may not need to have experiments). If the theory is novel and interesting, but the results did not outperform other existing algorithms, it is not necessarily a reason to reject. It is not appropriate to ask for comparisons with unpublished papers and papers published after the CVPR deadline. In all cases, please be polite and constructive. CVPR 2018 policy on dual submission and arxiv appears at: http://cvpr2018.thecvf.com/submission/main_conference/author_guidelines.</td><td style="width:80%;">
+                            1) Comparison datasets: Authors have compared with other models with only MIT300 dataset. The authors should the performance of proposed method in other challenging datasets such as PASCAL-S, DUT-OMRON, IS and CAT2000.<br /><br />2) Loss function: The authors have proposed to use cross-correlation as their loss function as compared to euclidean or similarity loss by other works. But the intuition behind this is not clear. Also, as the terms used in equation from lines 366-368 are not explained, it is not possible for the reader to understand the idea of using cross-correlation loss function. It would be interesting to see how much improvement can one get by using cross-correlation loss function.  <br /><br />3) Evaluation metric: The authors have not compared with sAUC and KL metric. sAUC is important to identify the central bias of the model. So, the authors are requested to evaluate their model with respect to sAUC and KL metric.<br /><br />4) The equations are not numbered. The explanation of the terms and notations used in equations are missing, thus confusing for the readers to assume the meaning of the equation (For e.g, equations in line 366-368).<br /><br />5)In qualitative evaluation, the authors have shown only result by their method and ground truth. It would be better to show the results by other methods as well for better comparison. 
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Preliminary Rating] Please rate the paper according to one of the following six choices:</td><td style="width:80%;">
+                            Strong Reject
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">[Preliminary Evaluation] Please indicate to the AC, your fellow reviewers, and the authors your current opinion on the paper. Please tell the ACs what points you think have the most weight in your reviews and summary, and why.</td><td style="width:80%;">
+                            The paper is poorly written with minimal explanation for mathematical notations. Also, in the experimental section, comparison with many key datasets with important metrics are missing. Though, the paper offers light-weight CNN model for saliency prediction, it lacks in novelty and detailed experimental evaluation. <br />
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">[Confidence]</td><td style="width:80%;">
+                            Very Confident - to stress that you are pretty sure about your conclusions (e.g., you are an expert who works in the paper's area).
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+    <br />
+    <br />
+
+</div>
+</td><td class='contentBorder'>&nbsp;</td></tr></table>
+</form>
+</body>
+</html>
