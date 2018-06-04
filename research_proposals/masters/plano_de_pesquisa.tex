@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber]{biblatex}
+\usepackage{csquotes}
+%\usepackage{docmute}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\addbibresource{plano_de_pesquisa.bib}
+
+\newcommand{\fromeng}[1]{\footnote{do inglês: \textit{#1}}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\ttt}[1]{\texttt{#1}}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\Large Plano de pesquisa\par}
+	\vspace{1.5cm}
+	{\huge \bfseries Atenção\par}
+	\vspace{1cm}
+	{\itshape Aluno: Erik de Godoy Perillo\par}
+	{\itshape Orientadora: Profa. Dra. Esther Luna Colombini\par}
+	\vspace{0.5cm}
+	\begin{abstract}
+        Resumo.
+	\end{abstract}
+	\vfill
+	Universidade Estadual de Campinas
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\newpage
+
+\section{Introdução}
+
+\printbibliography
+
+\end{document}
