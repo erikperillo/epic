@@ -35,19 +35,19 @@
 	\vspace{0.5cm}
 	\begin{abstract}
         Attention is a fundamental mechanism in intelligent beings.
-        It is necessary for filtering the big volumes of stimuli
-        constantly arriving and selecting information that is
+        It is necessary for filtering the big and constant volumes of stimuli
+        we receive and for selecting information that is
         important for a certain task.
         Deep Learning is currently broadly applied to Artificial Intelligence.
-        The use of attention concepts in current models
-        has also been increasingly frequent, resulting many times in
+        The use of attention and Deep Learning
+        has been increasingly frequent, resulting many times in
         better results for the task being addressed.
         In this context, this work proposes the elaboration of
         attentional models based on Deep Learning for problems in Artificial
-        Ingelligence.
+        Intelligence.
         We aim at obtaining frameworks more generically applicable in broad
-        problem classes such as computer vision, Natural Language Processing,
-        Differential Computation and others.
+        problem classes such as Computer Vision, Natural Language Processing,
+        Differential Programming and others.
 	\end{abstract}
 	\vfill
 	State University of Campinas
@@ -88,7 +88,7 @@ so that relevant objects and parts of the scene are promoted to
 further processing and decision making -- which needs to be done in real time.
 Furthermore, paying attention to abrupt changes in the environment
 that may affect the robot's navigation is important for
-the robustness, success and safety of the application.
+the success, robustness and safety of the application.
 Computational models of attention have been elaborated for years.
 A classic example is VOCUS~\cite{ref:vocus}, which was proposed to
 simulate the visual attention process in humans.
@@ -97,25 +97,25 @@ Many of its mechanisms are based in concepts from psychology.
 In recent years, there have been significant improvements in
 AI due to the popularization of Deep Learning (DL)~\cite{ref:dl}.
 As we will discuss in following sections, the technique consists of
-artificial neural networks architectured in a hierarquical manner.
+artificial neural networks architectured in a hierarchical manner.
 DL showed to be effective in a variety of tasks in
 computer vision~\cite{ref:imagenet}\cite{ref:segmentation},
 audio processing~\cite{ref:wavenet} and Natural Language
-Processing (NLP)~\cite{ref:att-all-you-need} mainly due to its ability
+Processing (NLP)~\cite{ref:att-all-you-need}, mainly due to its ability
 to learn what features to be extracted (rather than relying on hand-crafted
 features).
 Along with the transposition from classic models to DL
 approaches, an increasingly high number of works on the field
 have been using concepts related to attention in combination with DL
 to achieve better results.
-One example is image captioning: the task
+One example is image captioning (figure \ref{fig:description}): the task
 consists of giving a natural language description of a given image.
 The work in ~\cite{ref:img-captioning} shows that the task benefits from
 sequentially focusing on different parts of the image in sequence.
 It is achieved by the use of an attentional component in the model.
-Other examples include linguistic translation~\cite{ref:translation},
+Other examples -- which will be discussed in-depth in following sections --
+include linguistic translation~\cite{ref:translation},
 audio recognition~\cite{ref:audio} and neural computation~\cite{ref:ntm}.
-More examples will be discussed in-depth in following sections.
 
 \begin{figure}
 \begin{center}
@@ -129,7 +129,8 @@ More examples will be discussed in-depth in following sections.
 \end{figure}
 
 \subsection{Objectives}
-The recent adoption of attention by a variety of Deep Learning models 
+Attention might be fundamental for AI in general.
+The recent adoption of attention by a variety of Deep Learning models
 has shown significant improvements in different tasks.
 However, it is conjectured that many other tasks that still don't use
 attention would benefit from the concept.
@@ -153,22 +154,174 @@ Therefore, the specific objectives of this work are:
 \end{itemize}
 
 \section{Background}
-\subsection{Deep Learning}
-TODO:
-\begin{itemize}
-    \item brief history and timeline;
-    \item hierarquical features
-    \item types (cnns, rnns, ntms)
-    \item non-convex optimization (SGD etc)
-\end{itemize}
 \subsection{Attention}
-TODO:
-\begin{itemize}
-    \item definition
-    \item general concepts
-    \item bottom up
-    \item top down
-\end{itemize}
+The interest in the concept of attention exists since long time ago.
+Throughout the years, attention has been studied
+from various perspectives (c) such as filosofy, psychology and neurology.
+Thus, there are multiple definitions of the concept.
+In broad terms, we can define attention as
+\emph{the act of guiding the processing of information
+according to an importance evaluation method that is specific to a
+certain task at a given time}.
+In the next items we discuss some concepts related to attention.
+
+\subsubsection{Functionalities of attention}
+Attention can be manifested in different manners depending on the goal (c).
+The most common is the act of selecting a set of stimuli over others
+(selective attention), such as looking at only a portion of an image.
+Another component is the act of guiding how one's focus moves over time
+(oriented attention), such as the act of looking at the words in
+a sequential manner when reading.
+Keeping the focus on a specific semantic element is important in some tasks
+and is known as sustained attention.
+
+\subsubsection{Bottom-up and Top-down attention}
+Focus may emerge in two fundamentally different manners (c).
+In bottom-up attention, the act of focusing is involuntarily
+started and guided by (usually) external and conspicuous stimuli,
+such as a shattering glass that tends to
+make us immediately turn our heads towards where the noise came from.
+Another example is visual saliency (figure \ref{fig:saliency}):
+a glowing red ball suddenly appearing in
+your field of vision will probably grab your focus.
+In top-down attention, focus is voluntarily guided by cognition and goals.
+If we are talking to someone in a crowded party, for example,
+we focus on what the specific person is saying
+-- ignoring other people's words -- in order to maintain the conversation.
+
+\begin{figure}
+\begin{center}
+		\begin{tabular} {cc}
+		\includegraphics[width=0.45\linewidth]{./img/traffic_sign_s.jpg} &
+		\includegraphics[width=0.45\linewidth]{./img/traffic_sign_m.jpg}\\
+        (a) & (b)
+		\end{tabular}
+\caption{Exemple of visual saliency.
+    b) is the saliency map where higher intensity pixels represent
+    regions that are more salient to humans than original image a).}
+\label{fig:saliency}
+\end{center}
+\end{figure}
+
+\subsubsection{Soft and Hard attention}
+In recent years, there has been an useful distinction between
+soft and hard attention (c).
+Soft attention regards defining a continuous distribution of importance
+across all elements of information for some task.
+In the example of visual saliency, one can determine a saliency map $M$
+to a given image $I$ where each pixel will have a value in $[0, 1]$
+regarding its saliency.
+Hard attention regards determining a discrete subset of
+important information elements.
+Using again the problem of visual saliency as an example,
+one might want to determine a specific location $(i, j)$ of the image
+to be used as center of a small patch of the image that is the most
+relevant to be further processed.
+
+\subsection{Deep Learning}
+Deep Learning is a trend in modern AI (c).
+Although DL started being broadly adopted around x years ago,
+some of its concepts date to much earlier than that (c):
+foundations of artificial neural networks were already discussed
+in the 1950s, backpropagation was introduced in the 1970s
+and many other key concepts that are popular mostly in the last decade or less
+were introduced more than 30 years ago.
+Many fields of AI witnessed a major shift in paradigm
+in the last years: models applying DL concepts now achieve state-of-the-art
+results in different problems regarding computer vision (c)(c)(c),
+audio processing (c), NLP (c), neural computation (c) among others.
+DL used used both in supervised and unsupervised learning (c).
+
+One of the key concepts of DL is that of hierarchy of features (c):
+A deep sequence of layers apply non-linear transformations to the data
+in such a way that many models learn to extract features of hierarchical
+levels of abstraction.
+For this reason, DL is also regarded as Representation Learning.
+This characteristic enables such models to learn latent structure
+in intrinsically unstructured data such as images, text and audio signals.
+Another advantage is that of transfer learning: models that are
+primarily trained for a given task can be used and adapted for another
+task while using at least part of the representations learned.
+We discuss some concepts related to DL in following items.
+
+\subsubsection{Artificial Neural Networks (ANNs)}
+ANNs are usually adopted to prediction
+learning problems by means of learning a non-linear function aproximation.
+The ideas used in ANNs date to more than 50 years ago (c) and many of them
+are inspired from observed mechanisms of the human brain (x).
+Most of DL models are a variation of one of the families of ANNs
+that will be briefly discussed here.
+
+One of the most basic examples is that of Multi Layer Perceprons (MLPs).
+The main caracteristic of this model is the use of hidden layers
+and neurons are a linear combination of previous layers followed by
+a non-linear activation.
+Each layer $l_k$ (with $n$ neurons) is connected to the previous layers
+$l_{k-1}$ (with $m$ neurons) and the neuron $l_k^i$, $1 \le i \le n$
+is given value:
+$$l_k^i = h\left(\sum_{j=1}^{m} l_{k-1}^jw_k^j + b_k^j\right)$$
+Where $h(x): \mathbb{R} \mapsto \mathbb{R}$ is a non-linear activation funcion.
+Commonly commonly used functions are the sigmoid hyperbolic tangent
+and the Rectified Linear Unit (ReLU):
+$$f(x) = \begin{cases}
+    0, & x < 0 \\
+    x, & x \ge 0 \\
+        \end{cases}
+$$
+ReLU is a currently broadly adopted due to its high efficiency
+and training speed (c).
+
+\begin{figure}
+\begin{center}
+    \includegraphics[width=1.0\linewidth]{./img/cnn.png}
+\caption{
+    Diagram of a convolutional neural network.
+    Learned filters extract features in an increasingly hierarchical manner.
+}
+\label{fig:cnn}
+\end{center}
+\end{figure}
+
+Convolutional Neural Networks (CNNs) are widely used
+in computer vision
+tasks such as image classification, localization and semantic segmentation.
+CNNs use the fact that images tend to have correlated pixels and use
+convolution filters in an hierarchical manner (figure \ref{fig:cnn})
+to learn features in increasing abstraction.
+For a certain layer, the $i$-th feature map $m_i$ is,
+given filter weights $W_i$, bias $b_i$ and nonlinearity function $h(x)$,
+obtained as:
+$$m_i = h\left(W_i * x + b_i\right)$$
+with $*$ as the convolution operation.
+
+Recurrent Neural Networks (RNNs) are characterized by a recursive architecture
+that uses the input of the current step and the output of the previous
+step to compute the predictions.
+The hidden state $h_t$ at time step $t$, given input $x_t$, weight matrix $W$,
+previous state $h_{t-1}$, hidden-state-to-hidden-state matrix $U$ and
+non-linearity $f(x)$ is given by:
+$$h_t = f\left(Wx_t + Uh_{t-1}\right)$$
+These architectures are widely used in NLP tasks (c) such as
+machine translation (c).
+Some variations over the original basic architecture such as
+LSTMs (c) are also broadly adopted.
+
+\subsubsection{Learning process}
+The act of learning the appropriate weights of a given model
+is usually obtained by the minimization of a differentiable loss function
+that is based on the cost function $L(y, \hat{y})$ that characterizes the error
+between the true value $y$ and the predicted value $\hat{y}$.
+Backpropagation (c) plays an important role in DL because it's used
+to adjust the weights $\theta$ of models that have a
+differentiable cost function.
+A typical training process is composed of a forward-propagation
+step which computes the predictions over a set of input samples
+and a backpropagation step which computes the loss function
+and adjusts the weights of the model.
+In DL, acommon such adjustment methods include Stochastic Gradient Descent (SGD)
+which, for a given minibatch, adjusts weights according to:
+$$\theta_{i+1} = \theta_i - \alpha\frac{\partial{J}}{\partial{\theta}}$$
+where $\alpha$ is the learning rate.
 
 \section{Related Work}
 TODO: detailed examples on DL + attention.
@@ -176,7 +329,7 @@ maybe cite our previous work here?
 %In vision, we can cite problems such as visual saliency
 %(figure \ref{fig:saliency}): In a given image, which region should be
 %first focused on? Older computacional models generally extracted
-%hand-crafted features regarding color, luminance and image 
+%hand-crafted features regarding color, luminance and image
 %statistics~\cite{ref:judd}.
 %A significant boost in performance~\cite{ref:mit300-bm} was achieved
 %with the adoption of Deep Learning models with arquitechture components
@@ -185,7 +338,7 @@ maybe cite our previous work here?
 %In previous work~\cite{ref:erik-esther}, which is result from a Undergraduate
 %Research project conducted by the author
 %-- and received `'best undergraduate research project'' award from
-%the institute of computing at Unicamp in 2017 -- 
+%the institute of computing at Unicamp in 2017 --
 %we developed a fully convolutional neural network that emcompasses
 %arquitechture and data processing specifically design for the saliency
 %detection task.
