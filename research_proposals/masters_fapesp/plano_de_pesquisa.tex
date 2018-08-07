@@ -1,120 +1,116 @@
-%\documentclass[11pt]{article}
-\documentclass[article]{IEEEtran}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{caption}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[backend=biber]{biblatex}
-\usepackage{csquotes}
-%\usepackage{docmute}
-\usepackage{array}
-\usepackage{geometry}
+\documentclass[English]{style/ic-tese-v3}
+
+%Quão rigoroso é o limite de 20 páginas?
+
+\usepackage[latin1,utf8]{inputenc}
+
+
+% Para acrescentar comentários ao PDF descomente:
+\usepackage
+%  [pdfauthor={nome do autor},
+%   pdftitle={titulo},
+%   pdfkeywords={palavra-chave, palavra-chave},
+%   pdfproducer={Latex with hyperref},
+%   pdfcreator={pdflatex}]
+{hyperref}
+\usepackage{indentfirst}
 \usepackage[T1]{fontenc}
-\addbibresource{plano_de_pesquisa.bib}
+\usepackage{titlesec}
+\usepackage{subfig}
+\titlespacing{\chapter}{0pt}{0pt}{0pt}
 
-\newcommand{\fromeng}[1]{\footnote{do inglês: \textit{#1}}}
-\newcommand{\tit}[1]{\textit{#1}}
-\newcommand{\tbf}[1]{\textbf{#1}}
-\newcommand{\ttt}[1]{\texttt{#1}}
+%\titleformat{\chapter}%
+ % {\normalfont\bfseries\Huge}{\thechapter.}{10pt}{}
 
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\titleformat{\chapter}{\normalfont\bfseries\huge}{\thechapter}{10pt}{\huge\bf\vspace{5mm}}
+\usepackage{adjustbox}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{caption} 
+\captionsetup[table]{skip=5pt}
+
+
 
 \begin{document}
 
-\begin{titlepage}
-	\centering
-	{\scshape\Large Research Project\par}
-	\vspace{1.5cm}
-	{\huge \bfseries Attentional models and Deep Learning\par}
-	\vspace{1cm}
-	{\itshape Erik de Godoy Perillo\par}
-	{\itshape Supervisor: Profa. Dra. Esther Luna Colombini\par}
-	\vspace{0.5cm}
-	\begin{abstract}
-        Attention is a fundamental mechanism in intelligent beings.
-        It is necessary for filtering the big and constant volumes of stimuli
-        we receive and for selecting information that is
-        important for a certain task.
-        Deep Learning is currently broadly applied to Artificial Intelligence.
-        The use of attention and Deep Learning
-        has been increasingly frequent, resulting many times in
-        better results for the task being addressed.
-        In this context, this work proposes the elaboration of
-        attentional models based on Deep Learning for problems in Artificial
-        Intelligence.
-        We aim at obtaining frameworks more generically applicable in broad
-        problem classes such as Computer Vision, Natural Language Processing,
-        Differential Programming and others.
-	\end{abstract}
-	\vfill
-	State University of Campinas
-	\vfill
-	{\large \today\par}
-\end{titlepage}
+% Escolha entre autor ou autora:
+\documento{Research Project}
 
-\section{Introduction}
-We are constantly receiving high volumes of multimodal stimuli
+\autor{Erik de Godoy Perillo}
+
+\titulo{Attentional models and Deep Learning}
+%\subtitle{Lel}
+\orientadora{Prof.a. Dr.a. Esther Luna Colombini}
+
+\paginasiniciais
+
+\section*{Abstract}
+Attention is a fundamental mechanism in intelligent beings. It is necessary for filtering the significant and constant volumes of stimuli we receive and for selecting information that is essential for a particular task. Deep Learning is currently broadly applied to Artificial Intelligence. The use of attention and Deep Learning has been increasingly frequent, resulting many times in better results for the task addressed. In this context, this work proposes the elaboration of attentional models based on Deep Learning for problems in Artificial Intelligence. We aim at obtaining frameworks more generically applicable in broad problem classes such as Computer Vision, Natural Language Processing, Differential Programming and others.
+\fimdaspaginasiniciais
+
+
+
+\chapter{Introduction}
+We are continually receiving high volumes of multimodal stimuli
 from both external sources -- such as visual, auditive signals --
  and internal sources -- proprioception, memories et cetera.
-It would be very inefficient to proccess all the information with
-the same intensity given that a big portion of it is irrelevant for
-the task being executed at the moment and we have limited cognitive capacity.
+It would be very inefficient to process all the information with
+the same intensity once a significant portion of it is irrelevant for
+the task executed at the moment and considering that we have limited cognitive capacity.
 When we read, our vision does not focus on all
-words equally, but rather on a small subset of the text at a time.
-When we're addressing a given subject, it tends to mediate the focus
+words equally, but instead on a small subset of the text at a time.
+When we are addressing a given subject, it tends to mediate the focus
 in the memory search process, essentially retrieving memories that
-are useful for the subject: many other irrelevant memories are not used.
+are useful whereas many other irrelevant memories are not used.
 It often happens that something conspicuous
 -- such as a bird abruptly appearing in front of us or a sudden sound --
 quickly draws our focus, `'stealing'' it from what was previously
-being focused on.
-The ability to filter and select stimuli that is relevant for a given
-cognitive task, keeping the focus for an extended period of time and
+being focused.
+The ability to filter and select stimuli that are relevant for a task, keeping the focus for an extended period and
 directing it to new stimuli when appropriate is fundamental to
-human beings and other complex forms of life.
+human beings and other sophisticated forms of life.
 We name this ability `'attention''~\cite{ref:esther-thesis}.
 
-Attention can potentially play an important role in the development
+Attention can potentially play an essential role in the development
 of Artificial Intelligence (AI).
-Areas such as computer vision often involve a big quantity of data
-and most of time only part of image is relevant to the task at a given moment.
+Areas such as computer vision often involve a significant quantity of data
+and most of the time only part of an image is relevant to the task.
 In robotics, attention can be substantially useful:
 robots that navigate in complex and dynamic environments need
 systems to enable them to handle data from all sensors
 so that relevant objects and parts of the scene are promoted to
-further processing and decision making -- which needs to be done in real time.
+further processing and decision making -- which is necessary for real-time applications.
 Furthermore, paying attention to abrupt changes in the environment
-that may affect the robot's navigation is important for
-the success, robustness and safety of the application.
+that may affect the robot's navigation is vital for
+the success, robustness, and safety of the application.
 Computational models of attention have been elaborated for years.
-A classic example is VOCUS~\cite{ref:vocus}, which was proposed to
+A classic example is VOCUS~\cite{ref:vocus}, a model proposed to
 simulate the visual attention process in humans.
-Many of its mechanisms are based in concepts from psychology.
+Many of its mechanisms are based on concepts from psychology.
 
 In recent years, there have been significant improvements in
 AI due to the popularization of Deep Learning (DL)~\cite{ref:dl}.
-As we will discuss in following sections, the technique consists of
+As we will discuss in the following sections, the technique consists of
 artificial neural networks architectured in a hierarchical manner.
 DL showed to be effective in a variety of tasks in
 computer vision~\cite{ref:imagenet}\cite{ref:segmentation},
 audio processing~\cite{ref:wavenet} and Natural Language
 Processing (NLP)~\cite{ref:att-all-you-need}, mainly due to its ability
-to learn what features to be extracted (rather than relying on hand-crafted
+to learn what features should be extracted (rather than relying on hand-crafted
 features).
 Along with the transposition from classic models to DL
 approaches, an increasingly high number of works on the field
 have been using concepts related to attention in combination with DL
 to achieve better results.
-One example is image captioning (figure \ref{fig:description}): the task
+One example is image captioning (figure \ref{fig:description}) where the task
 consists of giving a natural language description of a given image.
-The work in ~\cite{ref:img-captioning} shows that the task benefits from
-sequentially focusing on different parts of the image in sequence.
-It is achieved by the use of an attentional component in the model.
-Other examples -- which will be discussed in-depth in following sections --
-include linguistic translation~\cite{ref:translation},
+The work presented in ~\cite{ref:img-captioning} shows that the task benefits from
+sequentially focusing on different parts of the image in a sequence, through the use of an attentional component in the model.
+Other examples -- which will be discussed in-depth in following sections -- include linguistic translation~\cite{ref:translation},
 audio recognition~\cite{ref:audio} and neural computation~\cite{ref:ntm}.
 
 \begin{figure}
@@ -128,18 +124,18 @@ audio recognition~\cite{ref:audio} and neural computation~\cite{ref:ntm}.
 \end{center}
 \end{figure}
 
-\subsection{Objectives}
+\section{Objectives}
 Attention might be fundamental for AI in general.
 The recent adoption of attention by a variety of Deep Learning models
 has shown significant improvements in different tasks.
-However, it is conjectured that many other tasks that still don't use
+However, it is conjectured that many other tasks that still do not use
 attention would benefit from the concept.
 It is believed that a variety of tasks related to robotic navigation,
 for example, can be approached by using models with attention.
 Furthermore, we note that attention models currently being used
 are very specific to each problem in question.
 Some works propose a higher level of generalization~\cite{ref:recurr-models},
-but we believe it is possible to go further than that.
+but we believe it is possible to go further.
 Therefore, the specific objectives of this work are:
 \begin{itemize}
     \item To perform an extensive literature review on the use of attention
@@ -153,19 +149,18 @@ Therefore, the specific objectives of this work are:
         application (preferably related to robotics).
 \end{itemize}
 
-\section{Background}
-\subsection{Attention}
-The interest in the concept of attention exists since long time ago.
+\chapter{Background}
+\section{Attention}
+The interest in the concept of attention exists since a long time ago.
 Throughout the years, attention has been studied
-from various perspectives (c) such as filosofy, psychology and neurology.
+from various perspectives (c) such as philosophy, psychology, and neurology.
 Thus, there are multiple definitions of the concept.
 In broad terms, we can define attention as
 \emph{the act of guiding the processing of information
-according to an importance evaluation method that is specific to a
-certain task at a given time}.
-In the next items we discuss some concepts related to attention.
+according to a critical evaluation method that is specific to a particular task at a given time}.
+In the next items, we discuss some concepts related to attention.
 
-\subsubsection{Functionalities of attention}
+\subsection{Functionalities of attention}
 Attention can be manifested in different manners depending on the goal (c).
 The most common is the act of selecting a set of stimuli over others
 (selective attention), such as looking at only a portion of an image.
@@ -175,7 +170,7 @@ a sequential manner when reading.
 Keeping the focus on a specific semantic element is important in some tasks
 and is known as sustained attention.
 
-\subsubsection{Bottom-up and Top-down attention}
+\subsection{Bottom-up and Top-down attention}
 Focus may emerge in two fundamentally different manners (c).
 In bottom-up attention, the act of focusing is involuntarily
 started and guided by (usually) external and conspicuous stimuli,
@@ -203,7 +198,7 @@ we focus on what the specific person is saying
 \end{center}
 \end{figure}
 
-\subsubsection{Soft and Hard attention}
+\subsection{Soft and Hard attention}
 In recent years, there has been an useful distinction between
 soft and hard attention (c).
 Soft attention regards defining a continuous distribution of importance
@@ -218,8 +213,8 @@ one might want to determine a specific location $(i, j)$ of the image
 to be used as center of a small patch of the image that is the most
 relevant to be further processed.
 
-\subsection{Deep Learning}
-Deep Learning is a trend in modern AI (c).
+\section{Deep Learning}
+Deep Learning (DL) is a trend in modern AI (c).
 Although DL started being broadly adopted around x years ago,
 some of its concepts date to much earlier than that (c):
 foundations of artificial neural networks were already discussed
@@ -244,7 +239,7 @@ primarily trained for a given task can be used and adapted for another
 task while using at least part of the representations learned.
 We discuss some concepts related to DL in following items.
 
-\subsubsection{Artificial Neural Networks (ANNs)}
+\subsection{Artificial Neural Networks (ANNs)}
 ANNs are usually adopted to prediction
 learning problems by means of learning a non-linear function aproximation.
 The ideas used in ANNs date to more than 50 years ago (c) and many of them
@@ -306,7 +301,7 @@ machine translation (c).
 Some variations over the original basic architecture such as
 LSTMs (c) are also broadly adopted.
 
-\subsubsection{Learning process}
+\subsection{Learning process}
 The act of learning the appropriate weights of a given model
 is usually obtained by the minimization of a differentiable loss function
 that is based on the cost function $L(y, \hat{y})$ that characterizes the error
@@ -323,7 +318,9 @@ which, for a given minibatch, adjusts weights according to:
 $$\theta_{i+1} = \theta_i - \alpha\frac{\partial{J}}{\partial{\theta}}$$
 where $\alpha$ is the learning rate.
 
-\section{Related Work}
+\let\clearpage\relax
+
+\chapter{Related Work}
 TODO: detailed examples on DL + attention.
 maybe cite our previous work here?
 %In vision, we can cite problems such as visual saliency
@@ -346,16 +343,25 @@ maybe cite our previous work here?
 %(in the MIT Saliency Benchmark) at the time,
 %the model was composed of significantly less parameters than other models.
 
-\section{Methodology}
+\let\clearpage\relax
+
+\chapter{Methodology}
 TODO:
 \begin{itemize}
     \item description of stages: lit review,
         search for problems, generalization, application
 \end{itemize}
 
-\subsection{Schedule}
+\section{Schedule}
 TODO: the schedule.
 
-\printbibliography
+\renewcommand\bibname{References\vspace*{10mm}}
+
+\begingroup
+\let\clearpage\relax
+\bibliographystyle{plain}
+\bibliography{plano_de_pesquisa.bib}
+%\printbibliography
+\endgroup
 
 \end{document}
